@@ -1,7 +1,7 @@
 {pkgs, ...}: 
 {
     environment.systemPackages = with pkgs; [
-    minecraft
-steam
+        minecraft
     ];
+    programs.steam.enable = true;
 }
