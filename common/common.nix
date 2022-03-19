@@ -4,7 +4,7 @@
 imports = [
   ./fonts.nix
   ./user.nix
-  # ./theming/theme.nix
+  (import ./theming/theme.nix { inherit pkgs; })
   ./pkgs-config/desktop-env/setup.nix
   ./pkgs-config/shell/zsh.nix
   ./pkgs-config/chatting.nix
