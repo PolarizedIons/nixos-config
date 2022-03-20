@@ -16,6 +16,9 @@ in {
 
       # Dotnet
       dotnetCombined
+
+      # utils
+      nixfmt
     ];
   };
 }
