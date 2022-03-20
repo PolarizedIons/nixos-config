@@ -1,5 +1,5 @@
 {
-  accent = "#E47023";
+  accent = "#2d208c";
   light = "#DEE9DB";
   mlight = "#B3C0B2";
   mdark = "#5C6D69";
