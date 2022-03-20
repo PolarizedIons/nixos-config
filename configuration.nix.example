@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./machines/rick/configuration.nix ];
+  imports = [ ./machines/vm/configuration.nix ];
 }
