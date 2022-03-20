@@ -47,6 +47,7 @@ in {
     htop
     pavucontrol
     xclip
+    pcmanfm
   ];
 
   programs.mtr.enable = true;
