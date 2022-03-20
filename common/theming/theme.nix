@@ -6,8 +6,8 @@ let
   };
 
   iconTheme = {
-    package = pkgs.tela-icon-theme;
-    name = "tela";
+    package = pkgs.vimix-icon-theme;
+    name = "Vimix-standard-dark";
   };
 
 in import ./gtk2Theme.nix {
