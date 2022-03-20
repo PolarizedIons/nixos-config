@@ -1,3 +1,3 @@
 { pkgs }:
 
-pkgs.copyPathToStore ./wallpaper.png
+pkgs.copyPathToStore ./wallpaper.jpg
