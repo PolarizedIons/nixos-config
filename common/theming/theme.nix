@@ -10,8 +10,8 @@ let
     name = "tela";
   };
 
-in
-import ./gtk2Theme.nix {
+in import ./gtk2Theme.nix {
   theme = gtk2theme;
   icons = iconTheme;
+  inherit pkgs;
 }

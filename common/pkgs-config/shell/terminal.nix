@@ -1,3 +1,3 @@
-{ pkgs }: 
+{ pkgs }:
 
-pkgs.alacritty
+"${pkgs.alacritty}/bin/alacritty"

@@ -1,7 +1,7 @@
-{pkgs, ...}: 
-{
-    environment.systemPackages = with pkgs; [
-        minecraft
-    ];
+{ lib, config, pkgs, ... }:
+with lib; {
+  config = mkIf config.setup.coding.enable {
+    environment.systemPackages = with pkgs; [ minecraft ];
     programs.steam.enable = true;
+  };
 }

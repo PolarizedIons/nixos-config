@@ -1,8 +1,8 @@
-{...}:
+{ ... }:
 
 {
-    users.users.polarizedions = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" ];
-    };
+  users.users.polarizedions = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
 }

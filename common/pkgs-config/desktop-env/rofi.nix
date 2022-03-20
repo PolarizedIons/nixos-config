@@ -1,3 +1,3 @@
 { pkgs }:
 
-pkgs.rofi
+"${pkgs.rofi}/bin/rofi"

@@ -1,12 +1,12 @@
 {
   accent = "#E47023";
-  light  = "#DEE9DB";
+  light = "#DEE9DB";
   mlight = "#B3C0B2";
-  mdark  = "#5C6D69";
+  mdark = "#5C6D69";
   mdark2 = "#222827";
   mdark3 = "#001621";
   dark = "#000F16";
-  
+
   red = "#e23822";
   dred = "#a22718";
 
@@ -18,7 +18,7 @@
 
   blue = "#2288e2";
   dblue = "#1861a3";
-  
+
   magenta = "#e22265";
   dmagenta = "#a21749";
 
