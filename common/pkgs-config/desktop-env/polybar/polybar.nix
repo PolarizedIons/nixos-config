@@ -7,8 +7,7 @@ let
     name = "polybar-config";
     text = config;
   };
-in 
-pkgs.writeScript "polybar-with-config" ''
+in pkgs.writeScript "polybar-with-config" ''
   ${pkgs.polybar}/bin/polybar-msg cmd quit;
   if type "xrandr"; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
