@@ -12,6 +12,7 @@
   setup.video-driver = "nvidia";
   setup.monitors = [ "HDMI-0" "DP-1" ];
   setup.primary-monitor = "DP-1";
+  setup.network-interfaces.ethernet = "enp3s0";
   setup.coding.enable = true;
   setup.gaming.enable = true;
   setup.chatting.enable = true;

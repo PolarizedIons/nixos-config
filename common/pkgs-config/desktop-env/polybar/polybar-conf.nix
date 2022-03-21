@@ -1,4 +1,4 @@
-{ colors }:
+{ config, colors }:
 with colors; ''
   [bar/mybar]
   enable-ipc = true
@@ -83,13 +83,13 @@ with colors; ''
 
   [module/ethernet]
   type = internal/network
-  interface = enp2s0
+  interface = ${config.setup.network-interfaces.ethernet}
   label-connected = 🖥️ %local_ip%
   label-disconnected = 
 
   [module/wifi]
   type = internal/network
-  interface = wlp1s0
+  interface = ${config.setup.network-interfaces.wifi}
 
   label-connected = 📶 %local_ip%
 

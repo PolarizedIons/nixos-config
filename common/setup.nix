@@ -22,6 +22,13 @@ with lib; {
         builtins.elemAt monitor 0;
     };
     video-driver = mkOption { type = types.str; };
+    network-interfaces = {
+      wifi = mkOption {
+        type = types.str;
+        default = "";
+      };
+      ethernet = mkOption { type = types.str; };
+    };
 
     coding.enable = mkEnableOption "Setup coding environment";
     gaming.enable = mkEnableOption "Setup games";

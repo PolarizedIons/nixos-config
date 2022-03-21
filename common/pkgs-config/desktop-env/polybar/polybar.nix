@@ -1,11 +1,11 @@
-{ pkgs }:
+{ pkgs, config }:
 let
   colors = import ../../../theming/colors.nix;
 
-  config = import ./polybar-conf.nix { inherit colors; };
+  config-content = import ./polybar-conf.nix { inherit colors config; };
   config-file = pkgs.writeTextFile {
     name = "polybar-config";
-    text = config;
+    text = config-content;
   };
 in pkgs.writeScript "polybar-with-config" ''
   ${pkgs.polybar}/bin/polybar-msg cmd quit;

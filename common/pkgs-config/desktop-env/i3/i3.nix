@@ -4,7 +4,7 @@ let
   terminal = import ../../shell/terminal.nix { inherit pkgs; };
   rofi = import ../rofi.nix { inherit pkgs; };
   wallpaper = import ../../../theming/wallpaper.nix { inherit pkgs; };
-  polybar = import ../polybar/polybar.nix { inherit pkgs; };
+  polybar = import ../polybar/polybar.nix { inherit pkgs config; };
 
   i3-config-text = import ./i3-config.nix {
     inherit pkgs lib config terminal rofi wallpaper polybar;
