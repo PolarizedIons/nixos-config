@@ -64,6 +64,6 @@ in {
       ${gen-xrandr-screens 1}
     '';
 
-    environment.systemPackages = [ numlockx ];
+    environment.systemPackages = with pkgs; [ numlockx ];
   };
 }
