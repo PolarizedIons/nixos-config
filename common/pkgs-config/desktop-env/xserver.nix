@@ -63,7 +63,7 @@ in {
     displayManager.setupCommands = ''
       ${gen-xrandr-screens 1}
     '';
-
-    environment.systemPackages = with pkgs; [ numlockx ];
   };
+
+  environment.systemPackages = with pkgs; [ numlockx ];
 }
