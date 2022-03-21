@@ -40,5 +40,7 @@ in {
     displayManager.setupCommands = ''
       ${gen-xrandr-screens 1}
     '';
+
+    environment.systemPackages = [ numlockx ];
   };
 }
