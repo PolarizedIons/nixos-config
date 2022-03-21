@@ -44,12 +44,19 @@ in {
     wget
     firefox
     git
+
     neofetch
     htop
     pavucontrol
     xclip
+
     pcmanfm
+    # provides a default authentification client for policykit
+    lxqt.lxqt-policykit
   ];
+
+  # Automount removable drives
+  services.gvfs.enable = true;
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
