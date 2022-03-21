@@ -15,6 +15,12 @@
 
   setup.machine-name = "rick";
   setup.is-laptop = true;
+  setup.video-driver = "";
+  setup.monitors = [ "eDP" ];
+  setup.network-interfaces = {
+    ethernet = "enp2s0";
+    wifi = "wlp1s0";
+  };
   setup.coding.enable = true;
   setup.gaming.enable = true;
   setup.chatting.enable = true;
