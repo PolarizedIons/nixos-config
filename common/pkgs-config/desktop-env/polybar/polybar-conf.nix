@@ -2,6 +2,7 @@
 with colors; ''
   [bar/mybar]
   enable-ipc = true
+  monitor = ''${env:MONITOR:}
 
   height = 38
   padding-right = 1

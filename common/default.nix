@@ -43,6 +43,7 @@ in {
     nano
     wget
     firefox
+    git
     neofetch
     htop
     pavucontrol

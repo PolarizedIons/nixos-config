@@ -10,6 +10,17 @@ with lib; {
       type = types.bool;
       default = false;
     };
+    monitors = mkOption {
+      type = types.listOf types.string;
+      default = [];
+    };
+    primary-monitor = mkOption {
+      type = types.str;
+      default = if (lib.lists.count (x: true) monitors) == 0 then "" else builtins.elemAt monitor 0;
+    };
+    video-driver = mkOption {
+      type = types.str;
+    };
 
     coding.enable = mkEnableOption "Setup coding environment";
     gaming.enable = mkEnableOption "Setup games";

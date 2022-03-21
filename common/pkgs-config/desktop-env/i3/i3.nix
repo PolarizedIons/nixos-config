@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 let
   terminal = import ../../shell/terminal.nix { inherit pkgs; };
@@ -7,7 +7,7 @@ let
   polybar = import ../polybar/polybar.nix { inherit pkgs; };
 
   i3-config-text = import ./i3-config.nix {
-    inherit pkgs config terminal rofi wallpaper polybar;
+    inherit pkgs lib config terminal rofi wallpaper polybar;
   };
 
   i3-config-file = pkgs.writeTextFile {
