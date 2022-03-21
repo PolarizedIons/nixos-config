@@ -19,7 +19,7 @@ with lib; {
       default = if (lib.lists.count (x: true) config.setup.monitors) == 0 then
         ""
       else
-        builtins.elemAt config.setup.monitor 0;
+        builtins.elemAt config.setup.monitors 0;
     };
     video-driver = mkOption { type = types.str; };
     network-interfaces = {
