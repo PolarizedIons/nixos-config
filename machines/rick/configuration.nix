@@ -15,7 +15,7 @@
 
   setup.machine-name = "rick";
   setup.is-laptop = true;
-  setup.video-driver = "";
+  setup.video-driver = "amdgpu";
   setup.monitors = [ "eDP" ];
   setup.network-interfaces = {
     ethernet = "enp2s0";

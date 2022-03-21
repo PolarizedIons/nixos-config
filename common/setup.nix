@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 with lib; {
   options.setup = {
     machine-name = mkOption { type = types.str; };
@@ -16,10 +16,10 @@ with lib; {
     };
     primary-monitor = mkOption {
       type = types.str;
-      default = if (lib.lists.count (x: true) monitors) == 0 then
+      default = if (lib.lists.count (x: true) config.setup.monitors) == 0 then
         ""
       else
-        builtins.elemAt monitor 0;
+        builtins.elemAt config.setup.monitor 0;
     };
     video-driver = mkOption { type = types.str; };
     network-interfaces = {
