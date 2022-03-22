@@ -42,8 +42,10 @@ in {
   environment.systemPackages = with pkgs; [
     nano
     wget
-    firefox
     git
+
+    firefox
+    chromium
 
     neofetch
     htop
