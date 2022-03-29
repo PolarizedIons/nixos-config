@@ -20,5 +20,8 @@ in {
       # utils
       nixfmt
     ];
+
+    virtualisation.docker.enable = true;
+    users.users.polarizedions.extraGroups = [ "docker" ];
   };
 }
