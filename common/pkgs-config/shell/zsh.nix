@@ -13,11 +13,10 @@
         plugins = [ "git" "sudo" ];
         theme = "agnoster";
       };
-
-      shellInit = ''
-        export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
-        export PATH="$PATH:/home/polarizedions/.dotnet/tools"
-      '';
     };
+  };
+  environment.sessionVariables = rec {
+    DOTNET_ROOT = "$(dirname $(realpath $(which dotnet)))";
+    PATH = "$PATH:/home/polarizedions/.dotnet/tools";
   };
 }
