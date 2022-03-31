@@ -15,7 +15,8 @@
       };
 
       shellInit = ''
-        PATH="$PATH:/home/polarizedions/.dotnet/tools"
+        export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
+        export PATH="$PATH:/home/polarizedions/.dotnet/tools"
       '';
     };
   };
