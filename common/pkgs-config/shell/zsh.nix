@@ -13,6 +13,10 @@
         plugins = [ "git" "sudo" ];
         theme = "agnoster";
       };
+
+      shellInit = ''
+        PATH="$PATH:/home/polarizedions/.dotnet/tools"
+      '';
     };
   };
 }
