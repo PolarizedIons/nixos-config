@@ -1,7 +1,8 @@
 { lib, pkgs, config, ... }:
 let
+  homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/9cd5fa4f853150b20f506fb2943a0898d1bb9442")
+    "https://github.com/nixos/nixpkgs/tarball/65f56d25d735b20bef6e892add130ed4bef2c3ce")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -51,11 +52,15 @@ in {
     htop
     pavucontrol
     xclip
+    openssl
+    brightnessctl
 
     pcmanfm
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
   ];
+
+  security.pki.certificateFiles = [ homeCA ];
 
   # Automount removable drives
   services.gvfs.enable = true;

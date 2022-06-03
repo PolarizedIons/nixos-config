@@ -19,6 +19,11 @@ in {
 
       # utils
       nixfmt
+
+      # k8s
+      lens
+      kubectl
+      fluxcd
     ];
 
     virtualisation.docker.enable = true;
