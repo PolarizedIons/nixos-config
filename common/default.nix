@@ -54,6 +54,7 @@ in {
     xclip
     openssl
     brightnessctl
+    obs-studio
 
     pcmanfm
     # provides a default authentification client for policykit
