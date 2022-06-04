@@ -66,6 +66,9 @@ in {
   # Automount removable drives
   services.gvfs.enable = true;
 
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint pkgs.pantum-driver ];
+
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
