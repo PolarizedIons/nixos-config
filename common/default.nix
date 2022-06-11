@@ -22,7 +22,8 @@ in {
 
   environment.pathsToLink = [ "/libexec" ];
 
-  nixpkgs.overlays = [ (import ../overlays/polybar.nix) ];
+  nixpkgs.overlays =
+    [ (import ../overlays/polybar.nix) (import ../overlays/discord.nix) ];
 
   networking.hostName = config.setup.machine-name;
   networking.nameservers = [ "192.168.0.30" "1.1.1.1" ];
