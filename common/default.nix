@@ -26,7 +26,13 @@ in {
     [ (import ../overlays/polybar.nix) (import ../overlays/discord.nix) ];
 
   networking.hostName = config.setup.machine-name;
+
   networking.nameservers = [ "192.168.0.30" "1.1.1.1" ];
+  networking.resolvconf.enable = pkgs.lib.mkForce false;
+  networking.dhcpcd.extraConfig = "nohook resolv.conf";
+  networking.networkmanager.dns = "none";
+  services.resolved.enable = false;
+
   networking.networkmanager.enable = true;
   time.timeZone = "Africa/Johannesburg";
 
