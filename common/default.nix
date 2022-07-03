@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/65f56d25d735b20bef6e892add130ed4bef2c3ce")
+    "https://github.com/nixos/nixpkgs/tarball/34c1276fb27e0e5ec5394f062b8b5ac34611d78a")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -10,7 +10,6 @@ in {
     ./setup.nix
     ./fonts.nix
     ./user.nix
-    ./theming/theme.nix
     ./pkgs-config/desktop-env
     ./pkgs-config/shell/zsh.nix
     ./pkgs-config/chatting.nix
@@ -62,8 +61,8 @@ in {
     openssl
     brightnessctl
     obs-studio
+    vlc
 
-    pcmanfm
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
   ];

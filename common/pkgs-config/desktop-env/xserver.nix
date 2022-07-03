@@ -1,7 +1,6 @@
 { pkgs, lib, config, ... }:
 
 let
-  wallpaper = import ../../theming/wallpaper.nix { inherit pkgs; };
   # consts
   primary-monitor = config.setup.primary-monitor;
   monitors = config.setup.monitors;
@@ -50,13 +49,6 @@ in {
 
     libinput.enable = config.setup.is-laptop;
     libinput.touchpad.naturalScrolling = config.setup.is-laptop;
-
-    desktopManager = { xterm.enable = false; };
-
-    displayManager.lightdm = {
-      enable = true;
-      background = wallpaper;
-    };
 
     exportConfiguration = true;
     xrandrHeads = gen-xrandr-heads 1;
