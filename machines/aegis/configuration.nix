@@ -9,7 +9,7 @@
   networking.interfaces.enp3s0.useDHCP = true;
 
   setup.machine-name = "aegis";
-  setup.video-driver = "nvidia";
+  setup.video-driver = "amdgpu";
   setup.monitors = [ "HDMI-0" "DP-1" ];
   setup.primary-monitor = "DP-1";
   setup.network-interfaces.ethernet = "enp3s0";
