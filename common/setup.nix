@@ -35,5 +35,6 @@ with lib; {
     chatting.enable = mkEnableOption "Setup chatting programs";
     keybase.enable = mkEnableOption "Setup keybase";
     music.enable = mkEnableOption "Setup music programs";
+    libvirt.enable = mkEnableOption "Enable libvirt & Virt-Manager";
   };
 }

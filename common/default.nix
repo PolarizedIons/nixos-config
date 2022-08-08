@@ -10,6 +10,7 @@ in {
     ./setup.nix
     ./fonts.nix
     ./user.nix
+    ./libvirt.nix
     ./pkgs-config/desktop-env
     ./pkgs-config/shell/zsh.nix
     ./pkgs-config/chatting.nix
