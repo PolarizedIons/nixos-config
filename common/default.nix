@@ -68,6 +68,8 @@ in {
     lxqt.lxqt-policykit
   ];
 
+  nixpkgs.config = { chromium = { enableWideVine = true; }; };
+
   security.pki.certificateFiles = [ homeCA ];
 
   # Automount removable drives
