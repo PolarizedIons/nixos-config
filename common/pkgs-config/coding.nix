@@ -9,6 +9,7 @@ in {
       # IDEs
       vscode
       unstable.jetbrains.rider
+      jetbrains.pycharm-professional
 
       # Node
       nodejs
