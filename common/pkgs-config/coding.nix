@@ -10,6 +10,7 @@ in {
       vscode
       unstable.jetbrains.rider
       jetbrains.pycharm-professional
+      jetbrains.datagrip
 
       # Node
       nodejs
@@ -20,6 +21,7 @@ in {
 
       # utils
       nixfmt
+      pre-commit
 
       # k8s
       lens
