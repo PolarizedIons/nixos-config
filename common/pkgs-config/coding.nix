@@ -25,6 +25,7 @@ in {
 
       # k8s
       lens
+      k9s
       kubectl
       fluxcd
     ];
