@@ -28,6 +28,7 @@ in {
       k9s
       kubectl
       fluxcd
+      terraform
     ];
 
     virtualisation.docker.enable = true;
