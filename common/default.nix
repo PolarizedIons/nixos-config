@@ -26,6 +26,8 @@ in {
 
   networking.hostName = config.setup.machine-name;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.nameservers = [ "192.168.0.30" "1.1.1.1" ];
   networking.resolvconf.enable = pkgs.lib.mkForce false;
   networking.dhcpcd.extraConfig = "nohook resolv.conf";
