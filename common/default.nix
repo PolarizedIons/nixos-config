@@ -22,7 +22,10 @@ in {
 
   environment.pathsToLink = [ "/libexec" ];
 
-  nixpkgs.overlays = [ (import ../overlays/discord.nix) ];
+  nixpkgs.overlays = [
+    (import ../overlays/discord.nix)
+    (import ../overlays/prism-launcher.nix)
+  ];
 
   networking.hostName = config.setup.machine-name;
 
