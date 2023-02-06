@@ -18,6 +18,7 @@ in {
     ./pkgs-config/games.nix
     ./pkgs-config/keybase.nix
     ./pkgs-config/music.nix
+    ./nix-alien.nix
   ];
 
   environment.pathsToLink = [ "/libexec" ];
