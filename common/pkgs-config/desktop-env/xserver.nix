@@ -58,4 +58,6 @@ in {
   };
 
   environment.systemPackages = with pkgs; [ numlockx ];
+
+  services.xserver.wacom.enable = true;
 }
