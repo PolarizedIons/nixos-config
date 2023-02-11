@@ -29,6 +29,9 @@ in {
       kubectl
       fluxcd
       terraform
+
+      # whiteboard
+      openboard
     ];
 
     virtualisation.docker.enable = true;
