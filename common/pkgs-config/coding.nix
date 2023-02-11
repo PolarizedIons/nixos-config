@@ -31,7 +31,7 @@ in {
       terraform
 
       # whiteboard
-      openboard
+      lorien
     ];
 
     virtualisation.docker.enable = true;
