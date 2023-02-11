@@ -58,5 +58,5 @@ in {
     '';
   };
 
-  environment.systemPackages = with pkgs; [ numlockx ];
+  environment.systemPackages = with pkgs; [ numlockx wacomtablet ];
 }
