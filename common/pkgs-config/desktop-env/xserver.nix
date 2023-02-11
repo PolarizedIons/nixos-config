@@ -49,6 +49,7 @@ in {
 
     libinput.enable = config.setup.is-laptop;
     libinput.touchpad.naturalScrolling = config.setup.is-laptop;
+    wacom.enable = true;
 
     exportConfiguration = true;
     xrandrHeads = gen-xrandr-heads 1;
@@ -58,6 +59,4 @@ in {
   };
 
   environment.systemPackages = with pkgs; [ numlockx ];
-
-  services.xserver.wacom.enable = true;
 }
