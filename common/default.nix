@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/9f59caf45c315651d06bb3e6791b14485071e50e")
+    "https://github.com/nixos/nixpkgs/tarball/c0c4f25067fd82ef9e0be6245abf236aa0623c55")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -18,11 +18,15 @@ in {
     ./pkgs-config/games.nix
     ./pkgs-config/keybase.nix
     ./pkgs-config/music.nix
+    ./nix-alien.nix
   ];
 
   environment.pathsToLink = [ "/libexec" ];
 
-  nixpkgs.overlays = [ (import ../overlays/discord.nix) ];
+  nixpkgs.overlays = [
+    (import ../overlays/discord.nix)
+    (import ../overlays/prism-launcher.nix)
+  ];
 
   networking.hostName = config.setup.machine-name;
 
@@ -89,4 +93,18 @@ in {
   networking.firewall.enable = false;
 
   nixpkgs.config.allowUnfree = true;
+
+  # mDNS
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      hinfo = true;
+      userServices = true;
+      workstation = true;
+    };
+  };
 }
