@@ -2,7 +2,14 @@
 with lib;
 let
   dotnetCombined = with pkgs.dotnetCorePackages;
-    combinePackages [ sdk_5_0 sdk_6_0 aspnetcore_5_0 aspnetcore_6_0 ];
+    combinePackages [
+      sdk_5_0
+      sdk_6_0
+      sdk_7_0
+      aspnetcore_5_0
+      aspnetcore_6_0
+      aspnetcore_7_0
+    ];
 in {
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
@@ -31,7 +38,7 @@ in {
       terraform
 
       # whiteboard
-      openboard
+      lorien
     ];
 
     virtualisation.docker.enable = true;
