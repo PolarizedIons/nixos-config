@@ -26,9 +26,6 @@ with lib; {
       kubectl
       fluxcd
       terraform
-
-      # whiteboard
-      lorien
     ];
 
     virtualisation.docker.enable = true;

@@ -69,6 +69,12 @@ in {
     obs-studio
     vlc
 
+    # whiteboard
+    lorien
+
+    # notes
+    obsidian
+
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
   ];
