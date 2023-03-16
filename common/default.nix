@@ -15,7 +15,7 @@ in {
     ./pkgs-config/shell/zsh.nix
     ./pkgs-config/chatting.nix
     (import ./pkgs-config/coding.nix { inherit lib pkgs config unstable; })
-    ./pkgs-config/games.nix
+    (import ./pkgs-config/games.nix { inherit lib pkgs config unstable; })
     ./pkgs-config/keybase.nix
     ./pkgs-config/music.nix
     ./nix-alien.nix
@@ -23,10 +23,7 @@ in {
 
   environment.pathsToLink = [ "/libexec" ];
 
-  nixpkgs.overlays = [
-    (import ../overlays/discord.nix)
-    (import ../overlays/prism-launcher.nix)
-  ];
+  nixpkgs.overlays = [ (import ../overlays/discord.nix) ];
 
   networking.hostName = config.setup.machine-name;
 
