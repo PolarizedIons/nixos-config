@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/a0ddd1a5895e710eee2dab7a908832d0ddec8986")
+    "https://github.com/nixos/nixpkgs/tarball/1f3c4bf6b40ef3a6fd8f6afe19bc5c7ef0db0b62")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -20,6 +20,8 @@ in {
     ./pkgs-config/music.nix
     ./nix-alien.nix
   ];
+
+  services.flatpak.enable = true;
 
   environment.pathsToLink = [ "/libexec" ];
 
