@@ -21,7 +21,6 @@ with lib; {
       pre-commit
 
       # k8s
-      lens
       k9s
       kubectl
       fluxcd

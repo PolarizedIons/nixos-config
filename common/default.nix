@@ -21,6 +21,8 @@ in {
     ./nix-alien.nix
   ];
 
+  services.flatpak.enable = true;
+
   environment.pathsToLink = [ "/libexec" ];
 
   nixpkgs.overlays = [ (import ../overlays/discord.nix) ];
