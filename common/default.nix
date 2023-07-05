@@ -19,6 +19,7 @@ in {
     ./pkgs-config/keybase.nix
     ./pkgs-config/music.nix
     ./nix-alien.nix
+    ./yubikey.nix
   ];
 
   services.flatpak.enable = true;
