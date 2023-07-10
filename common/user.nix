@@ -3,6 +3,6 @@
 {
   users.users.polarizedions = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "dialout" ];
   };
 }
