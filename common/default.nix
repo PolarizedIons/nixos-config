@@ -31,7 +31,8 @@ in {
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.nameservers = [ "192.168.0.30" "1.1.1.1" ];
+  networking.nameservers =
+    [ "192.168.0.15" "192.168.0.30" "1.1.1.1" "8.8.8.8" ];
   networking.resolvconf.enable = pkgs.lib.mkForce false;
   networking.dhcpcd.extraConfig = "nohook resolv.conf";
   networking.networkmanager.dns = "none";
