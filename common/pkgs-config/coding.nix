@@ -13,10 +13,6 @@ with lib; {
       nodejs
       yarn
 
-      # Rust
-      cargo
-      rustc
-
       # Dotnet
       dotnet-sdk_7
       dotnet-aspnetcore_7
