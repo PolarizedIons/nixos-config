@@ -7,6 +7,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.interfaces.enp3s0.useDHCP = true;
+  # boot.kernelPackages = pkgs.linuxPackages_5_15;
+  boot.initrd.systemd.enable = true;
 
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
