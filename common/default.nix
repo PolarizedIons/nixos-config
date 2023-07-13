@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/8a3054c4f31ffa22ad4cca22a8aa271c59ccc91d")
+    "https://github.com/nixos/nixpkgs/tarball/dbf08c0d9d1782763b1e88ed2bbc5c5eb8f54fb4")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
