@@ -6,9 +6,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.interfaces.enp3s0.useDHCP = true;
-  # boot.kernelPackages = pkgs.linuxPackages_5_15;
-  boot.initrd.systemd.enable = true;
+  networking.interfaces.enp4s0.useDHCP = true;
 
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
@@ -33,7 +31,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
-
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
 
