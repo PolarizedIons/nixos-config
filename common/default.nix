@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/8a3054c4f31ffa22ad4cca22a8aa271c59ccc91d")
+    "https://github.com/nixos/nixpkgs/tarball/dbf08c0d9d1782763b1e88ed2bbc5c5eb8f54fb4")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -32,7 +32,8 @@ in {
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.nameservers = [ "192.168.0.30" "1.1.1.1" ];
+  networking.nameservers =
+    [ "192.168.0.15" "192.168.0.30" "1.1.1.1" "8.8.8.8" ];
   networking.resolvconf.enable = pkgs.lib.mkForce false;
   networking.dhcpcd.extraConfig = "nohook resolv.conf";
   networking.networkmanager.dns = "none";

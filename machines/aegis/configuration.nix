@@ -6,13 +6,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.interfaces.enp3s0.useDHCP = true;
+  networking.interfaces.enp4s0.useDHCP = true;
 
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
   setup.monitors = [ "HDMI-0" "DP-1" ];
   setup.primary-monitor = "DP-1";
-  setup.network-interfaces.ethernet = "enp3s0";
+  setup.network-interfaces.ethernet = "enp4s0";
   setup.coding.enable = true;
   setup.gaming.enable = true;
   setup.chatting.enable = true;
@@ -31,7 +31,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
-
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
 
