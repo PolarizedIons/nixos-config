@@ -5,6 +5,7 @@ with lib; {
       # IDEs
       vscode
       unstable.jetbrains.rider
+      jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       jetbrains.datagrip
 

@@ -78,6 +78,9 @@ in {
 
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
+
+    # casting
+    mkchromecast
   ];
 
   nixpkgs.config = { chromium = { enableWideVine = true; }; };
