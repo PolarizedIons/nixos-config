@@ -48,7 +48,8 @@ in {
     videoDrivers = [ config.setup.video-driver ];
 
     libinput.enable = config.setup.is-laptop;
-    libinput.touchpad.naturalScrolling = config.setup.is-laptop;
+    libinput.touchpad.naturalScrolling = true;
+    libinput.touchpad.disableWhileTyping = false;
 
     exportConfiguration = true;
     xrandrHeads = gen-xrandr-heads 1;
