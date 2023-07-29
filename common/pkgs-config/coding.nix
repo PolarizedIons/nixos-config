@@ -26,6 +26,7 @@ with lib; {
       kubectl
       fluxcd
       terraform
+      openlens
     ];
 
     virtualisation.docker.enable = true;
