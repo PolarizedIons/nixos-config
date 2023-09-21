@@ -12,6 +12,7 @@ with lib; {
       # Node
       nodejs
       yarn
+      nodePackages_latest.pnpm
 
       # Dotnet
       dotnet-sdk_7
