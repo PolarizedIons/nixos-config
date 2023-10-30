@@ -5,12 +5,14 @@ with lib; {
       # IDEs
       vscode
       unstable.jetbrains.rider
+      jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       jetbrains.datagrip
 
       # Node
       nodejs
       yarn
+      nodePackages_latest.pnpm
 
       # Dotnet
       dotnet-sdk_7
@@ -25,6 +27,7 @@ with lib; {
       kubectl
       fluxcd
       terraform
+      openlens
     ];
 
     virtualisation.docker.enable = true;
