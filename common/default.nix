@@ -2,7 +2,7 @@
 let
   homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
   unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/dbf08c0d9d1782763b1e88ed2bbc5c5eb8f54fb4")
+    "https://github.com/nixos/nixpkgs/tarball/ac1dd9de6ce5e3040c49101f21f204744905f418")
   # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -20,6 +20,7 @@ in {
     ./pkgs-config/music.nix
     ./nix-alien.nix
     ./yubikey.nix
+    ./wootility.nix
   ];
 
   services.flatpak.enable = true;
@@ -114,4 +115,7 @@ in {
       workstation = true;
     };
   };
+
+  # what is requiring this???!
+  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
 }
