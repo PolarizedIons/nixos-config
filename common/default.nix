@@ -20,7 +20,6 @@ in {
     ./pkgs-config/music.nix
     ./nix-alien.nix
     ./yubikey.nix
-    ./wootility.nix
   ];
 
   services.flatpak.enable = true;
