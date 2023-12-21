@@ -118,7 +118,8 @@ in {
   };
 
   # what is requiring this???!
-  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
+  nixpkgs.config.permittedInsecurePackages =
+    [ "electron-24.8.6" "electron-25.9.0" ];
 
   services.udev.extraRules = ''
     # Wooting One Legacy
