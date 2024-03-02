@@ -11,7 +11,7 @@ with lib; {
       default = false;
     };
     monitors = mkOption {
-      type = types.listOf types.string;
+      type = types.listOf types.str;
       default = [ ];
     };
     primary-monitor = mkOption {
