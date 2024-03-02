@@ -18,9 +18,4 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
-
-  # solokey
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a2ca", TAG+="uaccess", SYMLINK+="solokey"
-  '';
 }
