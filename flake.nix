@@ -4,12 +4,18 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { nixpkgs, unstable, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       machines = [ "aegis" "rick" "vm" ];
       system = "x86_64-linux";
+      unstable = import inputs.unstable {
+        system = system;
+        config.allowUnfree = true;
+      };
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
         name = machine;

@@ -1,10 +1,5 @@
-{ lib, pkgs, config, ... }:
-let
-  homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
-  unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/ac1dd9de6ce5e3040c49101f21f204744905f418")
-  # reuse the current configuration
-    { config = config.nixpkgs.config; };
+{ lib, pkgs, config, unstable, ... }:
+let homeCA = pkgs.copyPathToStore ./PolarizedHomeCA.pem;
 in {
   imports = [
     ./setup.nix
@@ -14,8 +9,8 @@ in {
     ./pkgs-config/desktop-env
     ./pkgs-config/shell/zsh.nix
     ./pkgs-config/chatting.nix
-    (import ./pkgs-config/coding.nix { inherit lib pkgs config unstable; })
-    (import ./pkgs-config/games.nix { inherit lib pkgs config unstable; })
+    ./pkgs-config/coding.nix
+    ./pkgs-config/games.nix
     ./pkgs-config/keybase.nix
     ./pkgs-config/music.nix
     ./nix-alien.nix

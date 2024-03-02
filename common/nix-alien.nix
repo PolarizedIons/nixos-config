@@ -1,11 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs, inputs, ... }:
 
-let
-  nix-alien-pkgs = import (builtins.fetchTarball
-    "https://github.com/thiagokokada/nix-alien/tarball/master") { };
-in {
-  environment.systemPackages = with nix-alien-pkgs; [ nix-alien ];
+{
+  nixpkgs.overlays = [ inputs.nix-alien.overlays.default ];
+  environment.systemPackages = with pkgs; [ nix-alien ];
 
-  # Optional, but this is needed for `nix-alien-ld` command
+  # Optional, needed for `nix-alien-ld`
   programs.nix-ld.enable = true;
 }
