@@ -2,35 +2,46 @@
 with lib; {
   options.setup = {
     machine-name = mkOption { type = types.str; };
-    is-laptop = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    is-vm = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    monitors = mkOption {
+
+    browsers = mkOption {
       type = types.listOf types.str;
-      default = [ ];
-    };
-    primary-monitor = mkOption {
-      type = types.str;
-      default = if (lib.lists.count (x: true) config.setup.monitors) == 0 then
-        ""
-      else
-        builtins.elemAt config.setup.monitors 0;
-    };
-    video-driver = mkOption { type = types.str; };
-    network-interfaces = {
-      wifi = mkOption {
-        type = types.str;
-        default = "";
-      };
-      ethernet = mkOption { type = types.str; };
+      default = [ "firefox" ];
     };
 
+    users = mkOption {
+      type = types.listOf types.str;
+      default = [ "polarizedions" ];
+    };
+
+    desktop-environment = mkOption {
+      type = types.str;
+      default = "gnome";
+    };
+
+    shell = mkOption {
+      type = types.str;
+      default = "zsh";
+    };
+
+    video-driver = mkOption { type = types.str; };
+
+    networking = {
+      nameservers = mkOption {
+        type = types.listOf types.str;
+        default = [ "192.168.0.15" "1.1.1.1" "8.8.8.8" ];
+      };
+    };
+
+    timezone = mkOption {
+      type = types.str;
+      default = "Africa/Johannesburg";
+    };
+
+    wooting.enable = mkEnableOption "Enable wooting udev rules";
+    nix-alien.enable = mkEnableOption "Enable nix-alien";
     coding.enable = mkEnableOption "Setup coding environment";
+    flatpak.enable = mkEnableOption "Setup flatpak";
+    media.enable = mkEnableOption "Setup media applications";
     gaming.enable = mkEnableOption "Setup games";
     chatting.enable = mkEnableOption "Setup chatting programs";
     keybase.enable = mkEnableOption "Setup keybase";

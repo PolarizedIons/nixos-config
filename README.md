@@ -3,12 +3,12 @@
 rebuild for `rick`
 
 ```
-nixos-rebuild --flake .#rick switch
+sudo nixos-rebuild --flake .#rick switch
 ```
 
 test it out in vm
 
 ```
-nix-build '<nixpkgs/nixos>' -A vm --arg configuration ./configuration.nix
+nix build .#nixosConfigurations.vm.config.system.build.vm --impure
 ./result/bin/run-*-vm
 ```

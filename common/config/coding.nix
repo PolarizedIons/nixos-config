@@ -11,12 +11,11 @@ with lib; {
 
       # Node
       nodejs
-      yarn
       nodePackages_latest.pnpm
 
       # Dotnet
-      dotnet-sdk_7
-      dotnet-aspnetcore_7
+      dotnet-sdk_8
+      dotnet-aspnetcore_8
 
       # utils
       nixfmt
@@ -26,17 +25,27 @@ with lib; {
       k9s
       kubectl
       fluxcd
-      terraform
       openlens
+
+      terraform
     ];
 
     virtualisation.docker.enable = true;
-    users.users.polarizedions.extraGroups = [ "docker" ];
+    users.users = builtins.listToAttrs (builtins.map (u: {
+      name = u;
+      value = { extraGroups = [ "docker" ]; };
+    }) config.setup.users);
 
     system.activationScripts.ldso = lib.stringAfter [ "usrbinenv" ] ''
       mkdir -m 0755 -p /lib64
       ln -sfn ${pkgs.glibc.out}/lib64/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2.tmp
       mv -f /lib64/ld-linux-x86-64.so.2.tmp /lib64/ld-linux-x86-64.so.2 # atomically replace
     '';
+
+    environment.sessionVariables = rec {
+      DOTNET_ROOT = "$(dirname $(realpath $(which dotnet)))";
+      PATH = "$PATH:" + (concatStringsSep ":"
+        (builtins.map (u: "/home/${u}/.dotnet/tools") config.setup.users));
+    };
   };
 }

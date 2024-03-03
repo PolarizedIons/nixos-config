@@ -6,24 +6,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.interfaces.enp4s0.useDHCP = true;
-
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
-  setup.monitors = [ "HDMI-0" "DP-1" ];
-  setup.primary-monitor = "DP-1";
-  setup.network-interfaces.ethernet = "enp4s0";
+  setup.browsers = [ "firefox" "chromium" ];
+  setup.wooting.enable = true;
+  setup.nix-alien.enable = true;
   setup.coding.enable = true;
+  setup.flatpak.enable = true;
+  setup.media.enable = true;
   setup.gaming.enable = true;
   setup.chatting.enable = true;
   setup.keybase.enable = true;
   setup.music.enable = true;
   setup.libvirt.enable = true;
-
-  hardware.opengl.extraPackages = with pkgs; [
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

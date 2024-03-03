@@ -10,18 +10,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.interfaces.enp2s0.useDHCP = true;
-  networking.interfaces.wlp1s0.useDHCP = true;
-
   setup.machine-name = "rick";
-  setup.is-laptop = true;
   setup.video-driver = "amdgpu";
-  setup.monitors = [ "eDP" ];
-  setup.network-interfaces = {
-    ethernet = "enp2s0";
-    wifi = "wlp1s0";
-  };
+  setup.browsers = [ "firefox" "chromium" ];
+  setup.wooting.enable = true;
+  setup.nix-alien.enable = true;
   setup.coding.enable = true;
+  setup.flatpak.enable = true;
+  setup.media.enable = true;
   setup.gaming.enable = true;
   setup.chatting.enable = true;
   setup.keybase.enable = true;

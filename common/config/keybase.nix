@@ -6,12 +6,6 @@ with lib; {
       kbfs.enable = true;
     };
 
-    environment.systemPackages = with pkgs;
-      [
-
-        # keybase
-        # kbfs
-        keybase-gui
-      ];
+    environment.systemPackages = with pkgs; [ keybase-gui ];
   };
 }

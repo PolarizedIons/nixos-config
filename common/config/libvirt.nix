@@ -13,7 +13,10 @@ with lib; {
     programs.dconf.enable = true;
     environment.sessionVariables.LIBVIRT_DEFAULT_URI = [ "qemu:///system" ];
     environment.systemPackages = with pkgs; [ virt-manager ];
-    users.users.polarizedions.extraGroups =
-      [ "libvirtd" "kvm" "qemu-libvirtd" ];
+
+    users.users = builtins.listToAttrs (builtins.map (u: {
+      name = u;
+      value = { extraGroups = [ "libvirtd" "kvm" "qemu-libvirtd" ]; };
+    }) config.setup.users);
   };
 }

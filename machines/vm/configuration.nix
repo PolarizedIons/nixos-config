@@ -6,11 +6,22 @@
   ];
 
   setup.machine-name = "my-vm";
-  setup.is-vm = true;
+  setup.browsers = [ "firefox" "chromium" ];
+  setup.wooting.enable = true;
+  setup.nix-alien.enable = true;
+  setup.coding.enable = true;
+  setup.flatpak.enable = true;
+  setup.media.enable = true;
+  setup.gaming.enable = true;
+  setup.chatting.enable = true;
+  setup.keybase.enable = true;
+  setup.music.enable = true;
+  setup.libvirt.enable = true;
+
+  setup.users = [ "vm-user" ];
+  users.users.vm-user.password = "123";
 
   services.qemuGuest.enable = true;
-
-  users.users.polarizedions.password = "password";
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
@@ -24,8 +35,8 @@
   };
 
   virtualisation = {
-    diskSize = 8000; # MB
-    memorySize = 2048; # MB
+    diskSize = 16000; # MB
+    memorySize = 6000; # MB
     writableStoreUseTmpfs = false;
   };
 

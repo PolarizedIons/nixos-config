@@ -1,5 +1,0 @@
-{ config, pkgs, ... }:
-
-{
-  imports = [ ./machines/vm/configuration.nix ];
-}
