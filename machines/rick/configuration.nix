@@ -11,9 +11,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   setup.machine-name = "rick";
+  setup.desktop-environment = "plasma";
   setup.video-driver = "amdgpu";
   setup.browsers = [ "firefox" "chromium" ];
-  setup.wooting.enable = true;
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
   setup.flatpak.enable = true;
@@ -31,5 +31,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }

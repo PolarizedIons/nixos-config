@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./browser
     ./desktop-env
     ./shell
     ./chatting.nix
