@@ -6,17 +6,11 @@
   ];
 
   setup.machine-name = "my-vm";
+  setup.desktop-environment = "plasma";
   setup.browsers = [ "firefox" "chromium" ];
-  setup.wooting.enable = true;
-  setup.nix-alien.enable = true;
-  setup.coding.enable = true;
-  setup.flatpak.enable = true;
   setup.media.enable = true;
-  setup.gaming.enable = true;
   setup.chatting.enable = true;
-  setup.keybase.enable = true;
   setup.music.enable = true;
-  setup.libvirt.enable = true;
 
   setup.users = [ "vm-user" ];
   users.users.vm-user.password = "123";

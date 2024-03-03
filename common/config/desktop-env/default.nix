@@ -12,7 +12,7 @@ in {
 
   services.xserver = {
     enable = true;
-    layout = "us";
+    xkb.layout = "us";
 
     videoDrivers = [ config.setup.video-driver ];
 
@@ -23,5 +23,14 @@ in {
 
   environment.systemPackages = with pkgs; [ numlockx ];
 
-#  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  xdg.portal = {
+    enable = true;
+    # config.common.default = "*";
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+    wlr = { enable = true; };
+  };
 }
