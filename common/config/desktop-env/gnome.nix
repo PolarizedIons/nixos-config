@@ -7,10 +7,9 @@
     services.xserver.displayManager.gdm.wayland = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-    environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour ])
+    environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour gedit ])
       ++ (with pkgs.gnome; [
         gnome-music
-        gedit # text editor
         epiphany # web browser
         geary # email reader
         evince # document viewer

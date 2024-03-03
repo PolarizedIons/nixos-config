@@ -23,6 +23,5 @@ in {
 
   environment.systemPackages = with pkgs; [ numlockx ];
 
-  xdg.portal.extraPortals = with pkgs; lib.mkDefault [ xdg-desktop-portal-gdk ];
-  xdg.portal.wlr.enable = false;
+#  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 }
