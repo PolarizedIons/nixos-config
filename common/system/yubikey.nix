@@ -15,7 +15,7 @@
   };
 
   security.pam.u2f.control =
-    if config.setup.work-mode then "required" else "sufficient";
+    (if config.setup.work-mode.enable then "required" else "sufficient");
 
   security.pam.services = {
     login.u2fAuth = true;
