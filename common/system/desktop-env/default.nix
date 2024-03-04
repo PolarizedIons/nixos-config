@@ -14,7 +14,10 @@ in {
     enable = true;
     xkb.layout = "us";
 
-    videoDrivers = [ config.setup.video-driver ];
+    videoDrivers = lib.mkMerge [
+      [ config.setup.video-driver ]
+      (if config.setup.display-link.enable then [ "displaylink" ] else [ ])
+    ];
 
     libinput.enable = true;
     libinput.touchpad.naturalScrolling = true;

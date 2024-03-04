@@ -20,12 +20,16 @@ with lib; {
       # utils
       nixfmt
       pre-commit
+      ldns
+      xdg-utils
+      jq
 
       # k8s
       k9s
       kubectl
       fluxcd
       openlens
+      kubernetes-helm
 
       terraform
     ];

@@ -33,6 +33,7 @@ with lib; {
     };
 
     video-driver = mkOption { type = types.str; };
+    display-link.enable = mkEnableOption "Enable displaylink driver";
 
     networking = {
       nameservers = mkOption {
@@ -46,6 +47,7 @@ with lib; {
       default = "Africa/Johannesburg";
     };
 
+    work-mode.enable = mkEnableOption "Enable work environablement";
     wooting.enable = mkEnableOption "Enable wooting udev rules";
     nix-alien.enable = mkEnableOption "Enable nix-alien";
     coding.enable = mkEnableOption "Setup coding environment";

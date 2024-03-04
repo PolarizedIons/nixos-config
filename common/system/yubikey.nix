@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
   services.pcscd.enable = true;
@@ -13,6 +13,9 @@
     enable = true;
     cue = true;
   };
+
+  security.pam.u2f.control =
+    if config.setup.work-mode then "required" else "sufficient";
 
   security.pam.services = {
     login.u2fAuth = true;

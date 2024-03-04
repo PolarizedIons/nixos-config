@@ -11,6 +11,7 @@
   setup.media.enable = true;
   setup.chatting.enable = true;
   setup.music.enable = true;
+  # setup.work-mode.enable = true;
 
   setup.users = [{
     login = "vm-user";

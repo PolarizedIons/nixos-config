@@ -19,6 +19,7 @@
     ./printing.nix
     ./sound.nix
     ./wooting.nix
+    ./work.nix
     ./yubikey.nix
   ];
 
