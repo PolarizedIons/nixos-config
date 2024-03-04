@@ -9,18 +9,27 @@ with lib; {
     };
 
     users = mkOption {
-      type = types.listOf types.str;
-      default = [ "polarizedions" ];
+      type = types.listOf (types.submodule {
+        options = {
+          login = mkOption { type = types.str; };
+          name = mkOption { type = types.str; };
+          email = mkOption { type = types.str; };
+          shell = mkOption {
+            type = types.str;
+            default = "zsh";
+          };
+        };
+      });
+      default = [{
+        login = "polarizedions";
+        name = "Stephan";
+        email = "me@polarizedions.net";
+      }];
     };
 
     desktop-environment = mkOption {
       type = types.str;
       default = "gnome";
-    };
-
-    shell = mkOption {
-      type = types.str;
-      default = "zsh";
     };
 
     video-driver = mkOption { type = types.str; };

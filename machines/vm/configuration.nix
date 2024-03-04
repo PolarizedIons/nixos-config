@@ -12,7 +12,11 @@
   setup.chatting.enable = true;
   setup.music.enable = true;
 
-  setup.users = [ "vm-user" ];
+  setup.users = [{
+    login = "vm-user";
+    name = "VM User";
+    email = "nix@polarizedions.net";
+  }];
   users.users.vm-user.password = "123";
 
   services.qemuGuest.enable = true;

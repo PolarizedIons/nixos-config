@@ -1,10 +1,10 @@
-{ lib, pkgs, config, unstable, ... }:
+{ lib, pkgs, config, ... }:
 with lib; {
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
       # IDEs
       vscode
-      unstable.jetbrains.rider
+      jetbrains.rider
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       jetbrains.datagrip
@@ -32,7 +32,7 @@ with lib; {
 
     virtualisation.docker.enable = true;
     users.users = builtins.listToAttrs (builtins.map (u: {
-      name = u;
+      name = u.login;
       value = { extraGroups = [ "docker" ]; };
     }) config.setup.users);
 
@@ -45,7 +45,8 @@ with lib; {
     environment.sessionVariables = rec {
       DOTNET_ROOT = "$(dirname $(realpath $(which dotnet)))";
       PATH = "$PATH:" + (concatStringsSep ":"
-        (builtins.map (u: "/home/${u}/.dotnet/tools") config.setup.users));
+        (builtins.map (u: "/home/${u.login}/.dotnet/tools")
+          config.setup.users));
     };
   };
 }

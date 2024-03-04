@@ -3,8 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
@@ -12,17 +13,13 @@
     let
       machines = [ "aegis" "rick" "vm" ];
       system = "x86_64-linux";
-      unstable = import inputs.unstable {
-        system = system;
-        config.allowUnfree = true;
-      };
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
         name = machine;
         value = nixpkgs.lib.nixosSystem {
           system = system;
           modules = [ ./machines/${machine}/configuration.nix ];
-          specialArgs = { inherit unstable inputs; };
+          specialArgs = { inherit inputs; };
         };
       }) machines);
     };

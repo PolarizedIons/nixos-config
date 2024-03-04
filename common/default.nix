@@ -1,5 +1,5 @@
-{ lib, pkgs, config, unstable, ... }: {
-  imports = [ ./setup.nix ./user.nix ./config ];
+{ lib, pkgs, config, ... }: {
+  imports = [ ./setup.nix ./user.nix ./system ./home-manager.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -30,7 +30,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # what is requiring this???!
-  nixpkgs.config.permittedInsecurePackages =
-    [ "electron-24.8.6" "electron-25.9.0" ];
+  # nixpkgs.config.permittedInsecurePackages =
+  #   [ "electron-24.8.6" "electron-25.9.0" ];
 
 }

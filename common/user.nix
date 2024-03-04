@@ -2,7 +2,7 @@
 
 {
   users.users = builtins.listToAttrs (builtins.map (u: {
-    name = u;
+    name = u.login;
     value = {
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "dialout" ];

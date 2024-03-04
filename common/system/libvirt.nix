@@ -15,7 +15,7 @@ with lib; {
     environment.systemPackages = with pkgs; [ virt-manager ];
 
     users.users = builtins.listToAttrs (builtins.map (u: {
-      name = u;
+      name = u.login;
       value = { extraGroups = [ "libvirtd" "kvm" "qemu-libvirtd" ]; };
     }) config.setup.users);
   };
