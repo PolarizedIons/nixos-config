@@ -24,7 +24,16 @@ in {
     libinput.touchpad.disableWhileTyping = false;
   };
 
-  environment.systemPackages = with pkgs; [ numlockx ];
+  environment.systemPackages = with pkgs; [ numlockx xwaylandvideobridge ];
+
+  systemd.user.services."xwaylandvideobridge" = {
+    description = "xwaylandvideobridge service";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge";
+    };
+  };
 
   xdg.portal = {
     enable = true;
@@ -32,7 +41,7 @@ in {
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-kde
-      # xdg-desktop-portal-gtk
+      xdg-desktop-portal-gtk
     ];
     wlr = { enable = true; };
   };
