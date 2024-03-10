@@ -11,19 +11,15 @@
   setup.display-link.enable = true;
 
   setup.desktop-environment = "plasma";
-  setup.browsers = [ "firefox" "chromium" ];
+  setup.browsers = [ "firefox" "google-chrome" ];
 
   setup.work-mode.enable = true;
   setup.wooting.enable = true;
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
-  setup.flatpak.enable = true;
   setup.media.enable = true;
-  setup.gaming.enable = true;
   setup.chatting.enable = true;
-  setup.keybase.enable = true;
   setup.music.enable = true;
-  setup.libvirt.enable = true;
 
   setup.users = [{
     login = "stephan";
