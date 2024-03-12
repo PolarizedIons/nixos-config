@@ -10,6 +10,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     awsvpnclient.url = "github:ymatsiuk/awsvpnclient/main";
+    awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
