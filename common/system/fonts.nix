@@ -4,5 +4,7 @@
     powerline-fonts
     noto-fonts-emoji
     unifont
+    corefonts
+    vistafonts
   ];
 }
