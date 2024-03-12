@@ -8,6 +8,7 @@ with lib; {
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       jetbrains.datagrip
+      jetbrains.rust-rover
 
       # Node
       nodejs
