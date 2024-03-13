@@ -73,6 +73,26 @@
         "type": "github"
       }
     },
+    "getchoo-pkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710124615,
+        "narHash": "sha256-VFF4l95pXSzkz/U5WxORWhWvK4f+x8PY9VQRgEn9qb0=",
+        "owner": "getchoo",
+        "repo": "nix-exprs",
+        "rev": "ca5b1d79dafeef4258dc4cec4d4c04281d27e0d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getchoo",
+        "repo": "nix-exprs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -187,6 +207,7 @@
     "root": {
       "inputs": {
         "awsvpnclient": "awsvpnclient",
+        "getchoo-pkgs": "getchoo-pkgs",
         "home-manager": "home-manager",
         "nix-alien": "nix-alien",
         "nixpkgs": "nixpkgs_2"
