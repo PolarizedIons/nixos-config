@@ -11,6 +11,8 @@
 
       # casting
       mkchromecast
+
+      localsend
     ];
   };
 }
