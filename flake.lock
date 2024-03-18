@@ -285,11 +285,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710780912,
-        "narHash": "sha256-nK2qdQP8IiWJunWG62f4D3asz93jtBjlQ3LnV7mf6Vg=",
+        "lastModified": 1710786212,
+        "narHash": "sha256-/2Fi2DUUHlbpHk2AmyJFzY4avUHg0JEeYoYyS9S5xMs=",
         "owner": "aanderse",
         "repo": "teraflops",
-        "rev": "0c9cee4d4f644aa779baf0fc8d8237df12d3c326",
+        "rev": "0fa6062edbd87a7b8562c379e3e3f285721ee692",
         "type": "github"
       },
       "original": {
