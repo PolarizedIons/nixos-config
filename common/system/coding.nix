@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, system, ... }:
 with lib; {
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
@@ -33,6 +33,7 @@ with lib; {
       kubernetes-helm
 
       terraform
+      inputs.teraflops.packages.${system}.teraflops
     ];
 
     virtualisation.docker.enable = true;

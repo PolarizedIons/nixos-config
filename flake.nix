@@ -14,6 +14,9 @@
 
     getchoo-pkgs.url = "github:getchoo/nix-exprs";
     getchoo-pkgs.inputs.nixpkgs.follows = "nixpkgs";
+
+    teraflops.url = "github:aanderse/teraflops";
+    teraflops.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
