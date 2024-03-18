@@ -33,7 +33,11 @@ with lib; {
       kubernetes-helm
 
       terraform
-      inputs.teraflops.packages.${system}.teraflops
+
+      inputs.teraflops.packages.${system}.default
+      colmena
+      hcloud
+      packer
     ];
 
     virtualisation.docker.enable = true;
