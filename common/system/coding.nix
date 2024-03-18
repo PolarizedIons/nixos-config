@@ -33,6 +33,7 @@ with lib; {
       kubernetes-helm
 
       terraform
+      teraflops
     ];
 
     virtualisation.docker.enable = true;
