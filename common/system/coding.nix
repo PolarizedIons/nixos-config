@@ -19,7 +19,7 @@ with lib; {
       dotnet-aspnetcore_8
 
       # utils
-      nixfmt
+      nixfmt-classic
       pre-commit
       ldns
       xdg-utils
