@@ -2,6 +2,8 @@
 with lib; {
   config = mkIf config.setup.gaming.enable {
     environment.systemPackages = with pkgs; [
+      heroic
+
       # minecraft
       prismlauncher
 
