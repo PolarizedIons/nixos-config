@@ -6,5 +6,6 @@
     unifont
     corefonts
     vistafonts
+    jetbrains-mono
   ];
 }
