@@ -8,5 +8,5 @@
 
   _module.args.user = user;
   _module.args.setup = setup;
-  imports = [ ./shell ./git.nix ./discord.nix ];
+  imports = [ ./shell ./git.nix ./discord.nix ./obs.nix ];
 }
