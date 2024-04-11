@@ -58,5 +58,6 @@ with lib; {
     keybase.enable = mkEnableOption "Setup keybase";
     music.enable = mkEnableOption "Setup music programs";
     libvirt.enable = mkEnableOption "Enable libvirt & Virt-Manager";
+    vr.enable = mkEnableOption "Enable VR";
   };
 }

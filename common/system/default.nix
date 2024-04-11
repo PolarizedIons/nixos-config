@@ -18,6 +18,7 @@
     ./nix-alien.nix
     ./printing.nix
     ./sound.nix
+    ./vr.nix
     ./wooting.nix
     ./work.nix
     ./yubikey.nix
