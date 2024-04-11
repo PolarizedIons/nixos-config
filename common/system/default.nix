@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   imports = [
@@ -36,6 +36,8 @@
 
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
+
+    inputs.agenix.packages.${system}.default
   ];
 
   hardware.opentabletdriver.enable = true;
