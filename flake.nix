@@ -21,9 +21,12 @@
     # gabmus/envision
     vr-envision.url = "gitlab:Scrumplex/envision/nix";
     vr-envision.inputs.nixpkgs.follows = "nixpkgs";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, agenix, ... }@inputs:
     let
       machines = [ "aegis" "rick" "alyx" "vm" ];
       system = "x86_64-linux";
@@ -32,7 +35,10 @@
         name = machine;
         value = nixpkgs.lib.nixosSystem {
           system = system;
-          modules = [ ./machines/${machine}/configuration.nix ];
+          modules = [
+            ./machines/${machine}/configuration.nix
+            agenix.nixosModules.default
+          ];
           specialArgs = { inherit inputs system; };
         };
       }) machines);
