@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   imports = [
@@ -18,6 +18,7 @@
     ./nix-alien.nix
     ./printing.nix
     ./sound.nix
+    ./vr.nix
     ./wooting.nix
     ./work.nix
     ./yubikey.nix
@@ -35,6 +36,8 @@
 
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
+
+    inputs.agenix.packages.${system}.default
   ];
 
   hardware.opentabletdriver.enable = true;

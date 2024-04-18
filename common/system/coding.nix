@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, system, ... }:
 with lib; {
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
@@ -19,7 +19,7 @@ with lib; {
       dotnet-aspnetcore_8
 
       # utils
-      nixfmt
+      nixfmt-classic
       pre-commit
       ldns
       xdg-utils
@@ -33,6 +33,11 @@ with lib; {
       kubernetes-helm
 
       terraform
+
+      inputs.teraflops.packages.${system}.default
+      colmena
+      hcloud
+      packer
     ];
 
     virtualisation.docker.enable = true;
