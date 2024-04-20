@@ -16,6 +16,7 @@
     ./music.nix
     ./networking.nix
     ./nix-alien.nix
+    ./pam-beacon-rs.nix
     ./printing.nix
     ./sound.nix
     ./vr.nix

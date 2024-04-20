@@ -24,6 +24,9 @@
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    pam-beacon-rs.url = "github:PolarizedIons/pam-beacon-rs";
+    pam-beacon-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:

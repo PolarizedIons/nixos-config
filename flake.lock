@@ -171,6 +171,24 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "getchoo-pkgs": {
       "inputs": {
         "nixpkgs": [
@@ -188,6 +206,22 @@
       "original": {
         "owner": "getchoo",
         "repo": "nix-exprs",
+        "type": "github"
+      }
+    },
+    "gitignore": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
         "type": "github"
       }
     },
@@ -323,6 +357,28 @@
         "type": "github"
       }
     },
+    "pam-beacon-rs": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713615710,
+        "narHash": "sha256-vpImrHFeiJh8cm5cCRN3sCGvA6f7mTaUpDpWm0p/uEg=",
+        "owner": "PolarizedIons",
+        "repo": "pam-beacon-rs",
+        "rev": "2e732aa119585c636d1ca1d9a2ba4e2ce5f94853",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PolarizedIons",
+        "repo": "pam-beacon-rs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -331,6 +387,7 @@
         "home-manager": "home-manager_2",
         "nix-alien": "nix-alien",
         "nixpkgs": "nixpkgs_2",
+        "pam-beacon-rs": "pam-beacon-rs",
         "teraflops": "teraflops",
         "vr-envision": "vr-envision"
       }
@@ -395,9 +452,24 @@
         "type": "github"
       }
     },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "teraflops": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs"
         ]
