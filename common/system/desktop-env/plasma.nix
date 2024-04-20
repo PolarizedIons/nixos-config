@@ -3,9 +3,9 @@
 {
   config = lib.mkIf (config.setup.desktop-environment == "plasma") {
 
-    services.xserver.displayManager.sddm.enable = true;
+    services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
-    services.xserver.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
 
     #  This causes black screen on unlock, no idea why
     # qt = {
