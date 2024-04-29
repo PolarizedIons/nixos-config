@@ -20,9 +20,12 @@ in {
     ];
 
   };
-  libinput.enable = true;
-  libinput.touchpad.naturalScrolling = true;
-  libinput.touchpad.disableWhileTyping = false;
+
+  services = {
+    libinput.enable = true;
+    libinput.touchpad.naturalScrolling = true;
+    libinput.touchpad.disableWhileTyping = false;
+  };
 
   environment.systemPackages = with pkgs; [ numlockx xwaylandvideobridge ];
 
