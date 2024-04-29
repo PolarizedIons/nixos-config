@@ -19,10 +19,10 @@ in {
       (if config.setup.display-link.enable then [ "displaylink" ] else [ ])
     ];
 
-    libinput.enable = true;
-    libinput.touchpad.naturalScrolling = true;
-    libinput.touchpad.disableWhileTyping = false;
   };
+  libinput.enable = true;
+  libinput.touchpad.naturalScrolling = true;
+  libinput.touchpad.disableWhileTyping = false;
 
   environment.systemPackages = with pkgs; [ numlockx xwaylandvideobridge ];
 
