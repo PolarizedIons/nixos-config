@@ -20,6 +20,7 @@
   setup.media.enable = true;
   setup.chatting.enable = true;
   setup.music.enable = true;
+  setup.libvirt.enable = true;
 
   setup.users = [{
     login = "stephan";
