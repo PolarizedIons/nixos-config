@@ -41,7 +41,7 @@
     inputs.agenix.packages.${system}.default
   ];
 
-  hardware.opentabletdriver.enable = true;
+  # hardware.opentabletdriver.enable = true;
 
   hardware.bluetooth = {
     enable = true;
