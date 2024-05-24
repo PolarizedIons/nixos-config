@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, system, ... }:
+{ lib, config, pkgs, ... }:
 with lib; {
   config = mkIf config.setup.gaming.enable {
     environment.systemPackages = with pkgs; [
@@ -6,9 +6,7 @@ with lib; {
 
       # minecraft
       prismlauncher
-
-      # waiting on https://github.com/NixOS/nixpkgs/pull/289149
-      inputs.getchoo-pkgs.packages.${system}.modrinth-app
+      modrinth-app
     ];
 
     programs.steam.enable = true;

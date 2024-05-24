@@ -12,9 +12,6 @@
     awsvpnclient.url = "github:ymatsiuk/awsvpnclient/main";
     awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
 
-    getchoo-pkgs.url = "github:getchoo/nix-exprs";
-    getchoo-pkgs.inputs.nixpkgs.follows = "nixpkgs";
-
     teraflops.url = "github:aanderse/teraflops";
     teraflops.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -67,21 +67,6 @@
         "type": "github"
       }
     },
-    "flake-checks": {
-      "locked": {
-        "lastModified": 1716193450,
-        "narHash": "sha256-wIbyIQRoLAfGe2v8W7LM6zEZ9Oy0jKuUX0HMUCLQJsM=",
-        "owner": "getchoo",
-        "repo": "flake-checks",
-        "rev": "842c3f225677aa55e44b94342f19c8f3e6f2be06",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getchoo",
-        "repo": "flake-checks",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "locked": {
         "lastModified": 1696426674,
@@ -201,27 +186,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "getchoo-pkgs": {
-      "inputs": {
-        "flake-checks": "flake-checks",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1716421816,
-        "narHash": "sha256-qHqi+61snwQTOxqFY9NQWFLDcNn9zk/KHKRqoeilZYM=",
-        "owner": "getchoo",
-        "repo": "nix-exprs",
-        "rev": "dd74bb8308cda64274e899a59855b1be59f62bd0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getchoo",
-        "repo": "nix-exprs",
         "type": "github"
       }
     },
@@ -399,7 +363,6 @@
       "inputs": {
         "agenix": "agenix",
         "awsvpnclient": "awsvpnclient",
-        "getchoo-pkgs": "getchoo-pkgs",
         "home-manager": "home-manager_2",
         "nix-alien": "nix-alien",
         "nixpkgs": "nixpkgs_2",
