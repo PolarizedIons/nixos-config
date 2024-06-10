@@ -18,6 +18,9 @@ with lib; {
       dotnet-sdk_8
       dotnet-aspnetcore_8
 
+      #python
+      python3
+
       # utils
       nixfmt-classic
       pre-commit
