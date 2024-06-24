@@ -8,7 +8,7 @@ in {
   imports = map (p: ./. + "/${p}") (builtins.attrNames all);
 
   services.dbus.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   services.xserver = {
     enable = true;
