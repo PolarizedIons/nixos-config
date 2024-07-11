@@ -36,4 +36,8 @@
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
+
+  # TODO: figure out what is requireing this
+  nixpkgs.config.permittedInsecurePackages =
+    [ "python3.12-youtube-dl-2021.12.17" ];
 }
