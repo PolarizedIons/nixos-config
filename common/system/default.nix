@@ -35,6 +35,8 @@
     neofetch
     htop
 
+    nix-index
+
     # provides a default authentification client for policykit
     lxqt.lxqt-policykit
 
