@@ -24,6 +24,9 @@
 
     pam-beacon-rs.url = "github:PolarizedIons/pam-beacon-rs";
     pam-beacon-rs.inputs.nixpkgs.follows = "nixpkgs";
+
+    sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
+    sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:
