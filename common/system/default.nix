@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./boot.nix
     ./browser
     ./desktop-env
     ./shell
@@ -47,11 +48,5 @@
     enable = true;
     powerOnBoot = true;
     settings.General.Experimental = true;
-  };
-
-  boot.plymouth = {
-    enable = true;
-    theme = "catppuccin-mocha";
-    themePackages = with pkgs; [ catppuccin-plymouth ];
   };
 }
