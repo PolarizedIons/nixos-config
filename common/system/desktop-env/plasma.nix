@@ -29,5 +29,8 @@
     };
 
     programs.dconf.enable = true;
+
+    # KDE has its own tablet driver
+    hardware.opentabletdriver.enable = lib.mkForce false;
   };
 }

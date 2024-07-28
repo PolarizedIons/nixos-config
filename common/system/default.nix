@@ -48,4 +48,9 @@
     powerOnBoot = true;
     settings.General.Experimental = true;
   };
+
+  boot.plymouth = {
+    enable = true;
+    theme = "bgrt";
+  };
 }
