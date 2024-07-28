@@ -8,6 +8,7 @@ let
     kde = nonWorkMode;
     sddm = nonWorkMode;
     polkit-1 = nonWorkMode;
+    hyprlock = nonWorkMode;
   };
 in {
   security.pam.services = builtins.mapAttrs (name: value: {

@@ -1,4 +1,4 @@
-{ config, pkgs, user, setup, ... }:
+{ config, pkgs, user, setup, inputs, system, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -10,5 +10,7 @@
 
   _module.args.user = user;
   _module.args.setup = setup;
-  imports = [ ./shell ./git.nix ./discord.nix ./obs.nix ];
+  _module.args.inputs = inputs;
+  _module.args.system = system;
+  imports = [ ./desktop-env ./shell ./git.nix ./discord.nix ./obs.nix ];
 }

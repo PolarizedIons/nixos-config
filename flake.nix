@@ -30,6 +30,11 @@
 
     nix-inspect.url = "github:bluskript/nix-inspect";
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
+
+    # intentionally not following nixpkgs
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:
