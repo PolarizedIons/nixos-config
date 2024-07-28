@@ -15,6 +15,7 @@
 
         "$mod" = "SUPER";
 
+        # TODO: get monitors from `system` config and set it here somehow
         monitor = [ "eDP-1, 1920x1080, 0x0, 1" ",preferred,auto,auto" ];
 
         input.touchpad = {
@@ -33,6 +34,8 @@
           "$mod, F, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, C, killactive"
           "$mod, V, togglefloating"
+          "$mod, P, pseudo, # dwindle"
+          "$mod, X, togglesplit, # dwindle"
           "$mod, L, exec, hyprlock"
           ", Print, exec, hyprshot -m region --clipboard-only"
         ] ++ (
@@ -53,7 +56,40 @@
           "$mod, mouse:273, resizewindow"
         ];
 
-        windowrule = [ "float, ^(kitty)$" ];
+        general = {
+          gaps_in = "5";
+          gaps_out = "8, 15, 15, 15";
+          border_size = "3";
+          "col.active_border" = "rgba(fe8019ff)";
+          "col.inactive_border" = "rgba(504945ff)";
+
+          layout = "dwindle";
+        };
+
+        dwindle = {
+          pseudotile =
+            true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true; # You probably want this
+        };
+
+        decoration = {
+          rounding = 5;
+
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+          };
+
+          drop_shadow = true;
+          shadow_range = 4;
+          shadow_render_power = 3;
+          "col.shadow" = "rgba(1a1a1aee)";
+        };
+
+        animations = { enabled = true; };
+
+        windowrule = [ "float,class:(floating)" ];
 
         windowrulev2 = [
           "suppressevent maximize, class:.*" # "You'll probably like this. " what does this mean????
@@ -125,27 +161,181 @@
       settings = {
         mainBar = {
           layer = "top";
-          position = "top";
-          height = 30;
-          output = [ "eDP-1" "HDMI-A-1" ];
-          modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-          modules-center = [ "sway/window" "custom/hello-from-waybar" ];
-          modules-right = [ "mpd" "custom/mymodule#with-css-id" "temperature" ];
-
-          "sway/workspaces" = {
-            disable-scroll = true;
-            all-outputs = true;
+          modules-left = [
+            # "custom/launcher"
+            "hyprland/window"
+          ];
+          modules-center = [
+            "clock"
+            "cpu"
+            #  "custom/gpu" 
+            "memory"
+          ];
+          modules-right = [
+            #"custom/audio"
+            "network"
+            # "custom/power"
+          ];
+          # "custom/launcher" = {
+          #   format = "udb82udcc7";
+          #   "on-click" = ''
+          #     wofi -aIi --show drun --width 350 --height 600 -x 15 -y 8 --prompt "Search..." --location top_left'';
+          #   tooltip = false;
+          # };
+          "hyprland/window" = {
+            icon = true;
+            "icon-size" = 18;
           };
-          "custom/hello-from-waybar" = {
-            format = "hello {}";
-            max-length = 40;
-            interval = "once";
-            exec = pkgs.writeShellScript "hello-from-waybar" ''
-              echo "from within waybar"
-            '';
+          clock = {
+            interval = 1;
+            format =
+              ''<span foreground="#fabd2f"></span>  {:%a. %d %b. %H:%M:%S}'';
           };
+          cpu = {
+            interval = 5;
+            tooltip = false;
+            format = ''<span foreground="#8ec07c"></span>  {}%'';
+          };
+          # "custom/gpu" = {
+          #   exec =
+          #     "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits";
+          #   format = ''
+          #     <span foreground="#83a598" size="xx-large" baseline_shift="-4pt">udb83udfb2</span>  {}%'';
+          #   "return-type" = "";
+          #   interval = 5;
+          # };
+          memory = {
+            tooltip = false;
+            format = ''<span foreground="#d3869b"></span>  {used}G'';
+          };
+          # "custom/audio" = {
+          #   format = "uf027";
+          #   "on-click" = "~/scripts/set-default-sink";
+          #   tooltip = false;
+          # };
+          network = {
+            tooltip = false;
+            # {essid}
+            "format-wifi" = ''
+              <span foreground="#83a598"></span>  SSID GOES HERE :) {ipaddr}'';
+            "format-ethernet" =
+              ''<span foreground="#83a598"></span>  {ipaddr}/{cidr}'';
+          };
+          # "custom/power" = {
+          #   format = "u23fb";
+          #   "on-click" = "~/scripts/power-menu";
+          #   tooltip = false;
+          # };
         };
       };
+
+      style = ''
+        @define-color bg #282828;
+        @define-color red-dim #cc241d;
+        @define-color green-dim #98971a;
+        @define-color yellow-dim #d79921;
+        @define-color blue-dim #458588;
+        @define-color purple-dim #b16286;
+        @define-color aqua-dim #689d6a;
+        @define-color gray-dim #a89984;
+
+        @define-color gray #928374;
+        @define-color red #fb4934;
+        @define-color green #b8bb26;
+        @define-color yellow #fabd2f;
+        @define-color blue #83a598;
+        @define-color purple #d3869b;
+        @define-color aqua #8ec07c;
+        @define-color fg #ebdbb2;
+
+        @define-color bg0_h #1d2021;
+        @define-color bg0 #282828;
+        @define-color bg1 #3c3836;
+        @define-color bg2 #504945;
+        @define-color bg3 #665c54;
+        @define-color bg4 #7c6f64;
+        @define-color orange-dim #d65d0e;
+
+        @define-color bg0_s #32302f;
+        @define-color fg4 #a89984;
+        @define-color fg3 #bdae93;
+        @define-color fg2 #d5c4a1;
+        @define-color fg1 #ebdbb2;
+        @define-color fg0 #fbf1c7;
+        @define-color orange #fe8019;
+
+
+        * {
+          font-family: "JetBrainsMono Nerd Font";
+          font-size: 14px;
+        }
+
+        /* The bar itself */
+        #waybar {
+          background: transparent;
+        }
+
+        /* Hide window name widget when there's no active window */
+        #waybar.empty #window {
+          background: transparent;
+        }
+
+        /* For some stupid reason i need to do basically all bar styling here */
+        #waybar > .horizontal {
+          /* margin: 15px 15px 0; */
+          padding: 5px;
+
+          /*border: 3px solid @bg2;
+          border-radius: 15px;*/
+
+          background: @bg;
+        }
+
+        /* All widgets */
+        widget > * {
+          padding: 4px 10px;
+          margin-right: 5px;
+
+          border-radius: 10px;
+
+          background: @bg1;
+          color: @fg;
+        }
+
+        /* App launcher */
+        #custom-launcher {
+          padding-right: 13px;
+        }
+
+        /* Bring system info to the same "box" */
+        #cpu {
+          margin-right: 0;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        #custom-gpu {
+          margin-right: 0;
+          padding: 0;
+          border-radius: 0;
+        }
+
+        #memory {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        /* Audio control */
+        #custom-audio {
+          padding-right: 13px;
+        }
+
+        /* Power menu */
+        #custom-power {
+          margin-right: 0; /* Remove margin here because it is the last widget */
+          padding-right: 14px;
+        }
+      '';
     };
 
     wayland.windowManager.hyprland.systemd = {

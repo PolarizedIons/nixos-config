@@ -33,7 +33,7 @@
     git
     openssl
 
-    neofetch
+    fastfetch
     htop
 
     # provides a default authentification client for policykit
