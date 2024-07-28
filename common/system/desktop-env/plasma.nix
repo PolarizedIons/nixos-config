@@ -16,15 +16,17 @@
 
     # theming
     services.displayManager.sddm.theme = "catppuccin-sddm-corners";
-    environment.systemPackages = with pkgs;
-      [ inputs.sddm-catppuccin.packages.${system}.catppuccin-sddm-corners ];
+    environment.systemPackages = with pkgs; [
+      inputs.sddm-catppuccin.packages.${system}.catppuccin-sddm-corners
+      catppuccin-kde
+    ];
 
     #  This causes black screen on unlock, no idea why
-    # qt = {
-    #   enable = true;
-    #   platformTheme = "gnome";
-    #   style = "adwaita-dark";
-    # };
+    qt = {
+      enable = true;
+      platformTheme = "kde";
+      style = "adwaita-dark";
+    };
 
     programs.dconf.enable = true;
   };
