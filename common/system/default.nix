@@ -40,6 +40,8 @@
     lxqt.lxqt-policykit
 
     inputs.agenix.packages.${system}.default
+
+    inputs.nix-inspect.packages.${system}.default
   ];
 
   hardware.opentabletdriver.enable = true;

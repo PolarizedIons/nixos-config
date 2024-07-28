@@ -27,6 +27,9 @@
 
     sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
     sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-inspect.url = "github:bluskript/nix-inspect";
+    nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:
