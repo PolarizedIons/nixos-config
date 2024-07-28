@@ -39,6 +39,8 @@
     lxqt.lxqt-policykit
 
     inputs.agenix.packages.${system}.default
+
+    catppuccin-plymouth
   ];
 
   hardware.opentabletdriver.enable = true;
@@ -53,5 +55,4 @@
     enable = true;
     theme = "catppuccin-mocha";
   };
-  environment.systemPackages = with pkgs; [ catppuccin-plymouth ];
 }
