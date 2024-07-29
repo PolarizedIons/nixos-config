@@ -16,7 +16,24 @@
         "$mod" = "SUPER";
 
         # TODO: get monitors from `system` config and set it here somehow
-        monitor = [ "eDP-1, 1920x1080, 0x0, 1" ",preferred,auto,auto" ];
+        monitor = let
+          calcOffset = index: offset:
+            if index == 0 then
+              offset
+            else
+              (calcOffset (index - 1) (offset
+                + (builtins.elemAt setup.monitors index).resolution.width));
+          monitorConfig = builtins.genList (i:
+            let
+              name = (builtins.elemAt setup.monitors i).name;
+              x = toString (calcOffset i 0);
+              width =
+                toString (builtins.elemAt setup.monitors i).resolution.width;
+              height =
+                toString (builtins.elemAt setup.monitors i).resolution.height;
+            in "${name},${width}x${height},${x}x0,0")
+            (builtins.length setup.monitors);
+        in monitorConfig ++ [ ",preferred,auto,auto" ];
 
         input.touchpad = {
           natural_scroll = true;

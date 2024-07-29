@@ -40,6 +40,25 @@ in with lib; {
       default = "gnome";
     };
 
+    # only used for things like hyprland
+    monitors = mkOption {
+      type = types.listOf (types.submodule {
+        options = {
+          name = mkOption { type = types.str; };
+          resolution = {
+            width = mkOption {
+              type = types.int;
+              default = 1920;
+            };
+            height = mkOption {
+              type = types.int;
+              default = 1080;
+            };
+          };
+        };
+      });
+    };
+
     video-driver = mkOption { type = types.str; };
     display-link.enable = mkEnableOption "Enable displaylink driver";
 

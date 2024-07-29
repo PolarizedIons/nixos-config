@@ -12,6 +12,7 @@
 
   setup.machine-name = "rick";
   setup.desktop-environment = "hyprland";
+  setup.monitors = [{ name = "eDP-1"; }];
   setup.video-driver = "amdgpu";
   setup.browsers = [ "firefox" "chromium" ];
   setup.nix-alien.enable = true;
