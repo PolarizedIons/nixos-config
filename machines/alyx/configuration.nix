@@ -14,7 +14,7 @@
   # setup.desktop-environment = "hyprland";
   # setup.monitors =
   #   [ { name = "DVI-I-1"; } { name = "HDMI-A-1"; } { name = "eDP-1"; } ];
-  setup.browsers = [ "firefox" "google-chrome" ];
+  setup.browsers = [ "google-chrome" "firefox" ];
 
   setup.work-mode.enable = true;
   setup.wooting.enable = true;
