@@ -232,9 +232,8 @@
           # };
           network = {
             tooltip = false;
-            # {essid}
-            "format-wifi" = ''
-              <span foreground="#83a598"></span>  SSID GOES HERE :) {ipaddr}'';
+            "format-wifi" =
+              ''<span foreground="#83a598"></span>  {essid} {ipaddr}'';
             "format-ethernet" =
               ''<span foreground="#83a598"></span>  {ipaddr}/{cidr}'';
           };
