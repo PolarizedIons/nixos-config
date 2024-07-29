@@ -57,6 +57,7 @@ in with lib; {
           };
         };
       });
+      default = [ ];
     };
 
     video-driver = mkOption { type = types.str; };

@@ -1,3 +1,4 @@
 /configuration.nix
 /*.qcow2
 /result
+.vscode/

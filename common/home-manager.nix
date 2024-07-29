@@ -3,6 +3,7 @@ let setup = config.setup;
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    # inputs.hyprland.homeManagerModules.default
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

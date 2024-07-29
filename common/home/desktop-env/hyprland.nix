@@ -4,10 +4,12 @@
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
       plugins = [
         # getting version mis-match, even though they say it shouldn't happen with flakes
         # inputs.hyprland-plugins.packages.${system}.hyprbars
+        # inputs.hyprsplit.packages.${system}.hyprsplit
       ];
 
       settings = {

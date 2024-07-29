@@ -35,6 +35,8 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
+    hyprsplit.url = "github:shezdy/hyprsplit";
+    hyprsplit.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:
