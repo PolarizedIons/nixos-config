@@ -31,7 +31,7 @@
                 toString (builtins.elemAt setup.monitors i).resolution.width;
               height =
                 toString (builtins.elemAt setup.monitors i).resolution.height;
-            in "${name},${width}x${height},${x}x0,0")
+            in "${name},${width}x${height},${x}x0,1")
             (builtins.length setup.monitors);
         in monitorConfig ++ [ ",preferred,auto,auto" ];
 
