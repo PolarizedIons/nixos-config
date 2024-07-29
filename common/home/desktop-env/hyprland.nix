@@ -177,30 +177,14 @@
       settings = {
         mainBar = {
           layer = "top";
-          modules-left = [
-            # "custom/launcher"
-            "hyprland/window"
-          ];
-          modules-center = [
-            "clock"
-            "cpu"
-            #  "custom/gpu" 
-            "memory"
-          ];
-          modules-right = [
-            #"custom/audio"
-            "network"
-            # "custom/power"
-          ];
-          # "custom/launcher" = {
-          #   format = "udb82udcc7";
-          #   "on-click" = ''
-          #     wofi -aIi --show drun --width 350 --height 600 -x 15 -y 8 --prompt "Search..." --location top_left'';
-          #   tooltip = false;
-          # };
+          modules-left = [ "hyprland/window" ];
+          modules-center = [ "clock" "cpu" "memory" ];
+          modules-right = [ "network" "pulseaudio" "battery" "tray" ];
+
           "hyprland/window" = {
             icon = true;
-            "icon-size" = 18;
+            icon-size = 18;
+            separate-outputs = true;
           };
           clock = {
             interval = 1;
@@ -212,35 +196,57 @@
             tooltip = false;
             format = ''<span foreground="#8ec07c"></span>  {}%'';
           };
-          # "custom/gpu" = {
-          #   exec =
-          #     "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits";
-          #   format = ''
-          #     <span foreground="#83a598" size="xx-large" baseline_shift="-4pt">udb83udfb2</span>  {}%'';
-          #   "return-type" = "";
-          #   interval = 5;
-          # };
+
           memory = {
             tooltip = false;
             format = ''<span foreground="#d3869b"></span>  {used}G'';
           };
-          # "custom/audio" = {
-          #   format = "uf027";
-          #   "on-click" = "~/scripts/set-default-sink";
-          #   tooltip = false;
-          # };
+
           network = {
             tooltip = false;
-            "format-wifi" =
-              ''<span foreground="#83a598"></span>  {essid} {ipaddr}'';
-            "format-ethernet" =
-              ''<span foreground="#83a598"></span>  {ipaddr}/{cidr}'';
+            format-wifi = ''{essid} <span foreground="#83a598"></span>'';
+            format-ethernet =
+              ''{ipaddr}/{cidr} <span foreground="#83a598"></span>'';
+            format-disconnected = ''<span foreground="#83a598"></span'';
           };
-          # "custom/power" = {
-          #   format = "u23fb";
-          #   "on-click" = "~/scripts/power-menu";
-          #   tooltip = false;
-          # };
+
+          pulseaudio = {
+            format = "{volume}% {icon}";
+            format-bluetooth = "{volume}% {icon}";
+            format-muted = "";
+            format-icons = {
+              "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
+              "alsa_output.pci-0000_00_1f.3.analog-stereo-muted" = "";
+              headphone = "";
+              "hands-free" = "";
+              headset = "";
+              phone = "";
+              "phone-muted" = "";
+              portable = "";
+              car = "";
+              default = [ "" "" ];
+            };
+            scroll-step = 1;
+            on-click = "pavucontrol";
+            ignored-sinks = [ "Easy Effects Sink" ];
+            reverse-scrolling = true;
+          };
+          battery = {
+            interval = 60;
+            states = {
+              warning = 30;
+              critical = 15;
+            };
+            format = "{capacity}% {icon}";
+            format-icons = [ "" "" "" "" "" ];
+            max-length = 25;
+          };
+
+          tray = {
+            icon-size = 21;
+            spacing = 10;
+            show-passive-items = false;
+          };
         };
       };
 
@@ -295,14 +301,8 @@
           background: transparent;
         }
 
-        /* For some stupid reason i need to do basically all bar styling here */
         #waybar > .horizontal {
-          /* margin: 15px 15px 0; */
           padding: 5px;
-
-          /*border: 3px solid @bg2;
-          border-radius: 15px;*/
-
           background: @bg;
         }
 
@@ -317,11 +317,6 @@
           color: @fg;
         }
 
-        /* App launcher */
-        #custom-launcher {
-          padding-right: 13px;
-        }
-
         /* Bring system info to the same "box" */
         #cpu {
           margin-right: 0;
@@ -329,26 +324,18 @@
           border-bottom-right-radius: 0;
         }
 
-        #custom-gpu {
-          margin-right: 0;
-          padding: 0;
-          border-radius: 0;
-        }
-
         #memory {
+          margin-left: 0;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
         }
 
-        /* Audio control */
-        #custom-audio {
-          padding-right: 13px;
+        #pulseaudio, #battery, #network {
+          padding-right: 20px;
         }
 
-        /* Power menu */
-        #custom-power {
+        #tray {
           margin-right: 0; /* Remove margin here because it is the last widget */
-          padding-right: 14px;
         }
       '';
     };
