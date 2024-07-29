@@ -1,16 +1,23 @@
 { pkgs, config, lib, inputs, system, ... }:
-
-{
+let hypr-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
+in {
+  imports = [ inputs.hyprland.nixosModules.default ];
   config = lib.mkIf (config.setup.desktop-environment == "hyprland") {
     programs.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${system}.hyprland;
       xwayland.enable = true;
     };
     programs.hyprlock.enable = true;
     # services.hypridle.enable = true;
 
-    hardware.graphics.enable = true;
+    hardware.graphics = {
+      enable = true;
+      package = hypr-nixpkgs.mesa.drivers;
+
+      # if you also want 32-bit support (e.g for Steam)
+      enable32Bit = true;
+      package32 = hypr-nixpkgs.pkgsi686Linux.mesa.drivers;
+    };
 
     environment.systemPackages = with pkgs; [
       kitty # terminal

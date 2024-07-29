@@ -4,12 +4,9 @@
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
       plugins = [
-        # getting version mis-match, even though they say it shouldn't happen with flakes
         # inputs.hyprland-plugins.packages.${system}.hyprbars
-        # inputs.hyprsplit.packages.${system}.hyprsplit
+        inputs.hyprsplit.packages.${system}.hyprsplit
       ];
 
       settings = {
@@ -17,7 +14,6 @@
 
         "$mod" = "SUPER";
 
-        # TODO: get monitors from `system` config and set it here somehow
         monitor = let
           calcOffset = index: offset:
             if index == 0 then
@@ -51,6 +47,7 @@
           "$mod, Return, exec, kitty"
           "$mod, Space, exec, rofi -show drun -show-icons"
           "$mod, F, exec, ${builtins.elemAt setup.browsers 0}"
+          "$mod, M, exit"
           "$mod, C, killactive"
           "$mod, V, togglefloating"
           "$mod, P, pseudo, # dwindle"

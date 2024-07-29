@@ -12,5 +12,12 @@
   _module.args.setup = setup;
   _module.args.inputs = inputs;
   _module.args.system = system;
-  imports = [ ./desktop-env ./shell ./git.nix ./discord.nix ./obs.nix ];
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+    ./desktop-env
+    ./shell
+    ./git.nix
+    ./discord.nix
+    ./obs.nix
+  ];
 }

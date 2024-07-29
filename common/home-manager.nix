@@ -1,9 +1,8 @@
-{ inputs, config, pkgs, ... }@args:
+{ inputs, system, config, pkgs, ... }@args:
 let setup = config.setup;
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    # inputs.hyprland.homeManagerModules.default
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
@@ -11,7 +10,7 @@ in {
 
       home-manager.users = builtins.listToAttrs (builtins.map (user: {
         name = user.login;
-        value = import ./home (args // { inherit user setup; });
+        value = import ./home (args // { inherit user setup inputs system; });
       }) config.setup.users);
     }
   ];
