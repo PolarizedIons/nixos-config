@@ -49,7 +49,8 @@
           "$mod, F, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, M, exit"
           "$mod, C, killactive"
-          "$mod, V, togglefloating"
+          ''
+            $mod, V, exec, hyprctl --batch "dispatch togglefloating ; dispatch centerwindow 1"''
           "$mod, P, pseudo, # dwindle"
           "$mod, X, togglesplit, # dwindle"
           "$mod, L, exec, hyprlock"
