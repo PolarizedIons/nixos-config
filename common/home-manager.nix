@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }@args:
+{ inputs, system, config, pkgs, ... }@args:
 let setup = config.setup;
 in {
   imports = [
@@ -6,10 +6,11 @@ in {
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
+      home-manager.backupFileExtension = "backup";
 
       home-manager.users = builtins.listToAttrs (builtins.map (user: {
         name = user.login;
-        value = import ./home (args // { inherit user setup; });
+        value = import ./home (args // { inherit user setup inputs system; });
       }) config.setup.users);
     }
   ];

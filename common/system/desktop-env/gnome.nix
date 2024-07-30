@@ -7,8 +7,8 @@
     services.xserver.displayManager.gdm.wayland = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-    environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour gedit ])
-      ++ (with pkgs.gnome; [
+    environment.gnome.excludePackages =
+      (with pkgs; [ gnome-photos gnome-tour gedit ]) ++ (with pkgs.gnome; [
         gnome-music
         epiphany # web browser
         geary # email reader
@@ -22,7 +22,7 @@
 
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       nordic
       gnome.gnome-tweaks
     ];

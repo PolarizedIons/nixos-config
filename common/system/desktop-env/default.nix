@@ -1,11 +1,9 @@
 { pkgs, lib, config, ... }:
 
-let
-  all = lib.filterAttrs (n: _: n != "default.nix" && !lib.hasPrefix "." n)
-    (builtins.readDir ./.);
+let all = lib.filterAttrs (n: _: n != "default.nix") (builtins.readDir ./.);
 
 in {
-  imports = map (p: ./. + "/${p}") (builtins.attrNames all);
+  imports = (map (p: ./. + "/${p}") (builtins.attrNames all));
 
   services.dbus.enable = true;
   hardware.graphics.enable = true;
@@ -18,8 +16,10 @@ in {
       [ config.setup.video-driver ]
       (if config.setup.display-link.enable then [ "displaylink" ] else [ ])
     ];
-
   };
+
+  # Hint electron apps to use wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   services = {
     libinput.enable = true;
@@ -40,7 +40,7 @@ in {
 
   xdg.portal = {
     enable = true;
-    # config.common.default = "*";
+    config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-kde

@@ -1,10 +1,18 @@
 { lib, config, ... }:
-with lib; {
+let
+  listDirFiles = toRead:
+    map (n: builtins.replaceStrings [ ".nix" ] [ "" ] n) (builtins.attrNames
+      (lib.filterAttrs (n: _: n != "default.nix" && !lib.hasPrefix "." n)
+        (builtins.readDir toRead)));
+  browsers = listDirFiles ./system/browser;
+  shells = listDirFiles ./home/shell;
+  DEs = listDirFiles ./system/desktop-env;
+in with lib; {
   options.setup = {
     machine-name = mkOption { type = types.str; };
 
     browsers = mkOption {
-      type = types.listOf types.str;
+      type = types.listOf (types.enum browsers);
       default = [ "firefox" ];
     };
 
@@ -15,7 +23,7 @@ with lib; {
           name = mkOption { type = types.str; };
           email = mkOption { type = types.str; };
           shell = mkOption {
-            type = types.str;
+            type = types.enum shells;
             default = "zsh";
           };
         };
@@ -28,8 +36,28 @@ with lib; {
     };
 
     desktop-environment = mkOption {
-      type = types.str;
+      type = types.enum DEs;
       default = "gnome";
+    };
+
+    # only used for things like hyprland
+    monitors = mkOption {
+      type = types.listOf (types.submodule {
+        options = {
+          name = mkOption { type = types.str; };
+          resolution = {
+            width = mkOption {
+              type = types.int;
+              default = 1920;
+            };
+            height = mkOption {
+              type = types.int;
+              default = 1080;
+            };
+          };
+        };
+      });
+      default = [ ];
     };
 
     video-driver = mkOption { type = types.str; };

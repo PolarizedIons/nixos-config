@@ -6,7 +6,7 @@
   ];
 
   setup.machine-name = "my-vm";
-  setup.desktop-environment = "plasma";
+  setup.desktop-environment = "hyprland";
   setup.browsers = [ "firefox" "chromium" ];
   setup.media.enable = true;
   setup.chatting.enable = true;
@@ -30,7 +30,7 @@
   boot = {
     growPartition = true;
     # kernelParams = [ "console=ttyS0 boot.shell_on_fail" ];
-    loader.timeout = 5;
+    # loader.timeout = 5;
   };
 
   virtualisation = {

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./boot.nix
     ./browser
     ./desktop-env
     ./shell
@@ -32,7 +33,7 @@
     git
     openssl
 
-    neofetch
+    fastfetch
     htop
 
     nix-index
@@ -41,9 +42,11 @@
     lxqt.lxqt-policykit
 
     inputs.agenix.packages.${system}.default
+
+    inputs.nix-inspect.packages.${system}.default
   ];
 
-  # hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.enable = true;
 
   hardware.bluetooth = {
     enable = true;
