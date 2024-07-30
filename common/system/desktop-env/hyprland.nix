@@ -8,7 +8,6 @@ in {
       xwayland.enable = true;
     };
     programs.hyprlock.enable = true;
-    # services.hypridle.enable = true;
 
     hardware.graphics = {
       enable = true;
@@ -22,9 +21,9 @@ in {
     environment.systemPackages = with pkgs; [
       kitty # terminal
       libsForQt5.polkit-kde-agent
-      dunst # notification daemon
+      swaynotificationcenter # notification daemon
       libnotify
-      swww # wallpapers
+      # swww # wallpapers
       rofi-wayland # program opener
       networkmanagerapplet # network applet in toolbar
       hyprshot
@@ -32,7 +31,7 @@ in {
       kdePackages.kwallet
       kdePackages.kwalletmanager
 
-      dolphin
+      nemo
     ];
 
     security.pam.services = {
