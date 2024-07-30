@@ -31,6 +31,8 @@ in {
 
       kdePackages.kwallet
       kdePackages.kwalletmanager
+
+      dolphin
     ];
 
     security.pam.services = {
