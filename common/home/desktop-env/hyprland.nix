@@ -110,6 +110,13 @@
 
         windowrulev2 = [
           "suppressevent maximize, class:.*" # "You'll probably like this. " what does this mean????
+
+          # hide xwaylandvideobridge window
+          "opacity 0.0 override,class:^(xwaylandvideobridge)$"
+          "noanim,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^(xwaylandvideobridge)$"
+          "maxsize 1 1,class:^(xwaylandvideobridge)$"
+          "noblur,class:^(xwaylandvideobridge)$"
         ];
       };
     };

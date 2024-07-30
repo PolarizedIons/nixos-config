@@ -44,10 +44,7 @@ with lib; {
     ];
 
     virtualisation.docker.enable = true;
-    users.users = builtins.listToAttrs (builtins.map (u: {
-      name = u.login;
-      value = { extraGroups = [ "docker" ]; };
-    }) config.setup.users);
+    users.users.polarizedions.extraGroups = [ "docker" ];
 
     system.activationScripts.ldso = lib.stringAfter [ "usrbinenv" ] ''
       mkdir -m 0755 -p /lib64
