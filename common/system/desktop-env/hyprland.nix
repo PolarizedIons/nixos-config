@@ -30,8 +30,12 @@ in {
       hyprshot
 
       kdePackages.kwallet
+      kdePackages.kwalletmanager
     ];
 
-    security.pam.services.login.enableKwallet = true;
+    security.pam.services = {
+      sddm.enableKwallet = true;
+      login.enableKwallet = true;
+    };
   };
 }
