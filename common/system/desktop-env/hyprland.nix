@@ -23,10 +23,11 @@ in {
       libsForQt5.polkit-kde-agent
       swaynotificationcenter # notification daemon
       libnotify
-      # swww # wallpapers
       rofi-wayland # program opener
       networkmanagerapplet # network applet in toolbar
-      hyprshot
+
+      hyprshot # screenshots
+      hyprpaper # wallpapers
 
       kdePackages.kwallet
       kdePackages.kwalletmanager

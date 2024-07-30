@@ -1,7 +1,25 @@
 { pkgs, config, lib, inputs, system, setup, ... }:
 
-{
+let
+  inherit (inputs.nix-colors.lib.contrib { inherit pkgs; })
+    gtkThemeFromScheme nixWallpaperFromScheme;
+
+in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
+
+    colorScheme = inputs.nix-colors.colorSchemes.nord;
+
+    programs = {
+      kitty = {
+        enable = true;
+        settings = {
+          foreground = "#${config.colorScheme.palette.base05}";
+          background = "#${config.colorScheme.palette.base00}";
+          # ...
+        };
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = [
@@ -11,6 +29,8 @@
 
       settings = {
         misc = { disable_hyprland_logo = true; };
+
+        exec-once = [ "hyprpaper" ];
 
         "$mod" = "SUPER";
 
@@ -359,13 +379,13 @@
       name = "Bibata-Modern-Classic";
       size = 24;
     };
-
+b
     gtk = {
       enable = true;
 
       theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Grey-Darkest";
+        package = gtkThemeFromScheme { scheme = config.colorScheme; };
+        name = config.colorScheme.slug;
       };
 
       iconTheme = {
@@ -376,6 +396,21 @@
       font = {
         name = "Sans";
         size = 11;
+      };
+    };
+
+    services.hyprpaper = let
+      wallpaper = nixWallpaperFromScheme {
+        scheme = config.colorScheme;
+        width = 1920;
+        height = 1080;
+        logoScale = 5.0;
+      };
+    in {
+      enable = true;
+      settings = {
+        preload = [ "${wallpaper}" ];
+        wallpaper = [ ",${wallpaper}" ];
       };
     };
   };
