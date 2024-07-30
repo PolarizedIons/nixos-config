@@ -10,10 +10,10 @@
   setup.video-driver = "intel";
   setup.display-link.enable = true;
 
-  setup.desktop-environment = "plasma";
-  # setup.desktop-environment = "hyprland";
-  # setup.monitors =
-  #   [ { name = "DVI-I-1"; } { name = "HDMI-A-1"; } { name = "eDP-1"; } ];
+  # setup.desktop-environment = "plasma";
+  setup.desktop-environment = "hyprland";
+  setup.monitors =
+    [ { name = "DVI-I-1"; } { name = "HDMI-A-1"; } { name = "eDP-1"; } ];
   setup.browsers = [ "google-chrome" "firefox" ];
 
   setup.work-mode.enable = true;
