@@ -1,7 +1,57 @@
 { pkgs, config, lib, inputs, system, setup, ... }:
 
-{
+let
+  inherit (inputs.nix-colors.lib.contrib { inherit pkgs; })
+    gtkThemeFromScheme nixWallpaperFromScheme;
+
+in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
+
+    colorScheme = inputs.nix-colors.colorSchemes.nord;
+
+    programs = {
+      kitty = {
+        enable = true;
+        settings = {
+          foreground = "#${config.colorScheme.palette.base05}";
+          background = "#${config.colorScheme.palette.base00}";
+
+          # black
+          color0 = "#${config.colorScheme.palette.base00}";
+          color8 = "#${config.colorScheme.palette.base03}";
+
+          # red
+          color1 = "#${config.colorScheme.palette.base08}";
+          color9 = "#${config.colorScheme.palette.base08}";
+
+          # green
+          color2 = "#${config.colorScheme.palette.base0B}";
+          color10 = "#${config.colorScheme.palette.base0B}";
+
+          # yellow
+          color3 = "#${config.colorScheme.palette.base0A}";
+          color11 = "#${config.colorScheme.palette.base0A}";
+
+          # blue
+          color4 = "#${config.colorScheme.palette.base0D}";
+          color12 = "#${config.colorScheme.palette.base0D}";
+
+          # magenta
+          color5 = "#${config.colorScheme.palette.base0E}";
+          color13 = "#${config.colorScheme.palette.base0E}";
+
+          # cyan
+          color6 = "#${config.colorScheme.palette.base0C}";
+          color14 = "#${config.colorScheme.palette.base0C}";
+
+          # white
+          color7 = "#${config.colorScheme.palette.base04}";
+          color15 = "#${config.colorScheme.palette.base06}";
+
+        };
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = [
@@ -11,6 +61,8 @@
 
       settings = {
         misc = { disable_hyprland_logo = true; };
+
+        exec-once = [ "hyprpaper" ];
 
         "$mod" = "SUPER";
 
@@ -110,6 +162,13 @@
 
         windowrulev2 = [
           "suppressevent maximize, class:.*" # "You'll probably like this. " what does this mean????
+
+          # hide xwaylandvideobridge window
+          "opacity 0.0 override,class:^(xwaylandvideobridge)$"
+          "noanim,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^(xwaylandvideobridge)$"
+          "maxsize 1 1,class:^(xwaylandvideobridge)$"
+          "noblur,class:^(xwaylandvideobridge)$"
         ];
       };
     };
@@ -357,8 +416,8 @@
       enable = true;
 
       theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Grey-Darkest";
+        package = gtkThemeFromScheme { scheme = config.colorScheme; };
+        name = config.colorScheme.slug;
       };
 
       iconTheme = {
@@ -369,6 +428,22 @@
       font = {
         name = "Sans";
         size = 11;
+      };
+    };
+
+    #  Todo make this come from setup.monitors
+    services.hyprpaper = let
+      wallpaper = nixWallpaperFromScheme {
+        scheme = config.colorScheme;
+        width = 1920;
+        height = 1080;
+        logoScale = 5.0;
+      };
+    in {
+      enable = true;
+      settings = {
+        preload = [ "${wallpaper}" ];
+        wallpaper = [ ",${wallpaper}" ];
       };
     };
 

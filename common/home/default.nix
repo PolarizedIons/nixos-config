@@ -14,10 +14,12 @@
   _module.args.system = system;
   imports = [
     inputs.hyprland.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ./desktop-env
     ./shell
     ./git.nix
     ./discord.nix
     ./obs.nix
+    ./vr.nix
   ];
 }

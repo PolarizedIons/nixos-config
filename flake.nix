@@ -37,6 +37,8 @@
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
     hyprsplit.url = "github:shezdy/hyprsplit";
     hyprsplit.inputs.hyprland.follows = "hyprland";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs:

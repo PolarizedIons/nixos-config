@@ -8,7 +8,8 @@
 
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
-  setup.desktop-environment = "plasma";
+  setup.desktop-environment = "hyprland";
+  setup.monitors = [ { name = "DP-2"; } { name = "HDMI-A-1"; } ];
   setup.browsers = [ "firefox" "chromium" ];
   setup.wooting.enable = true;
   setup.nix-alien.enable = true;
@@ -20,7 +21,7 @@
   setup.keybase.enable = true;
   setup.music.enable = true;
   setup.libvirt.enable = true;
-  setup.vr.enable = true;
+  # setup.vr.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
