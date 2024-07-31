@@ -371,5 +371,10 @@
         size = 11;
       };
     };
+
+    programs.rofi = {
+      enable = true;
+      package = pkgs.rofi-wayland;
+    };
   };
 }
