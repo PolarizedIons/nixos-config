@@ -219,12 +219,12 @@ in {
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
+          font_color = "#${config.colorScheme.palette.base04}";
+          inner_color = "#${config.colorScheme.palette.base02}";
+          outer_color = "#${config.colorScheme.palette.base00}";
           outline_thickness = 5;
           placeholder_text = ''
-            '<span foreground="##cad3f5">Password...</span>'
+            <span foreground="##${config.colorScheme.palette.base03}">Password...</span>
           '';
           shadow_passes = 2;
         }];
@@ -249,26 +249,30 @@ in {
           };
           clock = {
             interval = 1;
-            format =
-              ''<span foreground="#fabd2f"></span>  {:%a. %d %b. %H:%M:%S}'';
+            format = ''
+              <span foreground="#${config.colorScheme.palette.base0A}"></span>  {:%a. %d %b. %H:%M:%S}'';
           };
           cpu = {
             interval = 5;
             tooltip = false;
-            format = ''<span foreground="#8ec07c"></span>  {}%'';
+            format = ''
+              <span foreground="#${config.colorScheme.palette.base0B}"></span>  {}%'';
           };
 
           memory = {
             tooltip = false;
-            format = ''<span foreground="#d3869b"></span>  {used}G'';
+            format = ''
+              <span foreground="#${config.colorScheme.palette.base0E}"></span>  {used}G'';
           };
 
           network = {
             tooltip = false;
-            format-wifi = ''{essid} <span foreground="#83a598"></span>'';
-            format-ethernet =
-              ''{ipaddr}/{cidr} <span foreground="#83a598"></span>'';
-            format-disconnected = ''<span foreground="#83a598"></span'';
+            format-wifi = ''
+              {essid} <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
+            format-ethernet = ''
+              {ipaddr}/{cidr} <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
+            format-disconnected = ''
+              <span foreground="#${config.colorScheme.palette.base0D}"></span'';
           };
 
           pulseaudio = {
