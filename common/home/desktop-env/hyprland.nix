@@ -125,6 +125,8 @@ in {
           "$mod, mouse:273, resizewindow"
         ];
 
+        bindl = [ ",switch:Lid Switch, exec, hyprlock" ];
+
         general = {
           gaps_in = "5";
           gaps_out = "8, 15, 15, 15";
