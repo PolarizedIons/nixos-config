@@ -7,7 +7,7 @@ let
 in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
 
-    colorScheme = inputs.nix-colors.colorSchemes.nord;
+    colorScheme = inputs.nix-colors.colorSchemes.material-darker;
 
     programs = {
       kitty = {
@@ -129,8 +129,9 @@ in {
           gaps_in = "5";
           gaps_out = "8, 15, 15, 15";
           border_size = "3";
-          "col.active_border" = "rgba(fe8019ff)";
-          "col.inactive_border" = "rgba(504945ff)";
+          "col.active_border" = "rgba(${config.colorScheme.palette.base0D}ff)";
+          "col.inactive_border" =
+            "rgba(${config.colorScheme.palette.base02}ff)";
 
           layout = "dwindle";
         };
@@ -311,40 +312,23 @@ in {
       };
 
       style = ''
-        @define-color bg #282828;
-        @define-color red-dim #cc241d;
-        @define-color green-dim #98971a;
-        @define-color yellow-dim #d79921;
-        @define-color blue-dim #458588;
-        @define-color purple-dim #b16286;
-        @define-color aqua-dim #689d6a;
-        @define-color gray-dim #a89984;
+        @define-color bg #${config.colorScheme.palette.base02};
+        @define-color red-dim #${config.colorScheme.palette.base08};
+        @define-color green-dim #${config.colorScheme.palette.base0B};
+        @define-color yellow-dim #${config.colorScheme.palette.base0A};
+        @define-color blue-dim #${config.colorScheme.palette.base0D};
+        @define-color purple-dim #${config.colorScheme.palette.base0E};
+        @define-color aqua-dim #${config.colorScheme.palette.base0C};
+        @define-color gray-dim #${config.colorScheme.palette.base03};
 
-        @define-color gray #928374;
-        @define-color red #fb4934;
-        @define-color green #b8bb26;
-        @define-color yellow #fabd2f;
-        @define-color blue #83a598;
-        @define-color purple #d3869b;
-        @define-color aqua #8ec07c;
-        @define-color fg #ebdbb2;
-
-        @define-color bg0_h #1d2021;
-        @define-color bg0 #282828;
-        @define-color bg1 #3c3836;
-        @define-color bg2 #504945;
-        @define-color bg3 #665c54;
-        @define-color bg4 #7c6f64;
-        @define-color orange-dim #d65d0e;
-
-        @define-color bg0_s #32302f;
-        @define-color fg4 #a89984;
-        @define-color fg3 #bdae93;
-        @define-color fg2 #d5c4a1;
-        @define-color fg1 #ebdbb2;
-        @define-color fg0 #fbf1c7;
-        @define-color orange #fe8019;
-
+        @define-color gray #${config.colorScheme.palette.base03};
+        @define-color red #${config.colorScheme.palette.base08};
+        @define-color green #${config.colorScheme.palette.base0B};
+        @define-color yellow #${config.colorScheme.palette.base0A};
+        @define-color blue #${config.colorScheme.palette.base0D};
+        @define-color purple #${config.colorScheme.palette.base0E};
+        @define-color aqua #${config.colorScheme.palette.base0C};
+        @define-color fg #${config.colorScheme.palette.base05};
 
         * {
           font-family: "JetBrainsMono Nerd Font";
@@ -373,7 +357,7 @@ in {
 
           border-radius: 10px;
 
-          background: @bg1;
+          background: @gray-dim;
           color: @fg;
         }
 
