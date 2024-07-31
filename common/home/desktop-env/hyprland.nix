@@ -85,6 +85,8 @@ in {
             (builtins.length setup.monitors);
         in monitorConfig ++ [ ",preferred,auto,auto" ];
 
+        input.numlock_by_default = true;
+
         input.touchpad = {
           natural_scroll = true;
           disable_while_typing = false;
@@ -279,11 +281,9 @@ in {
 
           pulseaudio = {
             format = "{volume}% {icon}";
-            format-bluetooth = "{volume}% {icon}";
-            format-muted = "";
+            format-bluetooth = "{desc} {volume}% {icon}";
+            format-muted = "muted {icon}";
             format-icons = {
-              "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
-              "alsa_output.pci-0000_00_1f.3.analog-stereo-muted" = "";
               headphone = "";
               "hands-free" = "";
               headset = "";
@@ -294,8 +294,8 @@ in {
               default = [ "" "" ];
             };
             scroll-step = 1;
-            on-click = "pavucontrol";
-            ignored-sinks = [ "Easy Effects Sink" ];
+            on-click =
+              "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             reverse-scrolling = true;
           };
           battery = {
@@ -311,7 +311,7 @@ in {
 
           tray = {
             icon-size = 21;
-            spacing = 10;
+            spacing = 5;
             show-passive-items = false;
           };
         };

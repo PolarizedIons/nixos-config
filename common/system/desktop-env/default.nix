@@ -27,7 +27,7 @@ in {
     libinput.touchpad.disableWhileTyping = false;
   };
 
-  environment.systemPackages = with pkgs; [ numlockx xwaylandvideobridge ];
+  environment.systemPackages = with pkgs; [ xwaylandvideobridge ];
 
   systemd.user.services."xwaylandvideobridge" = {
     description = "xwaylandvideobridge service";

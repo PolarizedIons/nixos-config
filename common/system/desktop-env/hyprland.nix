@@ -29,6 +29,8 @@ in {
       hyprshot # screenshots
       hyprpaper # wallpapers
 
+      pavucontrol # audio control
+
       kdePackages.kwallet
       kdePackages.kwalletmanager
 
