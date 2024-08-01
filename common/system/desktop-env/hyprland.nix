@@ -35,6 +35,7 @@ in {
       kdePackages.kwalletmanager
 
       nemo
+      ark
     ];
 
     security.pam.services = {
