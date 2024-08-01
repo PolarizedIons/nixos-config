@@ -99,7 +99,7 @@ in {
 
         bind = [
           "$mod, Return, exec, kitty"
-          "$mod, Space, exec, rofi -show run -show-icons"
+          "$mod, Space, exec, rofi -show drun -show-icons"
           "$mod, F, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, M, exit"
           "$mod, C, killactive"
