@@ -38,6 +38,8 @@ in {
       ark
     ];
 
+    services.blueman.enable = true;
+
     security.pam.services = {
       sddm.enableKwallet = true;
       login.enableKwallet = true;
