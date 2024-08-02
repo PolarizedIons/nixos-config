@@ -307,6 +307,9 @@ in {
               critical = 15;
             };
             format = "{capacity}% {icon}";
+            format-charging = "+{capacity}% {icon}";
+            format-discharging = "-{capacity}% {icon}";
+            format-time = "{H}h{m}m";
             format-icons = [ "" "" "" "" "" ];
             max-length = 25;
           };
