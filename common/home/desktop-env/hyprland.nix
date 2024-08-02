@@ -109,6 +109,8 @@ in {
           "$mod, X, togglesplit, # dwindle"
           "$mod, L, exec, hyprlock"
           ", Print, exec, hyprshot -m region --clipboard-only"
+
+          "$mod, Minus, split:grabroguewindows"
         ] ++ (
           # workspaces
           # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
