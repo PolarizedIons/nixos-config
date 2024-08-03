@@ -1,4 +1,4 @@
-{ config, lib, inputs, system, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   config = lib.mkIf config.setup.vr.enable {
     services.monado = {
       enable = true;
@@ -10,8 +10,7 @@
       XRT_COMPOSITOR_COMPUTE = "1";
     };
 
-    environment.systemPackages =
-      [ inputs.vr-envision.packages.${system}.default ];
+    environment.systemPackages = with pkgs; [ envision ];
 
     boot.kernelPatches = [{
       name = "amdgpu-ignore-ctx-privileges";

@@ -15,10 +15,6 @@
     teraflops.url = "github:aanderse/teraflops";
     teraflops.inputs.nixpkgs.follows = "nixpkgs";
 
-    # gabmus/envision
-    vr-envision.url = "gitlab:Scrumplex/envision/nix";
-    vr-envision.inputs.nixpkgs.follows = "nixpkgs";
-
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 

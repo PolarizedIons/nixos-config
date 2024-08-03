@@ -252,6 +252,10 @@ in {
             icon = true;
             icon-size = 18;
             separate-outputs = true;
+            "rewrite" = {
+              "(.*) — Mozilla Firefox" = "$1";
+              "(.*) - (.*) - Visual Studio Code" = "$2 - $1";
+            };
           };
           clock = {
             interval = 1;
