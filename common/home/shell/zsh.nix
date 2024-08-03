@@ -1,4 +1,4 @@
-{ pkgs, lib, user, ... }:
+{ pkgs, lib, user, config, ... }:
 
 {
   config = lib.mkIf (user.shell == "zsh") {
@@ -10,6 +10,12 @@
         autosuggestion.enable = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
+
+        shellAliases = {
+          ls =
+            "${pkgs.eza}/bin/eza --icons --grid --classify --colour=auto --sort=type --group-directories-first --header --modified --created --git --binary --group";
+          cat = "${pkgs.bat}/bin/bat";
+        };
 
         oh-my-zsh = {
           enable = true;
