@@ -13,10 +13,11 @@
   _module.args.inputs = inputs;
   _module.args.system = system;
   imports = [
-    inputs.hyprland.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     ./desktop-env
     ./shell
+    ./styling
     ./git.nix
     ./discord.nix
     ./obs.nix
