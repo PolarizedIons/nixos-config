@@ -53,7 +53,8 @@ in {
         bind = [
           "$mod, Return, exec, kitty"
           "$mod, Space, exec, rofi -show drun -show-icons"
-          "$mod, F, exec, ${builtins.elemAt setup.browsers 0}"
+          "$mod, D, exec, ${builtins.elemAt setup.browsers 0}"
+          "$mod, F, fullscreen"
           "$mod, M, exit"
           "$mod, C, killactive"
           ''
