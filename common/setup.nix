@@ -59,6 +59,10 @@ in with lib; {
       });
       default = [ ];
     };
+    modifierKey = mkOption {
+      type = types.str;
+      default = "SUPER";
+    };
 
     video-driver = mkOption { type = types.str; };
     display-link.enable = mkEnableOption "Enable displaylink driver";

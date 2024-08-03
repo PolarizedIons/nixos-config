@@ -7,11 +7,16 @@
 
   setup.machine-name = "my-vm";
   setup.desktop-environment = "hyprland";
-  setup.browsers = [ "firefox" "chromium" ];
-  setup.media.enable = true;
-  setup.chatting.enable = true;
-  setup.music.enable = true;
-  setup.work-mode.enable = false;
+  setup.modifierKey = "Control_L";
+  setup.browsers = [ "chromium" "google-chrome-stable" "firefox" ];
+  # setup.gaming.enable = true;
+  # setup.media.enable = true;
+  # setup.chatting.enable = true;
+  # setup.music.enable = true;
+  # setup.work-mode.enable = false;
+
+  services.xserver.videoDrivers = [ "qxl" ];
+  environment.systemPackages = [ pkgs.xorg.xf86videoqxl ];
 
   setup.users = [{
     login = "vm-user";
@@ -20,11 +25,19 @@
   }];
   users.users.vm-user.password = "123";
 
+  services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
     autoResize = true;
+  };
+  virtualisation.qemu.options = [ "-device virtio-vga" ];
+  security.sudo.wheelNeedsPassword = false;
+
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "vm-user";
   };
 
   boot = {

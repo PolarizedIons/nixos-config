@@ -32,7 +32,8 @@
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
 
     # intentionally not following nixpkgs
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url =
+      "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c1afc82a4ceb2e1989ec750b476a97f7f49051e3";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
     hyprsplit.url = "github:shezdy/hyprsplit";
