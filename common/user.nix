@@ -8,5 +8,4 @@
       extraGroups = [ "wheel" "networkmanager" "dialout" ];
     };
   }) config.setup.users);
-
 }

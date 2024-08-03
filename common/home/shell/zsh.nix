@@ -2,7 +2,6 @@
 
 {
   config = lib.mkIf (user.shell == "zsh") {
-
     services.gpg-agent.enableZshIntegration = true;
 
     programs = {
