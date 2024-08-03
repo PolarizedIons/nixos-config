@@ -254,6 +254,7 @@ in {
             separate-outputs = true;
             "rewrite" = {
               "(.*) — Mozilla Firefox" = "$1";
+              "(.*) - Discord" = "$1";
               "(.*) - (.*) - Visual Studio Code" = "$2 - $1";
             };
           };

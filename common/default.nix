@@ -1,5 +1,11 @@
-{ lib, pkgs, config, ... }: {
-  imports = [ ./setup.nix ./user.nix ./system ./home-manager.nix ];
+{ lib, pkgs, config, inputs, ... }: {
+  imports = [
+    inputs.agenix.nixosModules.default
+    ./setup.nix
+    ./user.nix
+    ./system
+    ./home-manager.nix
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

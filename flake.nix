@@ -37,7 +37,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       machines = [ "aegis" "rick" "alyx" "vm" ];
       system = "x86_64-linux";
@@ -46,10 +46,7 @@
         name = machine;
         value = nixpkgs.lib.nixosSystem {
           system = system;
-          modules = [
-            ./machines/${machine}/configuration.nix
-            agenix.nixosModules.default
-          ];
+          modules = [ ./machines/${machine}/configuration.nix ];
           specialArgs = { inherit inputs system; };
         };
       }) machines);
