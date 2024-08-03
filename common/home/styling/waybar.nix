@@ -20,8 +20,10 @@
             "rewrite" = {
               "(.*) — Mozilla Firefox" = "$1";
               "(.*) - Discord" = "$1";
-              "(.*) - (.*) - Visual Studio Code" = "$2 - $1";
+              "(.*) - (.*) - Visual Studio Code" = "[$2] $1";
             };
+            on-scroll-up = "hyprctl dispatch split:workspace -1";
+            on-scroll-down = "hyprctl dispatch split:workspace +1";
           };
           clock = {
             interval = 1;
