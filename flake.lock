@@ -358,11 +358,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1722633380,
-        "narHash": "sha256-rVyikfYJjkSB7990fLwABjrhVM4UOmci7rxYpRT/6dI=",
+        "lastModified": 1722686530,
+        "narHash": "sha256-O0KIyfR3apBJ2wttOx2LRXB7XS6ysV+1bRhMh6vU6Os=",
         "ref": "refs/heads/main",
-        "rev": "4141e6755022edc19cd37cd7ad077a93b3bae5bd",
-        "revCount": 5045,
+        "rev": "9f5a57ff4569db57372bd86bd48add85a3a1a5e4",
+        "revCount": 5046,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -743,11 +743,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722185788,
-        "narHash": "sha256-r13Tk2yeMzEU32l2WJNhXDWFVH+U158k7mgl8MB7xUg=",
+        "lastModified": 1722688264,
+        "narHash": "sha256-HSAoppzjNvU+e04xz1tP8zZDVySy47+uV1gGrwU2USY=",
         "owner": "PolarizedIons",
         "repo": "pam-beacon-rs",
-        "rev": "37225a8eed2dc4b5efb4c609dcef4377762c54af",
+        "rev": "2f42d6850c11cf2aac1ab79990e09a2aa6dfdcc9",
         "type": "github"
       },
       "original": {
