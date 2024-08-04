@@ -36,6 +36,8 @@ in {
 
       nemo
       ark
+      clipman
+      wl-clipboard
     ];
 
     services.blueman.enable = true;

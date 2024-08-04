@@ -15,7 +15,8 @@ in {
       settings = {
         misc = { disable_hyprland_logo = true; };
 
-        exec-once = [ "hyprpaper" ];
+        exec-once =
+          [ "hyprpaper" "wl-paste -t text --watch clipman store --no-persist" ];
 
         "$mod" = "SUPER";
 
@@ -57,6 +58,7 @@ in {
           "$mod, F, fullscreen"
           "$mod, M, exit"
           "$mod, C, killactive"
+          "$mod, Z, exec, clipman pick -t rofi"
           ''
             $mod, V, exec, hyprctl --batch "dispatch togglefloating ; dispatch centerwindow 1"''
           "$mod, P, pseudo, # dwindle"
@@ -65,6 +67,18 @@ in {
           ", Print, exec, hyprshot -m region --clipboard-only"
 
           "$mod, Minus, split:grabroguewindows"
+
+          ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5 "
+          ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5 "
+          ", XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -m"
+          ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+          ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ", XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+          ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+
+          ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl s +5%"
+          ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl s 5%-"
         ] ++ (
           # workspaces
           # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}

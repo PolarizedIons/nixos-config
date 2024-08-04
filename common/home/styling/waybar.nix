@@ -1,6 +1,18 @@
 { config, setup, lib, pkgs, ... }:
 
-{
+let
+
+  spotify_now_playing = pkgs.writeShellScript "spotify.sh" ''
+    str="";
+    if [[ $(echo -n "$(${pkgs.playerctl}/bin/playerctl status 2> /dev/null)")  == "Paused" ]]; then
+      str="";
+    fi
+
+    str="$str  $(${pkgs.playerctl}/bin/playerctl metadata title) - $(${pkgs.playerctl}/bin/playerctl metadata artist)"
+    echo $str | sed 's/\(.\{25\}\).*/\1…/'
+  '';
+
+in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
     programs.waybar = {
       enable = true;
@@ -11,7 +23,8 @@
           layer = "top";
           modules-left = [ "hyprland/window" ];
           modules-center = [ "clock" "cpu" "memory" ];
-          modules-right = [ "network" "pulseaudio" "battery" "tray" ];
+          modules-right =
+            [ "custom/spotify" "network" "pulseaudio" "battery" "tray" ];
 
           "hyprland/window" = {
             icon = true;
@@ -25,11 +38,14 @@
             on-scroll-up = "hyprctl dispatch split:workspace -1";
             on-scroll-down = "hyprctl dispatch split:workspace +1";
           };
+
           clock = {
             interval = 1;
             format = ''
               <span foreground="#${config.colorScheme.palette.base0A}"></span>  {:%a. %d %b. %H:%M:%S}'';
+            tooltip = false;
           };
+
           cpu = {
             interval = 5;
             tooltip = false;
@@ -43,12 +59,28 @@
               <span foreground="#${config.colorScheme.palette.base0E}"></span>  {used}G'';
           };
 
+          "custom/spotify" = {
+            exec = "${spotify_now_playing}";
+            exec-if = "pgrep spotify";
+            interval = 5;
+            format = "{} {icon} ";
+            format-icons = {
+              default = ''
+                <span foreground="#${config.colorScheme.palette.base0B}"></span>'';
+            };
+            # escape = true;
+            tooltip = false;
+            on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
+            on-scroll-up = "${pkgs.playerctl}/bin/playerctl next";
+            on-scroll-down = "${pkgs.playerctl}/bin/playerctl previous";
+          };
+
           network = {
             tooltip = false;
             format-wifi = ''
-              {essid} <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
+              <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
             format-ethernet = ''
-              {ipaddr}/{cidr} <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
+              <span foreground="#${config.colorScheme.palette.base0D}"></span>'';
             format-disconnected = ''
               <span foreground="#${config.colorScheme.palette.base0D}"></span'';
           };
