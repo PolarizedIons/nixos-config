@@ -11,31 +11,40 @@ let
     str="$(${pkgs.playerctl}/bin/playerctl -p spotify metadata title) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist)"
     trimmed="$(echo $str | sed 's/\(.\{25\}\).*/\1…/')"
     echo "$icon$trimmed" # text
-    echo "$icon$str" # tooltip
+    echo "$str" # tooltip
   '';
 
   spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
     touch /tmp/spotify-cover.id
     last_track_id=$(cat /tmp/spotify-cover.id)
-    if [[ -z "$track_id" ]]
+    track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
+
+    # If the track id is empty, we are not playing anything
+    if [[ -x "$last_track_id" ]] && [[ -n "$last_track_id" ]]
     then
       exit 0
     fi
 
-    track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
+    # If the track id is the same as the last one, we don't need to update the cover, so just output
     if [[ $last_track_id == $track_id ]]
     then
       echo "/tmp/spotify-cover.jpeg"
       exit 0
     fi
+
+    # Save the new track id
     echo $track_id > /tmp/spotify-cover.id
 
+    # Get the album art
     album_art=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:artUrl)
+
+    # If the album art is empty, return early
     if [[ -z $album_art ]] 
     then
       exit 0
     fi
 
+    # Download the album art & output
     curl -s "$album_art" --output "/tmp/spotify-cover.jpeg"
     echo "/tmp/spotify-cover.jpeg"
   '';
