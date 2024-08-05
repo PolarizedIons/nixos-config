@@ -38,6 +38,7 @@ in {
             "rewrite" = {
               "(.*) — Mozilla Firefox" = "$1";
               "(.*) - Discord" = "$1";
+              "(.*) - Google Chrome" = "$1";
               "(.*) - (.*) - Visual Studio Code" = "[$2] $1";
             };
             on-scroll-up = "hyprctl dispatch split:workspace -1";
