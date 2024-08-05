@@ -4,11 +4,11 @@ let
 
   spotify_now_playing = pkgs.writeShellScript "spotify.sh" ''
     str="";
-    if [[ $(echo -n "$(${pkgs.playerctl}/bin/playerctl status 2> /dev/null)")  == "Paused" ]]; then
+    if [[ $(echo -n "$(${pkgs.playerctl}/bin/playerctl -p spotify status 2> /dev/null)")  == "Paused" ]]; then
       str="";
     fi
 
-    str="$str  $(${pkgs.playerctl}/bin/playerctl metadata title) - $(${pkgs.playerctl}/bin/playerctl metadata artist)"
+    str="$str  $(${pkgs.playerctl}/bin/playerctl -p spotify metadata title) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist)"
     echo $str | sed 's/\(.\{25\}\).*/\1…/'
   '';
 
@@ -23,8 +23,13 @@ in {
           layer = "top";
           modules-left = [ "hyprland/window" ];
           modules-center = [ "clock" "cpu" "memory" ];
-          modules-right =
-            [ "custom/spotify" "network" "pulseaudio" "battery" "tray" ];
+          modules-right = [
+            "custom/spotify"
+            # "network"
+            "pulseaudio"
+            "battery"
+            "tray"
+          ];
 
           "hyprland/window" = {
             icon = true;
