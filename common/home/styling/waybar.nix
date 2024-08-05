@@ -75,9 +75,10 @@ in {
             };
             # escape = true;
             tooltip = false;
-            on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
-            on-scroll-up = "${pkgs.playerctl}/bin/playerctl next";
-            on-scroll-down = "${pkgs.playerctl}/bin/playerctl previous";
+            on-click = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+            on-scroll-up = "${pkgs.playerctl}/bin/playerctl -p spotify next";
+            on-scroll-down =
+              "${pkgs.playerctl}/bin/playerctl -p spotify previous";
           };
 
           network = {
