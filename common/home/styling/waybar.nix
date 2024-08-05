@@ -40,6 +40,8 @@ in {
               "(.*) - Discord" = "$1";
               "(.*) - Google Chrome" = "$1";
               "(.*) - (.*) - Visual Studio Code" = "[$2] $1";
+              "(\\*)? ?(.*) \\(DM\\) - (.*) - Slack" = "[$3$1] >$2";
+              "(\\*)? ?(.*) \\(Channel\\) - (.*) - Slack" = "[$3$1] #$2";
             };
             on-scroll-up = "hyprctl dispatch split:workspace -1";
             on-scroll-down = "hyprctl dispatch split:workspace +1";
