@@ -15,6 +15,7 @@ let
   '';
 
   spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
+    set -e
     touch /tmp/spotify-cover.id
     last_track_id=$(cat /tmp/spotify-cover.id)
     track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
