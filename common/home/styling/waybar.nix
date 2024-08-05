@@ -16,9 +16,14 @@ let
 
   spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
     touch /tmp/spotify-cover.id
+    last_track_id=$(cat /tmp/spotify-cover.id)
+    if [[ -z "$track_id" ]]
+    then
+      exit 0
+    fi
 
     track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
-    if [[ $(cat /tmp/spotify-cover.id) == $track_id ]]
+    if [[ $last_track_id == $track_id ]]
     then
       echo "/tmp/spotify-cover.jpeg"
       exit 0
@@ -31,7 +36,7 @@ let
       exit 0
     fi
 
-    curl -s  "$album_art" --output "/tmp/spotify-cover.jpeg"
+    curl -s "$album_art" --output "/tmp/spotify-cover.jpeg"
     echo "/tmp/spotify-cover.jpeg"
   '';
 
@@ -201,6 +206,12 @@ in {
         /* Hide window name widget when there's no active window */
         #waybar.empty #window {
           background: transparent;
+        }
+
+        .empty {
+          background: transparent;
+          margin: 0;
+          padding: 0;
         }
 
         #waybar > .horizontal {
