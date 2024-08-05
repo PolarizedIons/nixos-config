@@ -3,6 +3,8 @@ let hypr-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
 in {
   imports = [ inputs.hyprland.nixosModules.default ];
   config = lib.mkIf (config.setup.desktop-environment == "hyprland") {
+    nixpkgs.overlays =
+      [ (import ../../../overlays/icalcli.nix { inherit pkgs; }) ];
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

@@ -49,8 +49,35 @@ let
     echo "/tmp/spotify-cover.jpeg"
   '';
 
+  next_calendar_event = pkgs.writeShellScript "calendar.sh" ''
+    touch ~/.waybar-calendar.url
+    calendar_url=$(cat ~/.waybar-calendar.url)
+    if [[ -z $calendar_url ]]
+    then
+      exit 1
+    fi
+
+    # Download the calendar
+    curl -s $calendar_url --output /tmp/waybar-calendar.ics
+
+    # Get the next calendar event
+    event=$(${pkgs.icalcli}/bin/icalcli agenda -o nof -o nol --nostarted --military -n 1 | head --lines 4 | tail --lines 1);
+    start=$(echo $event | awk -F'[ ]' '{print $3}');
+    end=$(echo $event | awk -F'[ ]' '{print $5}');
+    description=$(echo $event | awk -F"$end[ ]+" '{print $2}');
+    trimmed_description=$(echo $description | sed 's/\(.\{15\}\).*/\1…/')
+
+    echo "$start → $end · $trimmed_description" # text
+    echo "$description" # tooltip
+  '';
+
 in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
+    home.file.".icalcli.py".text = ''
+      from icalcli import ICSInterface
+      backend_interface = ICSInterface("/tmp/waybar-calendar.ics")
+    '';
+
     programs.waybar = {
       enable = true;
       systemd.enable = true;
@@ -59,7 +86,12 @@ in {
         mainBar = {
           layer = "top";
           modules-left = [ "hyprland/window" ];
-          modules-center = [ "clock" "cpu" "memory" ];
+          modules-center = [
+            "custom/caledar"
+            "clock"
+
+            # "cpu" "memory" 
+          ];
           modules-right = [
             "image#spotify"
             "custom/spotify"
@@ -83,6 +115,14 @@ in {
             };
             on-scroll-up = "hyprctl dispatch split:workspace -1";
             on-scroll-down = "hyprctl dispatch split:workspace +1";
+          };
+
+          "custom/caledar" = {
+            exec = "${next_calendar_event}";
+
+            interval = 300;
+            format = ''
+              <span foreground="#${config.colorScheme.palette.base0E}"></span>  {}'';
           };
 
           clock = {
