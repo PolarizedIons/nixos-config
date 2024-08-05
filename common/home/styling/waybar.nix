@@ -3,13 +3,36 @@
 let
 
   spotify_now_playing = pkgs.writeShellScript "spotify.sh" ''
-    str="";
+    icon="";
     if [[ $(echo -n "$(${pkgs.playerctl}/bin/playerctl -p spotify status 2> /dev/null)")  == "Paused" ]]; then
-      str="";
+      icon=" | ";
     fi
 
-    str="$str  $(${pkgs.playerctl}/bin/playerctl -p spotify metadata title) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist)"
-    echo $str | sed 's/\(.\{25\}\).*/\1…/'
+    str="$(${pkgs.playerctl}/bin/playerctl -p spotify metadata title) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist)"
+    trimmed="$(echo $str | sed 's/\(.\{25\}\).*/\1…/')"
+    echo "$icon$trimmed" # text
+    echo "$icon$str" # tooltip
+  '';
+
+  spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
+    touch /tmp/spotify-cover.id
+
+    track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
+    if [[ $(cat /tmp/spotify-cover.id) == $track_id ]]
+    then
+      echo "/tmp/spotify-cover.jpeg"
+      exit 0
+    fi
+    echo $track_id > /tmp/spotify-cover.id
+
+    album_art=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:artUrl)
+    if [[ -z $album_art ]] 
+    then
+      exit 0
+    fi
+
+    curl -s  "$album_art" --output "/tmp/spotify-cover.jpeg"
+    echo "/tmp/spotify-cover.jpeg"
   '';
 
 in {
@@ -24,6 +47,7 @@ in {
           modules-left = [ "hyprland/window" ];
           modules-center = [ "clock" "cpu" "memory" ];
           modules-right = [
+            "image#spotify"
             "custom/spotify"
             # "network"
             "pulseaudio"
@@ -67,17 +91,27 @@ in {
               <span foreground="#${config.colorScheme.palette.base0E}"></span>  {used}G'';
           };
 
+          "image#spotify" = {
+            class = "spotify";
+            size = 24;
+            exec = "${spotify_album_cover}";
+            exec-if = "pgrep spotify";
+            interval = 1;
+            on-click = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+            on-scroll-up = "${pkgs.playerctl}/bin/playerctl -p spotify next";
+            on-scroll-down =
+              "${pkgs.playerctl}/bin/playerctl -p spotify previous";
+          };
+
           "custom/spotify" = {
             exec = "${spotify_now_playing}";
             exec-if = "pgrep spotify";
-            interval = 5;
+            interval = 1;
             format = "{} {icon} ";
             format-icons = {
               default = ''
                 <span foreground="#${config.colorScheme.palette.base0B}"></span>'';
             };
-            # escape = true;
-            tooltip = false;
             on-click = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
             on-scroll-up = "${pkgs.playerctl}/bin/playerctl -p spotify next";
             on-scroll-down =
@@ -186,14 +220,16 @@ in {
         }
 
         /* Bring system info to the same "box" */
-        #cpu {
+        #cpu, #image.spotify {
           margin-right: 0;
+          padding-right: 5px;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
         }
 
-        #memory {
+        #memory, #custom-spotify {
           margin-left: 0;
+          padding-left: 5px;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
         }
