@@ -20,6 +20,7 @@ in {
 
   # Hint electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
   services = {
     libinput.enable = true;
