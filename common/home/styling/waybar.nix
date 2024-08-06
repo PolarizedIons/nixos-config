@@ -31,7 +31,8 @@ let
     if [[ -z "$track_id" ]] && [[ -n "$last_track_id" ]]
     then
       rm /tmp/spotify-cover.jpeg
-      exit 0
+      echo "";
+      exit 1
     fi
 
     # If the track id is the same as the last one, we don't need to update the cover, so just output
@@ -51,7 +52,8 @@ let
     if [[ -z $album_art ]] 
     then
       rm /tmp/spotify-cover.jpeg
-      exit 0
+      echo "";
+      exit 1
     fi
 
     # Download the album art & output
@@ -320,6 +322,13 @@ in {
           padding-left: 5px;
           border: 1px solid @gray;
           background: @bg;
+        }
+
+        #image.empty {
+          padding: 0;
+          margin: 0;
+          border: 0;
+          background: transparent;
         }
 
         #custom-spotify {
