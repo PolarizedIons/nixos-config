@@ -8,21 +8,21 @@ let
       icon=" | ";
     fi
 
-    str="$(${pkgs.playerctl}/bin/playerctl -p spotify metadata title) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist)"
+    str="$(${pkgs.playerctl}/bin/playerctl -p spotify metadata title 2> /dev/null) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist 2> /dev/null)"
     trimmed="$(echo $str | sed 's/\(.\{25\}\).*/\1…/')"
     echo "$icon$trimmed" # text
     echo "$str" # tooltip
   '';
 
   spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
-    set -e
     touch /tmp/spotify-cover.id
     last_track_id=$(cat /tmp/spotify-cover.id)
-    track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid)
+    track_id=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:trackid 2> /dev/null)
 
-    # If the track id is empty, we are not playing anything
-    if [[ -x "$last_track_id" ]] && [[ -n "$last_track_id" ]]
+    # If the track id is empty, and the last track id is not, we need to clear the cover
+    if [[ -z "$track_id" ]] && [[ -n "$last_track_id" ]]
     then
+      rm /tmp/spotify-cover.jpeg
       exit 0
     fi
 
@@ -37,11 +37,12 @@ let
     echo $track_id > /tmp/spotify-cover.id
 
     # Get the album art
-    album_art=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:artUrl)
+    album_art=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:artUrl 2> /dev/null)
 
     # If the album art is empty, return early
     if [[ -z $album_art ]] 
     then
+      rm /tmp/spotify-cover.jpeg
       exit 0
     fi
 
