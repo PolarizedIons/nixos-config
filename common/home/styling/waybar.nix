@@ -10,8 +10,16 @@ let
 
     str="$(${pkgs.playerctl}/bin/playerctl -p spotify metadata title 2> /dev/null) - $(${pkgs.playerctl}/bin/playerctl -p spotify metadata artist 2> /dev/null)"
     trimmed="$(echo $str | sed 's/\(.\{25\}\).*/\1…/')"
-    echo "$icon$trimmed" # text
-    echo "$str" # tooltip
+
+    progress=$(${pkgs.playerctl}/bin/playerctl -p spotify position 2> /dev/null)
+    length=$(${pkgs.playerctl}/bin/playerctl -p spotify metadata mpris:length 2> /dev/null)
+    progress_percent=$(echo $progress $length | awk '{printf "%.0f", $1/($2/100000000)}')
+
+    ${pkgs.jq}/bin/jq -n --unbuffered --compact-output \
+      --arg text "$icon$trimmed" \
+      --arg tooltip "$str" \
+      --arg class "progress-$progress_percent" \
+      '{text: $text, tooltip: $tooltip, class: $class}'
   '';
 
   spotify_album_cover = pkgs.writeShellScript "spotify-cover.sh" ''
@@ -162,6 +170,7 @@ in {
           "custom/spotify" = {
             exec = "${spotify_now_playing}";
             exec-if = "pgrep spotify";
+            return-type = "json";
             interval = 1;
             format = "{} {icon} ";
             format-icons = {
@@ -225,7 +234,14 @@ in {
         };
       };
 
-      style = ''
+      style = let
+        progressClasses = builtins.concatStringsSep "\n" (builtins.genList (i:
+          "#custom-spotify.progress-${
+            toString i
+          } { background-image: linear-gradient(to right, @gray 0%,@gray ${
+            toString i
+          }%, @bg ${toString i}%, @bg 100%); }") 100);
+      in ''
         @define-color bg #${config.colorScheme.palette.base02};
         @define-color red-dim #${config.colorScheme.palette.base08};
         @define-color green-dim #${config.colorScheme.palette.base0B};
@@ -284,7 +300,7 @@ in {
         /* Bring system info to the same "box" */
         #cpu, #image.spotify {
           margin-right: 0;
-          padding-right: 5px;
+          padding-right: 4px;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
         }
@@ -300,9 +316,21 @@ in {
           padding-right: 20px;
         }
 
+        #image.spotify {
+          padding-left: 5px;
+          border: 1px solid @gray;
+          background: @bg;
+        }
+
+        #custom-spotify {
+          border: 1px solid @gray;
+        }
+
         #tray {
           margin-right: 0; /* Remove margin here because it is the last widget */
         }
+
+        ${progressClasses}
       '';
     };
   };
