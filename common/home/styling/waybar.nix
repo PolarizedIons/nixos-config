@@ -240,18 +240,20 @@ in {
         progressClasses = builtins.concatStringsSep "\n" (builtins.genList (i:
           "#custom-spotify.progress-${
             toString i
-          } { background-image: linear-gradient(to right, @gray 0%,@gray ${
+          } { background-image: linear-gradient(to right, @blue-dim 0%,@blue-dim ${
             toString i
           }%, @bg ${toString i}%, @bg 100%); }") 100);
       in ''
         @define-color bg #${config.colorScheme.palette.base02};
-        @define-color red-dim #${config.colorScheme.palette.base08};
-        @define-color green-dim #${config.colorScheme.palette.base0B};
-        @define-color yellow-dim #${config.colorScheme.palette.base0A};
-        @define-color blue-dim #${config.colorScheme.palette.base0D};
-        @define-color purple-dim #${config.colorScheme.palette.base0E};
-        @define-color aqua-dim #${config.colorScheme.palette.base0C};
-        @define-color gray-dim #${config.colorScheme.palette.base03};
+        @define-color fg #${config.colorScheme.palette.base05};
+
+        @define-color gray-dim darker(darker(#${config.colorScheme.palette.base03}));
+        @define-color red-dim darker(darker(#${config.colorScheme.palette.base08}));
+        @define-color green-dim darker(darker(#${config.colorScheme.palette.base0B}));
+        @define-color yellow-dim darker(darker(#${config.colorScheme.palette.base0A}));
+        @define-color blue-dim darker(darker(#${config.colorScheme.palette.base0D}));
+        @define-color purple-dim darker(darker(#${config.colorScheme.palette.base0E}));
+        @define-color aqua-dim darker(darker(#${config.colorScheme.palette.base0C}));
 
         @define-color gray #${config.colorScheme.palette.base03};
         @define-color red #${config.colorScheme.palette.base08};
@@ -260,7 +262,6 @@ in {
         @define-color blue #${config.colorScheme.palette.base0D};
         @define-color purple #${config.colorScheme.palette.base0E};
         @define-color aqua #${config.colorScheme.palette.base0C};
-        @define-color fg #${config.colorScheme.palette.base05};
 
         * {
           font-family: "JetBrainsMono Nerd Font";
@@ -295,7 +296,7 @@ in {
 
           border-radius: 10px;
 
-          background: @gray-dim;
+          background: @gray;
           color: @fg;
         }
 
@@ -321,6 +322,7 @@ in {
         #image.spotify {
           padding-left: 5px;
           border: 1px solid @gray;
+          border-right: 0;
           background: @bg;
         }
 
