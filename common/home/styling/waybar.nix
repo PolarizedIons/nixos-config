@@ -335,6 +335,7 @@ in {
 
         #custom-spotify {
           border: 1px solid @gray;
+          border-left: 0;
         }
 
         #tray {
