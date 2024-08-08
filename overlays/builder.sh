@@ -3,8 +3,6 @@ PATH=$dpkg/bin:$PATH
 
 runHook preInstall
 dpkg -x $src unpacked
-echo unpacked: $(ls unpacked)
-echo out: $out
 mkdir -p $out
 cp -r unpacked/* $out/
 

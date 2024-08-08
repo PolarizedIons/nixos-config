@@ -20,14 +20,10 @@ in let
             inherit (desc) sha256;
           };
 
-          dontPatchELF = false;
-          # postFixup = let
+          dontPatchELF = true;
           dynamicLinker = stdenv.cc.bintools.dynamicLinker;
           rpath = pkgs.lib.makeLibraryPath
             (with pkgs; [ stdenv.cc.cc icu70 openssl zlib curl ]);
-          # in ''
-
-          # '';
         });
 
     in buildFHSUserEnv {
@@ -40,6 +36,6 @@ in mkDebianPackage {
   url =
     "https://d20adtppz83p9s.cloudfront.net/GTK/3.14.0/awsvpnclient_amd64.deb";
   version = "3.14.0";
-  script = "dotnet /opt/awsvpnclient/AWS\\ VPN\\ Client.dll";
+  script = "/opt/awsvpnclient/AWS\\ VPN\\ Client";
   sha256 = "bd2b401a1ede6057d725a13c77ef92147a79e0c5e0020d379e44f319b5334f60";
 }
