@@ -10,6 +10,7 @@
         ] else
           [ ])
         (if config.setup.media.enable then [ libreoffice ] else [ ])
+        awstest
       ];
 
     nixpkgs.overlays = [
@@ -18,6 +19,9 @@
         ## Note: sha256 is computed via (note the version):
         ## nix-prefetch-url --unpack https://cdn.cypress.io/desktop/12.17.1/linux-x64/cypress.zip
         sha = "079c0q5bfiqm7n040sh3vr8z7jy26180alrb9iy7kk8jgca6sdy3";
+      })
+      (_: _: {
+        awstest = (pkgs.callPackage ../../overlays/aws-vpn-client.nix { });
       })
     ];
 
