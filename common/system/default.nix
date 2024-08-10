@@ -26,6 +26,8 @@
     ./yubikey.nix
   ];
 
+  nixpkgs.overlays = [ (import ../../overlays/aws-vpn-client.nix) ];
+
   environment.systemPackages = with pkgs; [
     nano
     wget
@@ -44,7 +46,10 @@
     inputs.agenix.packages.${system}.default
 
     inputs.nix-inspect.packages.${system}.default
+    awsvpnclient
   ];
+  services.dbus.packages = [ pkgs.awsvpnclient ];
+  systemd.packages = [ pkgs.awsvpnclient ];
 
   hardware.opentabletdriver.enable = true;
 

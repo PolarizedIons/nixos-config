@@ -51,5 +51,5 @@
 
   # TODO: figure out what is requireing this
   nixpkgs.config.permittedInsecurePackages =
-    [ "python3.12-youtube-dl-2021.12.17" ];
+    [ "python3.12-youtube-dl-2021.12.17" "openssl-1.1.1w" ];
 }
