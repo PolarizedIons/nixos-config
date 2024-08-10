@@ -9,9 +9,6 @@
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
-    # awsvpnclient.url = "github:ymatsiuk/awsvpnclient/main";
-    # awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
-
     teraflops.url = "github:aanderse/teraflops";
     teraflops.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -36,8 +33,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    # awsvpnclient.url = "github:JonathanxD/openaws-vpn-client";
-    # awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
+    aws-vpn-client.url = "github:Polarizedions/aws-vpn-client-flake";
+    aws-vpn-client.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

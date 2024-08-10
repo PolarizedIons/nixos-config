@@ -1,5 +1,9 @@
 { config, lib, pkgs, inputs, system, ... }: {
+  imports = [ inputs.aws-vpn-client.nixosModules.${system}.default ];
+
   config = lib.mkIf config.setup.work-mode.enable {
+    programs.awsvpnclient.enable = true;
+
     environment.systemPackages = with pkgs;
       lib.mkMerge [
         (if config.setup.chatting.enable then [ slack ] else [ ])
@@ -10,7 +14,6 @@
         ] else
           [ ])
         (if config.setup.media.enable then [ libreoffice ] else [ ])
-        awstest
       ];
 
     nixpkgs.overlays = [
