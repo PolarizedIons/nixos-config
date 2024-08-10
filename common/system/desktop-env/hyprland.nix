@@ -21,7 +21,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      kitty # terminal
+      alacritty # terminal
       libsForQt5.polkit-kde-agent
       swaynotificationcenter # notification daemon
       libnotify

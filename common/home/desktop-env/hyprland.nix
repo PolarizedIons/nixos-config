@@ -19,6 +19,7 @@ in {
           [ "hyprpaper" "wl-paste -t text --watch clipman store --no-persist" ];
 
         "$mod" = "SUPER";
+        "$terminal" = "alacritty";
 
         monitor = let
           calcOffset = index: offset:
@@ -52,7 +53,7 @@ in {
         gestures = { workspace_swipe = true; };
 
         bind = [
-          "$mod, Return, exec, kitty"
+          "$mod, Return, exec, $terminal"
           "$mod, Space, exec, rofi -show drun -show-icons"
           "$mod, D, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, F, fullscreen"
