@@ -1,4 +1,6 @@
-{ config, lib, pkgs, inputs, system, ... }: {
+{ config, lib, pkgs, inputs, system, ... }:
+
+{
   imports = [ inputs.aws-vpn-client.nixosModules.${system}.default ];
 
   config = lib.mkIf config.setup.work-mode.enable {
@@ -7,12 +9,7 @@
     environment.systemPackages = with pkgs;
       lib.mkMerge [
         (if config.setup.chatting.enable then [ slack ] else [ ])
-        (if config.setup.coding.enable then [
-          cypress
-          awscli2
-          inputs.awsvpnclient.packages.${system}.awsvpnclient
-        ] else
-          [ ])
+        (if config.setup.coding.enable then [ cypress awscli2 ] else [ ])
         (if config.setup.media.enable then [ libreoffice ] else [ ])
       ];
 
