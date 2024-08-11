@@ -4,7 +4,7 @@ let
   inherit (inputs.nix-colors.lib.contrib { inherit pkgs; }) gtkThemeFromScheme;
 
 in rec {
-  imports = [ ./kitty.nix ./rofi.nix ./waybar.nix ];
+  imports = [ ./alacritty.nix ./rofi.nix ./waybar.nix ];
 
   colorScheme = inputs.nix-colors.colorSchemes.material-darker;
 

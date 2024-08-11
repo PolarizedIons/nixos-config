@@ -10,7 +10,7 @@
       XRT_COMPOSITOR_COMPUTE = "1";
     };
 
-    environment.systemPackages = with pkgs; [ envision ];
+    programs.envision.enable = true;
 
     boot.kernelPatches = [{
       name = "amdgpu-ignore-ctx-privileges";
@@ -21,6 +21,5 @@
         hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
       };
     }];
-
   };
 }
