@@ -52,4 +52,6 @@
     powerOnBoot = true;
     settings.General.Experimental = true;
   };
+
+  powerManagement.cpuFreqGovernor = "performance";
 }
