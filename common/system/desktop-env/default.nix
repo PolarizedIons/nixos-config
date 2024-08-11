@@ -20,12 +20,13 @@ in {
 
   # Hint electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
-  services = {
-    libinput.enable = true;
-    libinput.touchpad.naturalScrolling = true;
-    libinput.touchpad.disableWhileTyping = false;
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
+    touchpad.disableWhileTyping = false;
   };
 
   environment.systemPackages = with pkgs; [ xwaylandvideobridge ];
