@@ -1,16 +1,17 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, system, ... }: {
   imports = [ # Include the results of the hardware scan.
     <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
     <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix>
     ../../common
   ];
+  programs.awsvpnclient.enable = true;
 
   setup.machine-name = "my-vm";
-  setup.desktop-environment = "hyprland";
-  setup.browsers = [ "firefox" "chromium" ];
-  setup.media.enable = true;
-  setup.chatting.enable = true;
-  setup.music.enable = true;
+  setup.desktop-environment = "gnome";
+  setup.browsers = [ "firefox" ];
+  setup.media.enable = false;
+  setup.chatting.enable = false;
+  setup.music.enable = false;
   setup.work-mode.enable = false;
 
   setup.users = [{
