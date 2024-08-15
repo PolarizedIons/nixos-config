@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, inputs, ... }:
+
+{
   config = lib.mkIf config.setup.vr.enable {
     services.monado = {
       enable = true;
@@ -6,11 +8,11 @@
     };
 
     systemd.user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = "1";
+      # STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
     };
 
-    programs.envision.enable = true;
+    # programs.envision.enable = true;
 
     boot.kernelPatches = [{
       name = "amdgpu-ignore-ctx-privileges";

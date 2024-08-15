@@ -37,6 +37,8 @@
 
     aws-vpn-client.url = "github:Polarizedions/aws-vpn-client-flake";
     aws-vpn-client.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -48,7 +50,10 @@
         name = machine;
         value = nixpkgs.lib.nixosSystem {
           system = system;
-          modules = [ ./machines/${machine}/configuration.nix ];
+          modules = [
+            inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+            ./machines/${machine}/configuration.nix
+          ];
           specialArgs = { inherit inputs system; };
         };
       }) machines);
