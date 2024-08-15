@@ -10,7 +10,10 @@
     systemd.user.services.monado.environment = {
       # STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
+      # VIT_SYSTEM_LIBRARY_PATH = "";
     };
+
+    # environment.systemPackages = with pkgs; [ basalt-monado ];
 
     # programs.envision.enable = true;
 
