@@ -10,12 +10,11 @@
     systemd.user.services.monado.environment = {
       # STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
-      # VIT_SYSTEM_LIBRARY_PATH = "";
     };
 
+    # Note, currently comes from a patch to nixpkgs (PR #295107)
     # environment.systemPackages = with pkgs; [ basalt-monado ];
-
-    # programs.envision.enable = true;
+    # systemd.user.services.monado.environment.VIT_SYSTEM_LIBRARY_PATH = "";
 
     boot.kernelPatches = [{
       name = "amdgpu-ignore-ctx-privileges";
