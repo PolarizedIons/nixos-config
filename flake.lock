@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723288562,
-        "narHash": "sha256-RGmw4sXeeLeCE7t6As+H6tqVaN+QW09CSZ892tAmXso=",
+        "lastModified": 1723888882,
+        "narHash": "sha256-uUXmTCa8m7in4mffJCKAfco8AS0u5VaRFAHqCcXCh1A=",
         "owner": "Polarizedions",
         "repo": "aws-vpn-client-flake",
-        "rev": "c08a0214f1a4334c00840961adb201c93db26a4c",
+        "rev": "3b07d6a685a62ea1784e0b00a4d8e1a7074fea35",
         "type": "github"
       },
       "original": {
