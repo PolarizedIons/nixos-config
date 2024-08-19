@@ -29,7 +29,7 @@
 
     services.postgresql = {
       enable = true;
-      package = pkgs.postgresql;
+      package = pkgs.postgresql_15;
       enableTCPIP = true;
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
