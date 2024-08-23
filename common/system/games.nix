@@ -7,7 +7,7 @@ with lib; {
 
       # minecraft
       prismlauncher
-      # modrinth-app
+      modrinth-app
     ];
 
     programs.spplice.enable = true;
