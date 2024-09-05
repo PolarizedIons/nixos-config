@@ -15,6 +15,8 @@ in {
       settings = {
         misc = { disable_hyprland_logo = true; };
 
+        cursor = { no_hardware_cursors = true; };
+
         exec-once =
           [ "hyprpaper" "wl-paste -t text --watch clipman store --no-persist" ];
 
