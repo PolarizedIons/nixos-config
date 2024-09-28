@@ -32,7 +32,7 @@ with lib; {
       k9s
       kubectl
       fluxcd
-      openlens
+      lens
       kubernetes-helm
 
       terraform
