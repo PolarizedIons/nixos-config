@@ -13,7 +13,7 @@
   # setup.desktop-environment = "plasma";
   setup.desktop-environment = "hyprland";
   setup.monitors =
-    [ { name = "DVI-I-1"; } { name = "HDMI-A-1"; } { name = "eDP-1"; } ];
+    [ { name = "HDMI-A-1"; } { name = "DVI-I-1"; } { name = "eDP-1"; } ];
   setup.browsers = [ "google-chrome-stable" "firefox" ];
 
   setup.work-mode.enable = true;
