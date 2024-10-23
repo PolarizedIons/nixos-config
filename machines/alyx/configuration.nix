@@ -25,6 +25,7 @@
   setup.music.enable = true;
   setup.libvirt.enable = true;
   setup.flatpak.enable = true;
+  setup.tailscale.enable = true;
 
   setup.users = [{
     login = "stephan";
