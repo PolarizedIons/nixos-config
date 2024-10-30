@@ -59,7 +59,7 @@ in {
           "$mod, Space, exec, rofi -show drun -show-icons"
           "$mod, D, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, F, fullscreen"
-          "$mod, M, exit"
+          # "$mod, M, exit"
           "$mod, C, killactive"
           "$mod, Z, exec, clipman pick -t rofi"
           ''
