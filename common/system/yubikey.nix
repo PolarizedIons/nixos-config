@@ -2,7 +2,11 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
   services.pcscd.enable = true;
-  environment.systemPackages = with pkgs; [ yubioath-flutter ];
+  environment.systemPackages = with pkgs;
+    [
+      # https://github.com/NixOS/nixpkgs/issues/352598
+      #  yubioath-flutter
+    ];
 
   programs.gnupg.agent = {
     enable = true;
