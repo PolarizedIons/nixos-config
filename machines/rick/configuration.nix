@@ -14,7 +14,7 @@
   setup.desktop-environment = "hyprland";
   setup.monitors = [{ name = "eDP-1"; }];
   setup.video-driver = "amdgpu";
-  setup.browsers = [ "firefox" "chromium" ];
+  setup.browsers = [ "firefox" "chromium" "google-chrome-stable" ];
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
   setup.flatpak.enable = true;
