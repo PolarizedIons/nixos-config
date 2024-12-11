@@ -9,7 +9,7 @@
       corefonts
       vistafonts
       jetbrains-mono
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
     ];
   };
 }
