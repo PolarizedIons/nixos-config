@@ -4,11 +4,12 @@ with lib; {
     environment.systemPackages = with pkgs; [
       # IDEs
       vscode
-      jetbrains.rider
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
-      jetbrains.datagrip
-      jetbrains.rust-rover
+      jetbrains-toolbox
+      # jetbrains.rider
+      # jetbrains.idea-ultimate
+      # jetbrains.pycharm-professional
+      # jetbrains.datagrip
+      # jetbrains.rust-rover
 
       # Node
       nodejs
