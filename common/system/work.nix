@@ -16,6 +16,7 @@
         (if config.setup.chatting.enable then [ slack ] else [ ])
         (if config.setup.coding.enable then [ cypress awscli2 ] else [ ])
         (if config.setup.media.enable then [ libreoffice ] else [ ])
+        [ clamtk ]
       ];
 
     nixpkgs.overlays = [
@@ -40,5 +41,10 @@
     };
 
     environment.sessionVariables = { ASPNETCORE_ENVIRONMENT = "Local"; };
+
+    services.clamav.scanner.enable = true;
+    services.clamav.updater.enable = true;
+    services.clamav.fangfrisch.enable = true;
+    services.clamav.daemon.enable = true;
   };
 }
