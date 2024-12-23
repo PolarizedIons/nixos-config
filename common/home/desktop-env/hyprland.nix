@@ -3,6 +3,10 @@
 let
   inherit (inputs.nix-colors.lib.contrib { inherit pkgs; })
     nixWallpaperFromScheme;
+
+  wallpapers = import ../wallpapers { inherit pkgs config lib; };
+  # TODO: randomize somehow?
+  wallpaper = builtins.elemAt wallpapers 0;
 in {
   config = lib.mkIf (setup.desktop-environment == "hyprland") {
     wayland.windowManager.hyprland = {
@@ -59,7 +63,7 @@ in {
           "$mod, Space, exec, rofi -show drun -show-icons"
           "$mod, D, exec, ${builtins.elemAt setup.browsers 0}"
           "$mod, F, fullscreen"
-          # "$mod, M, exit"
+          "$mod, Escape, exit"
           "$mod, C, killactive"
           "$mod, Z, exec, clipman pick -t rofi"
           ''
@@ -128,10 +132,10 @@ in {
             passes = 1;
           };
 
-        #  drop_shadow = true;
-        #  shadow_range = 4;
-        #  shadow_render_power = 3;
-        #  "col.shadow" = "rgba(1a1a1aee)";
+          #  drop_shadow = true;
+          #  shadow_range = 4;
+          #  shadow_render_power = 3;
+          #  "col.shadow" = "rgba(1a1a1aee)";
         };
 
         animations = { enabled = true; };
@@ -213,15 +217,7 @@ in {
       enableXdgAutostart = true;
     };
 
-    #  Todo make this come from setup.monitors
-    services.hyprpaper = let
-      wallpaper = nixWallpaperFromScheme {
-        scheme = config.colorScheme;
-        width = 1920;
-        height = 1080;
-        logoScale = 5.0;
-      };
-    in {
+    services.hyprpaper = {
       enable = true;
       settings = {
         preload = [ "${wallpaper}" ];

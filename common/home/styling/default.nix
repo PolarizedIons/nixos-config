@@ -6,7 +6,7 @@ let
 in rec {
   imports = [ ./alacritty.nix ./rofi.nix ./waybar.nix ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.material-darker;
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   home.pointerCursor = {
     gtk.enable = true;
