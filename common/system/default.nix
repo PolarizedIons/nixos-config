@@ -26,6 +26,9 @@
     ./work.nix
     ./yubikey.nix
   ];
+
+  nixpkgs.overlays = [ (import ../../overlays/stable-electron.nix) ];
+
   environment.systemPackages = with pkgs; [
     nano
     wget
