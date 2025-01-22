@@ -14,6 +14,6 @@ with lib; {
 
     programs.steam.enable = true;
     hardware.xone.enable = true;
-    hardware.xpadneo.enable = true;
+    # hardware.xpadneo.enable = true;
   };
 }

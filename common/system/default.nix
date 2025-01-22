@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, ... }:
+{ pkgs, inputs, system, config, ... }:
 
 {
   imports = [
@@ -27,7 +27,10 @@
     ./yubikey.nix
   ];
 
-  nixpkgs.overlays = [ (import ../../overlays/stable-electron.nix) ];
+  nixpkgs.overlays = [
+    (import ../../overlays/stable-electron.nix)
+    (import ../../overlays/pr-fixes.nix)
+  ];
 
   environment.systemPackages = with pkgs; [
     nano
