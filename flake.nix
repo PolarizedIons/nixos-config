@@ -23,7 +23,7 @@
 
     nix-inspect.url = "github:bluskript/nix-inspect";
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
-reboot
+
     # ref because I'm tired of stuff breaking from their side...
     # intentionally not following nixpkgs
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=v0.46.2-b";
