@@ -8,7 +8,7 @@
 
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
-  setup.desktop-environment = "hyprland";
+  setup.desktop-environment = "plasma";
   setup.monitors = [ { name = "DP-2"; } { name = "HDMI-A-1"; } ];
   setup.browsers = [ "firefox" "chromium" ];
   setup.wooting.enable = true;
