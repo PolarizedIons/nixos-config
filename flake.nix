@@ -25,7 +25,7 @@
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
 
     # intentionally not following nixpkgs
-    hyprland.url = "github.com:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
