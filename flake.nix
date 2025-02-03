@@ -24,9 +24,8 @@
     nix-inspect.url = "github:bluskript/nix-inspect";
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
 
-    # ref because I'm tired of stuff breaking from their side...
     # intentionally not following nixpkgs
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=v0.46.2-b";
+    hyprland.url = "github.com:hyprwm/Hyprland";
 
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
@@ -52,12 +51,15 @@
       system = "x86_64-linux";
 
       # Patch nixpkgs input: https://github.com/NixOS/nixpkgs/pull/142273#issuecomment-948225922
-      remoteNixpkgsPatches = [{
-        meta.description = "#295107: basalt-monado: init at release-673cc5c6";
-        url =
-          "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/295107.patch";
-        hash = "sha256-qKwJKenK6QYYyz27l/xuoUrAzTKobhJRhbxD0z7kWlo=";
-      }];
+      remoteNixpkgsPatches = [
+        # example: 
+        # {
+        #   meta.description = "#295107: basalt-monado: init at release-673cc5c6";
+        #   url =
+        #     "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/295107.patch";
+        #   hash = "sha256-qKwJKenK6QYYyz27l/xuoUrAzTKobhJRhbxD0z7kWlo=";
+        # }
+      ];
       originPkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
       nixpkgs = originPkgs.applyPatches {
         name = "nixpkgs-patched";

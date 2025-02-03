@@ -14,6 +14,7 @@
     };
 
     environment.systemPackages = with pkgs; [ envision ];
+    nixpkgs.overlays = [ (import ../../overlays/envision.nix) ];
 
     # boot.kernelPatches = [{
     #   name = "amdgpu-ignore-ctx-privileges";
