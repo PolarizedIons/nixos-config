@@ -9,6 +9,7 @@ with lib; {
       # jetbrains.idea-ultimate
       # jetbrains.pycharm-professional
       jetbrains.datagrip
+      jetbrains.webstorm
       # jetbrains.rust-rover
 
       # Node
@@ -22,12 +23,17 @@ with lib; {
       #python
       python3
 
+      # php
+      php
+      laravel
+
       # utils
       nixfmt-classic
       pre-commit
       ldns
       xdg-utils
       jq
+      terraform
 
       # k8s
       k9s
@@ -36,8 +42,7 @@ with lib; {
       lens
       kubernetes-helm
 
-      terraform
-
+      # other
       inputs.teraflops.packages.${system}.default
       colmena
       hcloud
