@@ -7,11 +7,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   setup.machine-name = "alyx";
-  setup.video-driver = "intel";
+  setup.video-driver = "modesetting";
   setup.display-link.enable = true;
 
-  # setup.desktop-environment = "plasma";
-  setup.desktop-environment = "hyprland";
+  setup.desktop-environment = "plasma";
   setup.monitors =
     [ { name = "HDMI-A-1"; } { name = "DVI-I-1"; } { name = "eDP-1"; } ];
   setup.browsers = [ "google-chrome-stable" "firefox" ];
