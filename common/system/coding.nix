@@ -22,7 +22,7 @@ with lib; {
       # php
       php
       laravel
-      composer
+      php83Packages.composer
 
       # utils
       nixfmt-classic
