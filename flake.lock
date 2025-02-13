@@ -66,13 +66,13 @@
       "locked": {
         "lastModified": 1738678669,
         "narHash": "sha256-K6KloHEX4XU1zp8w6U2JGjN1JhQZLXVpzX5K38hHuBU=",
-        "owner": "Polarizedions",
+        "owner": "PolarizedIons",
         "repo": "aws-vpn-client-flake",
         "rev": "df467d1fe34730b6a0adb43f67e3dfb38cc110cc",
         "type": "github"
       },
       "original": {
-        "owner": "Polarizedions",
+        "owner": "PolarizedIons",
         "repo": "aws-vpn-client-flake",
         "type": "github"
       }

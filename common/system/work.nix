@@ -6,9 +6,9 @@
   config = lib.mkIf config.setup.work-mode.enable {
     programs.awsvpnclient = {
       enable = true;
-      version = "5.0.0";
-      sha256 =
-        "645126b5698cb550e9dc822e58ed899a5730d2e204f28f4023ec671915fdda0c";
+      # version = "4.1.0";
+      # sha256 =
+      #   "334d00222458fbfe9dade16c99fe97e9ebcbd51fff017d0d6b1d1b764e7af472";
     };
 
     environment.systemPackages = with pkgs;

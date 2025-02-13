@@ -35,7 +35,7 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    aws-vpn-client.url = "github:Polarizedions/aws-vpn-client-flake";
+    aws-vpn-client.url = "github:PolarizedIons/aws-vpn-client-flake";
     aws-vpn-client.inputs.nixpkgs.follows = "nixpkgs";
 
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
