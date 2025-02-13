@@ -4,13 +4,9 @@ with lib; {
     environment.systemPackages = with pkgs; [
       # IDEs
       vscode
-      # jetbrains-toolbox
       jetbrains.rider
-      # jetbrains.idea-ultimate
-      # jetbrains.pycharm-professional
       jetbrains.datagrip
-      jetbrains.webstorm
-      # jetbrains.rust-rover
+      jetbrains.phpstorm
 
       # Node
       nodejs
@@ -26,6 +22,7 @@ with lib; {
       # php
       php
       laravel
+      php83Packages.composer
 
       # utils
       nixfmt-classic
