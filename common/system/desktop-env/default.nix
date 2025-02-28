@@ -29,14 +29,15 @@ in {
     touchpad.disableWhileTyping = false;
   };
 
-  environment.systemPackages = with pkgs; [ xwaylandvideobridge ];
+  environment.systemPackages = with pkgs; [ kdePackages.xwaylandvideobridge ];
 
   systemd.user.services."xwaylandvideobridge" = {
     description = "xwaylandvideobridge service";
     wantedBy = [ "graphical-session.target" ];
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge";
+      ExecStart =
+        "${pkgs.kdePackages.xwaylandvideobridge}/bin/xwaylandvideobridge";
     };
   };
 
@@ -45,7 +46,7 @@ in {
     config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
-      xdg-desktop-portal-kde
+      kdePackages.xdg-desktop-portal-kde
       # xdg-desktop-portal-gtk
     ];
     wlr = { enable = true; };
