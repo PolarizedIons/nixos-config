@@ -88,5 +88,9 @@ in with lib; {
     libvirt.enable = mkEnableOption "Enable libvirt & Virt-Manager";
     vr.enable = mkEnableOption "Enable VR";
     tailscale.enable = mkEnableOption "Enable tailscale";
+    pam-beacon.enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 }

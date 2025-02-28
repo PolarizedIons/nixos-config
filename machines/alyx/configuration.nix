@@ -13,7 +13,7 @@
   setup.desktop-environment = "plasma";
   setup.monitors =
     [ { name = "HDMI-A-1"; } { name = "DVI-I-1"; } { name = "eDP-1"; } ];
-  setup.browsers = [ "google-chrome-stable" "firefox" ];
+  setup.browsers = [ "google-chrome-stable" "zen" "firefox" ];
 
   setup.work-mode.enable = true;
   setup.wooting.enable = true;
@@ -25,6 +25,7 @@
   setup.libvirt.enable = true;
   setup.flatpak.enable = true;
   setup.tailscale.enable = true;
+  setup.pam-beacon.enable = false;
 
   setup.users = [{
     login = "stephan";
