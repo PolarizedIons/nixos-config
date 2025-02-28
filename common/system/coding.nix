@@ -44,6 +44,8 @@ with lib; {
       colmena
       hcloud
       packer
+
+      ghostty
     ];
 
     virtualisation.docker.enable = true;
