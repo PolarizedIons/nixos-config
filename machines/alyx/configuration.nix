@@ -25,6 +25,7 @@
   setup.libvirt.enable = true;
   setup.flatpak.enable = true;
   setup.tailscale.enable = true;
+  setup.pam-beacon.enable = false;
 
   setup.users = [{
     login = "stephan";
