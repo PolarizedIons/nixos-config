@@ -7,6 +7,7 @@ with lib; {
       jetbrains.rider
       jetbrains.datagrip
       jetbrains.phpstorm
+      jetbrains.clion
 
       # Node
       nodejs
