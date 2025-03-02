@@ -1,6 +1,7 @@
-{ inputs, system, config, ... }:
+{ inputs, system, config, lib, ... }:
 
 let
+  enable = config.setup.pam-beacon.enable;
   nonWorkMode = !config.setup.work-mode.enable;
   services = {
     sudo = true;
@@ -11,16 +12,18 @@ let
     hyprlock = nonWorkMode;
   };
 in {
-  security.pam.services = builtins.mapAttrs (name: value: {
-    rules.auth = {
-      pambeacon = {
-        enable = value;
-        control = "sufficient";
-        modulePath = "${
-            inputs.pam-beacon-rs.packages.${system}.pam-beacon-rs
-          }/lib/libpambeaconrs.so";
-        order = 1;
+  config = lib.mkIf enable {
+    security.pam.services = builtins.mapAttrs (name: value: {
+      rules.auth = {
+        pambeacon = {
+          enable = value;
+          control = "sufficient";
+          modulePath = "${
+              inputs.pam-beacon-rs.packages.${system}.pam-beacon-rs
+            }/lib/libpambeaconrs.so";
+          order = 1;
+        };
       };
-    };
-  }) services;
+    }) services;
+  };
 }

@@ -60,6 +60,7 @@
     settings.General.Experimental = true;
   };
 
+  programs.corectrl.enable = config.setup.video-driver == "amdgpu";
   powerManagement.cpuFreqGovernor = "performance";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
