@@ -11,10 +11,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   setup.machine-name = "rick";
-  setup.desktop-environment = "hyprland";
+  setup.desktop-environment = "plasma";
   setup.monitors = [{ name = "eDP-1"; }];
   setup.video-driver = "amdgpu";
-  setup.browsers = [ "firefox" "chromium" "google-chrome-stable" ];
+  setup.browsers = [ "zen" "firefox" "chromium" "google-chrome-stable" ];
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
   setup.flatpak.enable = true;

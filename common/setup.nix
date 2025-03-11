@@ -90,7 +90,7 @@ in with lib; {
     tailscale.enable = mkEnableOption "Enable tailscale";
     pam-beacon.enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false; # false for now, till I fix the package again
     };
   };
 }

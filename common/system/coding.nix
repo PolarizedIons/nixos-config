@@ -29,6 +29,7 @@ in with lib; {
       jetbrains.rider
       jetbrains.datagrip
       jetbrains.phpstorm
+      jetbrains.clion
 
       # Node
       nodejs
@@ -67,6 +68,8 @@ in with lib; {
       colmena
       hcloud
       packer
+
+      ghostty
     ];
 
     virtualisation.docker.enable = true;
