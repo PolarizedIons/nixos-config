@@ -49,7 +49,11 @@
     options = "--delete-older-than 14d";
   };
 
-  # TODO: figure out what is requireing this
-  nixpkgs.config.permittedInsecurePackages =
-    [ "python3.12-youtube-dl-2021.12.17" ];
+  nixpkgs.config.permittedInsecurePackages = [
+    # TODO: figure out what is requireing this
+    "python3.12-youtube-dl-2021.12.17"
+    # Work requirement
+    "dotnet-sdk-6.0.428"
+    "aspnetcore-runtime-6.0.36"
+  ];
 }

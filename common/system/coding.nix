@@ -1,5 +1,27 @@
 { lib, pkgs, config, inputs, system, ... }:
-with lib; {
+let
+  # https://discourse.nixos.org/t/dotnet-maui-workload/20370/10
+  dotnet-combined = (with pkgs.dotnetCorePackages;
+    combinePackages [
+      sdk_8_0
+      aspnetcore_8_0
+
+      sdk_6_0
+      aspnetcore_6_0
+    ]).overrideAttrs (finalAttrs: previousAttrs: {
+      # This is needed to install workload in $HOME
+      # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
+
+      postBuild = (previousAttrs.postBuild or "") + ''
+        for i in $out/sdk/*
+        do
+          i=$(basename $i)
+          mkdir -p $out/metadata/workloads/''${i/-*}
+          touch $out/metadata/workloads/''${i/-*}/userlocal
+        done
+      '';
+    });
+in with lib; {
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
       # IDEs
@@ -13,8 +35,7 @@ with lib; {
       nodePackages_latest.pnpm
 
       # Dotnet
-      dotnet-sdk_8
-      dotnet-aspnetcore_8
+      dotnet-combined
 
       #python
       python3
@@ -40,6 +61,8 @@ with lib; {
       kubernetes-helm
 
       # other
+      python311Packages.pyngrok
+
       inputs.teraflops.packages.${system}.default
       colmena
       hcloud
@@ -59,7 +82,7 @@ with lib; {
     '';
 
     environment.sessionVariables = rec {
-      DOTNET_ROOT = "$(dirname $(realpath $(which dotnet)))";
+      DOTNET_ROOT = "${dotnet-combined}";
       PATH = "$PATH:" + (concatStringsSep ":"
         (builtins.map (u: "/home/${u.login}/.dotnet/tools")
           config.setup.users));

@@ -16,7 +16,12 @@
         (if config.setup.chatting.enable then [ slack ] else [ ])
         (if config.setup.coding.enable then [ cypress awscli2 ] else [ ])
         (if config.setup.media.enable then [ libreoffice ] else [ ])
-        [ clamtk ]
+        [
+          clamtk
+          figma-linux
+          # Broken build
+          # figma-agent
+        ]
       ];
 
     nixpkgs.overlays = [
