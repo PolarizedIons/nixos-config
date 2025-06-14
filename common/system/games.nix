@@ -3,16 +3,16 @@ with lib; {
   imports = [ inputs.spplice.nixosModules.${system}.spplice ];
   config = mkIf config.setup.gaming.enable {
     environment.systemPackages = with pkgs; [
-      heroic
+      steamtinkerlaunch
 
-      # minecraft
+      heroic
       prismlauncher
-#      modrinth-app
     ];
 
     programs.spplice.enable = true;
 
     programs.steam.enable = true;
+    programs.steam.extraCompatPackages = with pkgs; [ steamtinkerlaunch ];
     hardware.xone.enable = true;
     # hardware.xpadneo.enable = true;
   };
