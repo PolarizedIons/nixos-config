@@ -41,6 +41,7 @@
 
     fastfetch
     htop
+    btop
 
     nix-index
 

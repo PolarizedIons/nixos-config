@@ -51,7 +51,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     # TODO: figure out what is requireing this
-    "python3.12-youtube-dl-2021.12.17"
+    "python3.13-youtube-dl-2021.12.17"
     # Work requirement
     "dotnet-sdk-6.0.428"
     "aspnetcore-runtime-6.0.36"
