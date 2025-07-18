@@ -7,12 +7,13 @@
   programs.awsvpnclient.enable = true;
 
   setup.machine-name = "my-vm";
-  setup.desktop-environment = "gnome";
+  setup.desktop-environment = "plasma";
   setup.browsers = [ "firefox" ];
   setup.media.enable = false;
   setup.chatting.enable = false;
   setup.music.enable = false;
   setup.work-mode.enable = false;
+  setup.video-driver = "virtio";
 
   setup.users = [{
     login = "vm-user";
