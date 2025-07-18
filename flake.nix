@@ -15,28 +15,13 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    pam-beacon-rs.url = "github:PolarizedIons/pam-beacon-rs";
-    pam-beacon-rs.inputs.nixpkgs.follows = "nixpkgs";
-
     sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
     sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-inspect.url = "github:bluskript/nix-inspect";
     nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
 
-    # intentionally not following nixpkgs
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    hyprland-plugins.inputs.hyprland.follows = "hyprland";
-
-    hyprsplit.url = "github:shezdy/hyprsplit";
-    hyprsplit.inputs.hyprland.follows = "hyprland";
-
     nix-colors.url = "github:misterio77/nix-colors";
-
-    aws-vpn-client.url = "github:PolarizedIons/aws-vpn-client-flake";
-    aws-vpn-client.inputs.nixpkgs.follows = "nixpkgs";
 
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     nixpkgs-xr.inputs.nixpkgs.follows = "nixpkgs";

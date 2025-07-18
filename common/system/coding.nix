@@ -42,9 +42,9 @@ in with lib; {
       python3
 
       # php
-      php
-      laravel
-      php83Packages.composer
+      # php
+      # laravel
+      # php83Packages.composer
 
       # utils
       nixfmt-classic
@@ -62,14 +62,14 @@ in with lib; {
       kubernetes-helm
 
       # other
-      python311Packages.pyngrok
+      # python311Packages.pyngrok
 
-      inputs.teraflops.packages.${system}.default
-      colmena
-      hcloud
-      packer
+      # inputs.teraflops.packages.${system}.default
+      # colmena
+      # hcloud
+      # packer
 
-      ghostty
+      # ghostty
     ];
 
     virtualisation.docker.enable = true;

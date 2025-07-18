@@ -4,7 +4,7 @@ let
   inherit (inputs.nix-colors.lib.contrib { inherit pkgs; }) gtkThemeFromScheme;
 
 in rec {
-  imports = [ ./alacritty.nix ./rofi.nix ./waybar.nix ];
+  imports = [ ];
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 

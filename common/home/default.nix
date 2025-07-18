@@ -14,7 +14,6 @@
   _module.args.system = system;
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
     ./desktop-env
     ./shell
     ./styling

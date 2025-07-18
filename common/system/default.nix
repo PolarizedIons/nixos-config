@@ -17,13 +17,11 @@
     ./music.nix
     ./networking.nix
     ./nix-alien.nix
-    ./pam-beacon-rs.nix
     ./printing.nix
     ./sound.nix
     ./tailscale.nix
     ./vr.nix
     ./wooting.nix
-    ./work.nix
     ./yubikey.nix
   ];
 
