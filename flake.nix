@@ -47,14 +47,6 @@
         #     "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/295107.patch";
         #   hash = "sha256-qKwJKenK6QYYyz27l/xuoUrAzTKobhJRhbxD0z7kWlo=";
         # }
-
-        {
-          meta.description =
-            "#425529: jetbrains-jdk: fix with structured attrs";
-          url =
-            "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/425529.patch";
-          hash = "sha256-6YNEB93QE8CFwx8jIJN8Jtk4yUfuK3xlcUJucNVoaTs=";
-        }
       ];
       originPkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
       nixpkgs = originPkgs.applyPatches {
@@ -63,8 +55,8 @@
         patches = map originPkgs.fetchpatch remoteNixpkgsPatches;
       };
 
-      nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
-      # nixosSystem = inputs.nixpkgs.lib.nixosSystem;
+      # nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
+      nixosSystem = inputs.nixpkgs.lib.nixosSystem;
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
         name = machine;
