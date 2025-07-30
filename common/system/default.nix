@@ -59,6 +59,12 @@
     settings.General.Experimental = true;
   };
 
+  # disable built-in command-not-found, which doesn't work with flakes
+  programs.command-not-found.enable = false;
+  programs.zsh.interactiveShellInit = ''
+    source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+  '';
+
   programs.corectrl.enable = config.setup.video-driver == "amdgpu";
   powerManagement.cpuFreqGovernor = "performance";
 
