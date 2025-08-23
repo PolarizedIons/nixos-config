@@ -8,6 +8,7 @@ with lib; {
         qemu.swtpm.enable = true;
         qemu.package = pkgs.pkgs.qemu_kvm;
         qemu.ovmf.packages = [ pkgs.OVMFFull.fd ];
+        allowedBridges = [ "virbr0" "br0" ];
       };
     };
     programs.dconf.enable = true;

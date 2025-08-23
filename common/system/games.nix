@@ -15,5 +15,7 @@ with lib; {
     programs.steam.extraCompatPackages = with pkgs; [ steamtinkerlaunch ];
     hardware.xone.enable = true;
     # hardware.xpadneo.enable = true;
+
+    hardware.new-lg4ff.enable = true;
   };
 }
