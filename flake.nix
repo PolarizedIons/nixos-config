@@ -15,11 +15,12 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
-    sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+    # sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
+    # sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-inspect.url = "github:bluskript/nix-inspect";
-    nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
+    # Uses old nix 2.24
+    # nix-inspect.url = "github:bluskript/nix-inspect";
+    # nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
 

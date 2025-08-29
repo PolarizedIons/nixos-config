@@ -6,14 +6,16 @@
         wayland.enable = true;
 
         # forcing Qt5 libs because of https://github.com/NixOS/nixpkgs/issues/292761
-        package = lib.mkForce pkgs.libsForQt5.sddm;
-        extraPackages =
-          pkgs.lib.mkForce [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
+        # package = lib.mkForce pkgs.libsForQt5.sddm;
+        # extraPackages =
+        #   pkgs.lib.mkForce [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
 
-        theme = "catppuccin-sddm-corners";
+        # theme = "catppuccin-sddm-corners";
       };
 
       environment.systemPackages = with pkgs;
-        [ inputs.sddm-catppuccin.packages.${system}.catppuccin-sddm-corners ];
+        [
+          #  inputs.sddm-catppuccin.packages.${system}.catppuccin-sddm-corners 
+        ];
     };
 }

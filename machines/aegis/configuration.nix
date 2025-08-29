@@ -10,12 +10,7 @@
   setup.video-driver = "amdgpu";
   setup.desktop-environment = "plasma";
   setup.monitors = [ { name = "DP-2"; } { name = "HDMI-A-1"; } ];
-  setup.browsers = [
-    "zen"
-    "firefox"
-    # https://github.com/NixOS/nixpkgs/issues/435671
-    #  "chromium" 
-  ];
+  setup.browsers = [ "zen" "firefox" "chromium" ];
   setup.wooting.enable = true;
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
