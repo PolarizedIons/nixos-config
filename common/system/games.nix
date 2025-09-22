@@ -7,6 +7,8 @@ with lib; {
 
       heroic
       prismlauncher
+
+      gpu-screen-recorder-gtk # GUI app
     ];
 
     programs.spplice.enable = true;
@@ -17,5 +19,8 @@ with lib; {
     # hardware.xpadneo.enable = true;
 
     hardware.new-lg4ff.enable = true;
+
+    # For promptless recording on both CLI and GUI
+    programs.gpu-screen-recorder.enable = true;
   };
 }
