@@ -4,10 +4,8 @@ with lib; {
     virtualisation = {
       libvirtd = {
         enable = true;
-        qemu.ovmf.enable = true;
         qemu.swtpm.enable = true;
         qemu.package = pkgs.pkgs.qemu_kvm;
-        qemu.ovmf.packages = [ pkgs.OVMFFull.fd ];
         allowedBridges = [ "virbr0" "br0" ];
       };
     };
