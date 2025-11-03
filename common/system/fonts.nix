@@ -2,12 +2,12 @@
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
-      ubuntu_font_family
+      ubuntu-classic
       powerline-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       unifont
       corefonts
-      vistafonts
+      vista-fonts
       jetbrains-mono
       nerd-fonts.jetbrains-mono
     ];
