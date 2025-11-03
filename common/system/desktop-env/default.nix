@@ -29,17 +29,17 @@ in {
     touchpad.disableWhileTyping = false;
   };
 
-  environment.systemPackages = with pkgs; [ kdePackages.xwaylandvideobridge ];
+  # environment.systemPackages = with pkgs; [ kdePackages.xwaylandvideobridge ];
 
-  systemd.user.services."xwaylandvideobridge" = {
-    description = "xwaylandvideobridge service";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart =
-        "${pkgs.kdePackages.xwaylandvideobridge}/bin/xwaylandvideobridge";
-    };
-  };
+  # systemd.user.services."xwaylandvideobridge" = {
+  #   description = "xwaylandvideobridge service";
+  #   wantedBy = [ "graphical-session.target" ];
+  #   partOf = [ "graphical-session.target" ];
+  #   serviceConfig = {
+  #     ExecStart =
+  #       "${pkgs.kdePackages.xwaylandvideobridge}/bin/xwaylandvideobridge";
+  #   };
+  # };
 
   xdg.portal = {
     enable = true;
