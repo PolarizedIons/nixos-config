@@ -7,6 +7,7 @@ with lib; {
 
       heroic
       prismlauncher
+      vintagestory
 
       gpu-screen-recorder-gtk # GUI app
     ];
