@@ -2,7 +2,9 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = user.name;
-    userEmail = user.email;
+    settings.user = {
+      name = user.name;
+      email = user.email;
+    };
   };
 }
