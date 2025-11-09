@@ -13,6 +13,6 @@
     services.noctalia-shell.enable = true;
 
     programs.regreet.enable = true;
-    programs.regreet.theme.name = "Adwaita-Dark";
+    # programs.regreet.theme.name = "Adwaita-Dark";
   };
 }
