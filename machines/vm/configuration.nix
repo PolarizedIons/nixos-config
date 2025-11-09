@@ -4,11 +4,10 @@
     <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix>
     ../../common
   ];
-  programs.awsvpnclient.enable = true;
 
   setup.machine-name = "my-vm";
-  setup.desktop-environment = "plasma";
-  setup.browsers = [ "firefox" ];
+  setup.desktop-environment = "niri";
+  setup.browsers = [ "zen" ];
   setup.media.enable = false;
   setup.chatting.enable = false;
   setup.music.enable = false;
@@ -39,6 +38,11 @@
     diskSize = 16000; # MB
     memorySize = 6000; # MB
     writableStoreUseTmpfs = false;
+    qemu.options = [
+      "-device virtio-vga-gl"
+      "-display sdl,gl=on,show-cursor=off"
+      "-audio pa,model=hda"
+    ];
   };
 
   # This value determines the NixOS release from which the default

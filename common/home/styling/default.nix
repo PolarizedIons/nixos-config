@@ -1,12 +1,11 @@
 { inputs, system, pkgs, config, ... }:
 
-let
-  inherit (inputs.nix-colors.lib.contrib { inherit pkgs; }) gtkThemeFromScheme;
+{
 
-in rec {
-  imports = [ ];
-
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+  # stylix = {
+  #   enable = true;
+  #   base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  # };
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -15,22 +14,22 @@ in rec {
     size = 32;
   };
 
-  gtk = {
-    enable = true;
+  # gtk = {
+  #   enable = true;
 
-    theme = {
-      package = gtkThemeFromScheme { scheme = colorScheme; };
-      name = colorScheme.slug;
-    };
+  #   # theme = {
+  #   #   package = gtkThemeFromScheme { scheme = colorScheme; };
+  #   #   name = colorScheme.slug;
+  #   # };
 
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
+  #   # iconTheme = {
+  #   #   package = pkgs.adwaita-icon-theme;
+  #   #   name = "Adwaita";
+  #   # };
 
-    font = {
-      name = "Sans";
-      size = 11;
-    };
-  };
+  #   # font = {
+  #   #   name = "Sans";
+  #   #   size = 11;
+  #   # };
+  # };
 }

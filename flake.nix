@@ -15,15 +15,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # sddm-catppuccin.url = "github:khaneliman/catppuccin-sddm-corners";
-    # sddm-catppuccin.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Uses old nix 2.24
-    # nix-inspect.url = "github:bluskript/nix-inspect";
-    # nix-inspect.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-colors.url = "github:misterio77/nix-colors";
-
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     nixpkgs-xr.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,6 +23,15 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+    noctalia-shell.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

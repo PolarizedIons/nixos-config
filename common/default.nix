@@ -1,6 +1,7 @@
 { lib, pkgs, config, inputs, ... }: {
   imports = [
     inputs.agenix.nixosModules.default
+    inputs.stylix.nixosModules.stylix
     ./setup.nix
     ./user.nix
     ./system

@@ -13,13 +13,12 @@
   _module.args.inputs = inputs;
   _module.args.system = system;
   imports = [
-    inputs.nix-colors.homeManagerModules.default
-    ./desktop-env
-    ./shell
-    ./styling
-    ./git.nix
-    ./discord.nix
-    ./obs.nix
-    ./vr.nix
+    # ./desktop-env
+    # ./shell
+    # ./styling
+    # ./git.nix
+    # ./discord.nix
+    # ./obs.nix
+    # ./vr.nix
   ];
 }
