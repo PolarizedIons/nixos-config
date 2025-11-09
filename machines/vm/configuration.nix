@@ -37,6 +37,7 @@
   virtualisation = {
     diskSize = 16000; # MB
     memorySize = 6000; # MB
+    cores = 4;
     writableStoreUseTmpfs = false;
     qemu.options = [
       "-device virtio-vga-gl"
