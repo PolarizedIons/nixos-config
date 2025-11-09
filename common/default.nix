@@ -10,6 +10,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nix.settings = {
+    substituters = [ "https://nix-cache.home.polarizedions.net" ];
+    trusted-public-keys = [
+      "nix-cache.home.polarizedions.net:xRhsMw1D1DoOh7j1hyyAJsgc36CkcVhXUlFRxPQoEWc="
+    ];
+  };
+
   networking.hostName = config.setup.machine-name;
 
   boot.supportedFilesystems = [ "ntfs" ];
