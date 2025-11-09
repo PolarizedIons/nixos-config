@@ -72,4 +72,9 @@
   services.upower.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  };
 }

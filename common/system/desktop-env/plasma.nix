@@ -7,11 +7,11 @@
 
     environment.systemPackages = with pkgs; [ catppuccin-kde ];
 
-    qt = {
-      enable = true;
-      platformTheme = "kde";
-      style = "adwaita-dark";
-    };
+    # qt = {
+    #   enable = true;
+    #   platformTheme = "kde";
+    #   style = "adwaita-dark";
+    # };
 
     programs.dconf.enable = true;
 
