@@ -30,8 +30,12 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
-    noctalia-shell.inputs.nixpkgs.follows = "nixpkgs";
+    quickshell.url = "github:outfoxxed/quickshell";
+    quickshell.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+    noctalia.inputs.quickshell.follows = "quickshell";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

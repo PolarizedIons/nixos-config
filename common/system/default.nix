@@ -68,5 +68,8 @@
   programs.corectrl.enable = config.setup.video-driver == "amdgpu";
   powerManagement.cpuFreqGovernor = "performance";
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
