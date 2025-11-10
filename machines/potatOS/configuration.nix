@@ -12,10 +12,11 @@
 
   jovian.steam.enable = true;
   jovian.steam.autoStart = true;
-  jovian.steam.desktopSession = "plasmawayland";
+  jovian.steam.desktopSession = "plasma";
   jovian.devices.steamdeck.enable = true;
   jovian.devices.steamdeck.autoUpdate = true;
   jovian.hardware.has.amd.gpu = true;
+  jovian.steam.user = "polarizedions";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -39,11 +40,11 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
