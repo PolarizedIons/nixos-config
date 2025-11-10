@@ -7,7 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.steamos-nix.${system}.nixosModules.default
+    inputs.steamos-nix.nixosModules.default
   ];
 
   jovian.steam.enable = true;
