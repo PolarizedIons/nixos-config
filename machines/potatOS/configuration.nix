@@ -23,6 +23,7 @@
 
   setup.desktop-environment = "plasma";
   services.displayManager.sddm.enable = lib.mkForce false;
+  boot.plymouth.enable = lib.mkForce false;
 
   setup.video-driver = "amdgpu";
   setup.browsers = [ "zen" "chromium" ];
