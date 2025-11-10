@@ -5,10 +5,19 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+
+    (
+      # Put the most recent revision here:
+      let revision = "99919fd35e70c1b18ce948d5329928d751031312";
+      in builtins.fetchTarball {
+        url =
+          "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/${revision}.tar.gz";
+        # Update the hash as needed:
+        sha256 = "sha256:001fnj6mz7fvj6324m1qgqzxwz544y4h2v2wx2d7anihd7x1ma11";
+      } + "/modules")
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -71,10 +80,11 @@
     isNormalUser = true;
     description = "Stephan";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-#      kdePackages.kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        #      kdePackages.kate
+        #  thunderbird
+      ];
   };
 
   # Install firefox.
@@ -86,11 +96,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     nano
     ldns
     fastfetch
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

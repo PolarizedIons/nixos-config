@@ -40,7 +40,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      machines = [ "aegis" "rick" "vm" ];
+      machines = [ "aegis" "rick" "vm" "potatOS" ];
       system = "x86_64-linux";
 
       # Patch nixpkgs input: https://github.com/NixOS/nixpkgs/pull/142273#issuecomment-948225922
