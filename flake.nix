@@ -36,6 +36,9 @@
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.inputs.quickshell.follows = "quickshell";
+
+    steamos-nix.url = "github:Jovian-Experiments/Jovian-NixOS";
+    steamos-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

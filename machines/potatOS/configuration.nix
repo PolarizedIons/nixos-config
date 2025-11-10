@@ -2,22 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, system, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-
-    (
-      # Put the most recent revision here:
-      let revision = "99919fd35e70c1b18ce948d5329928d751031312";
-      in builtins.fetchTarball {
-        url =
-          "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/${revision}.tar.gz";
-        # Update the hash as needed:
-        sha256 = "sha256:001fnj6mz7fvj6324m1qgqzxwz544y4h2v2wx2d7anihd7x1ma11";
-      } + "/modules")
+    inputs.steamos-nix.nixosModules.${system}.default
   ];
+
+  jovian.steam.enable = true;
+  jovian.steam.autoStart = true;
+  jovian.steam.desktopSession = "plasmawayland";
+  jovian.devices.steamdeck.enable = true;
+  jovian.devices.steamdeck.autoUpdate = true;
+  jovian.hardware.has.amd.gpu = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
