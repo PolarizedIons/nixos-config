@@ -8,7 +8,11 @@
 
     programs.niri = { enable = true; };
 
-    environment.systemPackages = with pkgs; [ alacritty fuzzel ];
+    environment.systemPackages = with pkgs; [
+      alacritty
+      fuzzel
+      xwayland-satellite
+    ];
 
     services.noctalia-shell.enable = true;
 
