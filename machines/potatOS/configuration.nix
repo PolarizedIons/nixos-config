@@ -24,6 +24,8 @@
   setup.desktop-environment = "plasma";
   services.displayManager.sddm.enable = lib.mkForce false;
 
+  environment.systemPackages = with pkgs; [ ryubing ];
+
   setup.video-driver = "amdgpu";
   setup.browsers = [ "zen" "chromium" ];
   setup.gaming.enable = true;
