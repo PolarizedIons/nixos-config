@@ -6,6 +6,6 @@
     services.tailscale.useRoutingFeatures = "client";
 
     networking.nameservers = [ "100.100.100.100" ];
-    networking.search = [ "tail55af7.ts.net" "devices.home.polarizedions.net" ];
+    networking.search = [ "tail55af7.ts.net" "home" ];
   };
 }
