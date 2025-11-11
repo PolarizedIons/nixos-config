@@ -36,6 +36,7 @@
     curl
     git
     openssl
+    tmux
 
     fastfetch
     htop
