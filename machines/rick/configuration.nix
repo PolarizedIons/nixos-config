@@ -24,6 +24,7 @@
   setup.keybase.enable = true;
   setup.music.enable = true;
   setup.libvirt.enable = true;
+  setup.tailscale.enable = true;
 
   systemd.coredump.enable = false;
 

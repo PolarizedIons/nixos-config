@@ -31,6 +31,7 @@
   setup.media.enable = true;
   setup.chatting.enable = true;
   setup.music.enable = true;
+  setup.tailscale.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
