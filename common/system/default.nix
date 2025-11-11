@@ -76,6 +76,6 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/shadesmear-dark.yaml";
-    image = config.lib.stylix.pixel "base0A";
+    image = ./wallpaper.png;
   };
 }
