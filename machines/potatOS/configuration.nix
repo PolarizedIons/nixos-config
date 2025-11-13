@@ -24,7 +24,7 @@
   setup.desktop-environment = "plasma";
   services.displayManager.sddm.enable = lib.mkForce false;
 
-  environment.systemPackages = with pkgs; [ ryubing steam-rom-manager ];
+  environment.systemPackages = with pkgs; [ ryubing steam-rom-manager maliit-keyboard ];
 
   setup.video-driver = "amdgpu";
   setup.browsers = [ "zen" "chromium" ];
