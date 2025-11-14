@@ -56,15 +56,19 @@
         #   hash = "sha256-qKwJKenK6QYYyz27l/xuoUrAzTKobhJRhbxD0z7kWlo=";
         # }
       ];
+
+      localNixpkgsPatches = [ ./patches/envision.diff ];
+
       originPkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
       nixpkgs = originPkgs.applyPatches {
         name = "nixpkgs-patched";
         src = inputs.nixpkgs;
-        patches = map originPkgs.fetchpatch remoteNixpkgsPatches;
+        patches = (map originPkgs.fetchpatch remoteNixpkgsPatches)
+          ++ localNixpkgsPatches;
       };
 
-      # nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
-      nixosSystem = inputs.nixpkgs.lib.nixosSystem;
+      nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
+      # nixosSystem = inputs.nixpkgs.lib.nixosSystem;
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
         name = machine;

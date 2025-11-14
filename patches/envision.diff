@@ -1,0 +1,14 @@
+diff --git a/pkgs/by-name/en/envision/package.nix b/pkgs/by-name/en/envision/package.nix
+index 8c8ae51..d29dd5b 100644
+--- a/pkgs/by-name/en/envision/package.nix
++++ b/pkgs/by-name/en/envision/package.nix
+@@ -68,6 +68,9 @@ buildFHSEnv {
+           librealsense
+           boost
+           glew
++          cargo
++          libclang
++          libusb1
+         ])
+       )
+ 
