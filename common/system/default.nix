@@ -79,4 +79,6 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/shadesmear-dark.yaml";
     image = ./wallpaper.png;
   };
+
+  services.fwupd.enable = true;
 }
