@@ -5,6 +5,8 @@
     services.monado = {
       enable = true;
       defaultRuntime = true; # Register as default OpenXR runtime
+
+      highPriority = true;
     };
 
     systemd.user.services.monado.environment = {
@@ -13,8 +15,12 @@
       VIT_SYSTEM_LIBRARY_PATH = "${pkgs.basalt-monado}/lib/libbasalt.so";
     };
 
-    environment.systemPackages = with pkgs; [ envision ];
-    nixpkgs.overlays = [ (import ../../overlays/envision.nix) ];
+    environment.systemPackages = with pkgs; [
+      # envision
+      basalt-monado
+      opencomposite
+    ];
+    # nixpkgs.overlays = [ (import ../../overlays/envision.nix) ];
 
     # boot.kernelPatches = [{
     #   name = "amdgpu-ignore-ctx-privileges";

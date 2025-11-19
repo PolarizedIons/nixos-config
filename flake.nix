@@ -57,7 +57,11 @@
         # }
       ];
 
-      localNixpkgsPatches = [ ./patches/envision.diff ];
+      localNixpkgsPatches = [
+
+        #  ./patches/envision.diff 
+
+      ];
 
       originPkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
       nixpkgs = originPkgs.applyPatches {
@@ -67,8 +71,8 @@
           ++ localNixpkgsPatches;
       };
 
-      nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
-      # nixosSystem = inputs.nixpkgs.lib.nixosSystem;
+      # nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
+      nixosSystem = inputs.nixpkgs.lib.nixosSystem;
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
         name = machine;
