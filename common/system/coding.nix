@@ -30,6 +30,7 @@ in with lib; {
       jetbrains.datagrip
       jetbrains.phpstorm
       jetbrains.clion
+      jetbrains.fleet
 
       # Node
       nodejs
@@ -38,7 +39,7 @@ in with lib; {
       # Dotnet
       dotnet-combined
 
-      #python
+      # python
       python3
 
       # php
@@ -52,14 +53,14 @@ in with lib; {
       ldns
       xdg-utils
       jq
-      terraform
+      # terraform
 
       # k8s
-      k9s
-      kubectl
-      fluxcd
-      lens
-      kubernetes-helm
+      # k9s
+      # kubectl
+      # fluxcd
+      # lens
+      # kubernetes-helm
 
       # other
       # python311Packages.pyngrok
