@@ -3,11 +3,11 @@ let
   # https://discourse.nixos.org/t/dotnet-maui-workload/20370/10
   dotnet-combined = (with pkgs.dotnetCorePackages;
     combinePackages [
+      sdk_10_0
+      aspnetcore_10_0
+
       sdk_8_0
       aspnetcore_8_0
-
-      sdk_6_0
-      aspnetcore_6_0
     ]).overrideAttrs (finalAttrs: previousAttrs: {
       # This is needed to install workload in $HOME
       # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
