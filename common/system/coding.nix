@@ -30,7 +30,7 @@ in with lib; {
       jetbrains.datagrip
       jetbrains.phpstorm
       jetbrains.clion
-      jetbrains.fleet
+      # jetbrains.fleet
 
       # Node
       nodejs
