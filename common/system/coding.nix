@@ -55,6 +55,9 @@ in with lib; {
       jq
       # terraform
 
+      gamescope
+      mangohud
+
       # k8s
       # k9s
       # kubectl
