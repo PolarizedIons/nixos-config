@@ -68,10 +68,11 @@ in with lib; {
       # other
       # python311Packages.pyngrok
 
-      # inputs.teraflops.packages.${system}.default
-      # colmena
-      # hcloud
-      # packer
+      inputs.teraflops.packages.${system}.default
+      colmena
+      hcloud
+      packer
+      terraform
 
       # ghostty
     ];
