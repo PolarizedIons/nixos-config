@@ -5,7 +5,7 @@
     services.tailscale.enable = true;
     services.tailscale.useRoutingFeatures = "client";
 
-    networking.nameservers = [ "100.100.100.100" ];
+    # networking.nameservers = [ "100.100.100.100" ];
     networking.search = [ "tail55af7.ts.net" "home" ];
   };
 }
