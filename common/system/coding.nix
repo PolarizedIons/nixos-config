@@ -48,7 +48,7 @@ in with lib; {
       # php83Packages.composer
 
       # utils
-      nixfmt-classic
+      nixfmts
       pre-commit
       ldns
       xdg-utils
