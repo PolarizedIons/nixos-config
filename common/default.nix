@@ -11,9 +11,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.settings = {
-    substituters = [ "https://nix-cache.home.polarizedions.net" ];
+    substituters = [ "https://nix-cache.polarizedions.net" ];
     trusted-public-keys = [
-      "nix-cache.home.polarizedions.net:xRhsMw1D1DoOh7j1hyyAJsgc36CkcVhXUlFRxPQoEWc="
+      "nix-cache.polarizedions.net:xRhsMw1D1DoOh7j1hyyAJsgc36CkcVhXUlFRxPQoEWc="
     ];
   };
 
