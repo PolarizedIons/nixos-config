@@ -24,7 +24,14 @@
   setup.desktop-environment = "plasma";
   services.displayManager.sddm.enable = lib.mkForce false;
 
-  environment.systemPackages = with pkgs; [ ryubing steam-rom-manager maliit-keyboard ];
+  environment.systemPackages = with pkgs; [
+    ryubing
+    steam-rom-manager
+    maliit-keyboard
+  ];
+
+  # See https://github.com/Jovian-Experiments/Jovian-NixOS/issues/545
+  services.inputplumber.package = lib.mkForce pkgs.inputplumber;
 
   setup.video-driver = "amdgpu";
   setup.browsers = [ "zen" "chromium" ];
