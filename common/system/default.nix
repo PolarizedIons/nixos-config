@@ -1,4 +1,10 @@
-{ pkgs, inputs, system, config, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -78,7 +84,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/shadesmear-dark.yaml";
     polarity = "dark";
-    image = ./wallpaper.png;
+    image = ./wallpaper.jpg;
     fonts = {
       monospace = {
         package = pkgs.meslo-lgs-nf;

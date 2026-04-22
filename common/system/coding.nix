@@ -1,27 +1,42 @@
-{ lib, pkgs, config, inputs, system, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  system,
+  ...
+}:
 let
   # https://discourse.nixos.org/t/dotnet-maui-workload/20370/10
-  dotnet-combined = (with pkgs.dotnetCorePackages;
-    combinePackages [
-      sdk_10_0
-      aspnetcore_10_0
+  dotnet-combined =
+    (
+      with pkgs.dotnetCorePackages;
+      combinePackages [
+        sdk_10_0
+        aspnetcore_10_0
 
-      sdk_8_0
-      aspnetcore_8_0
-    ]).overrideAttrs (finalAttrs: previousAttrs: {
-      # This is needed to install workload in $HOME
-      # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
+        sdk_8_0
+        aspnetcore_8_0
+      ]
+    ).overrideAttrs
+      (
+        finalAttrs: previousAttrs: {
+          # This is needed to install workload in $HOME
+          # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
 
-      postBuild = (previousAttrs.postBuild or "") + ''
-        for i in $out/sdk/*
-        do
-          i=$(basename $i)
-          mkdir -p $out/metadata/workloads/''${i/-*}
-          touch $out/metadata/workloads/''${i/-*}/userlocal
-        done
-      '';
-    });
-in with lib; {
+          postBuild = (previousAttrs.postBuild or "") + ''
+            for i in $out/sdk/*
+            do
+              i=$(basename $i)
+              mkdir -p $out/metadata/workloads/''${i/-*}
+              touch $out/metadata/workloads/''${i/-*}/userlocal
+            done
+          '';
+        }
+      );
+in
+with lib;
+{
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
       # IDEs
@@ -34,7 +49,7 @@ in with lib; {
 
       # Node
       nodejs
-      nodePackages_latest.pnpm
+      pnpm
 
       # Dotnet
       dotnet-combined
@@ -78,10 +93,14 @@ in with lib; {
     ];
 
     virtualisation.docker.enable = true;
-    users.users = builtins.listToAttrs (builtins.map (u: {
-      name = u.login;
-      value = { extraGroups = [ "docker" ]; };
-    }) config.setup.users);
+    users.users = builtins.listToAttrs (
+      builtins.map (u: {
+        name = u.login;
+        value = {
+          extraGroups = [ "docker" ];
+        };
+      }) config.setup.users
+    );
 
     system.activationScripts.ldso = lib.stringAfter [ "usrbinenv" ] ''
       mkdir -m 0755 -p /lib64
@@ -91,9 +110,9 @@ in with lib; {
 
     environment.sessionVariables = rec {
       DOTNET_ROOT = "${dotnet-combined}";
-      PATH = "$PATH:" + (concatStringsSep ":"
-        (builtins.map (u: "/home/${u.login}/.dotnet/tools")
-          config.setup.users));
+      PATH =
+        "$PATH:"
+        + (concatStringsSep ":" (builtins.map (u: "/home/${u.login}/.dotnet/tools") config.setup.users));
     };
   };
 }
