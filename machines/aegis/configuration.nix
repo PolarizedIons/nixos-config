@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -9,8 +12,15 @@
   setup.machine-name = "aegis";
   setup.video-driver = "amdgpu";
   setup.desktop-environment = "plasma";
-  setup.monitors = [ { name = "DP-2"; } { name = "HDMI-A-1"; } ];
-  setup.browsers = [ "zen" "firefox" "chromium" ];
+  setup.monitors = [
+    { name = "DP-2"; }
+    { name = "HDMI-A-1"; }
+  ];
+  setup.browsers = [
+    "zen"
+    "firefox"
+    "chromium"
+  ];
   setup.wooting.enable = true;
   setup.nix-alien.enable = true;
   setup.coding.enable = true;
@@ -21,7 +31,7 @@
   setup.keybase.enable = true;
   setup.music.enable = true;
   setup.libvirt.enable = true;
-  setup.vr.enable = true;
+  setup.vr.enable = false;
   setup.tailscale.enable = true;
 
   # This value determines the NixOS release from which the default
@@ -32,4 +42,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 }
-
