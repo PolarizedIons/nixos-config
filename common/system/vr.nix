@@ -13,12 +13,31 @@
       defaultRuntime = true; # Register as default OpenXR runtime
 
       highPriority = true;
+
+      #   package =
+      #     with pkgs;
+      #     monado.overrideAttrs (
+      #       finalAttrs: previousAttrs: {
+      #         src = fetchFromGitLab {
+      #           domain = "gitlab.freedesktop.org";
+      #           owner = "thaytan";
+      #           repo = "monado";
+      #           # here you need go to gitlab for this and find most suitable branch for your headset and replace string below
+      #           # or remove whole package override
+      #           rev = "dev-wmr-HP-G2-tunnelled-controller";
+      #           hash = "sha256-bZBNYKJEegJgm/sDPYsxNCilu8s2ObCGcXAmfrgrmsQ=";
+      #         };
+
+      #         patches = [ ];
+      #       }
+      #     );
     };
 
     systemd.user.services.monado.environment = {
       STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
-      VIT_SYSTEM_LIBRARY_PATH = "${pkgs.basalt-monado}/lib/libbasalt.so";
+      IPC_EXIT_ON_DISCONNECT = "1";
+      # VIT_SYSTEM_LIBRARY_PATH = "${pkgs.basalt-monado}/lib/libbasalt.so";
     };
 
     environment.systemPackages = with pkgs; [
