@@ -31,7 +31,7 @@
   setup.keybase.enable = true;
   setup.music.enable = true;
   setup.libvirt.enable = true;
-  setup.vr.enable = false;
+  setup.vr.enable = true;
   setup.tailscale.enable = true;
 
   # This value determines the NixOS release from which the default
