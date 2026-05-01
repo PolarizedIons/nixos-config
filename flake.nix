@@ -15,8 +15,8 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    nixpkgs-xr.inputs.nixpkgs.follows = "nixpkgs";
+    # nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    # nixpkgs-xr.inputs.nixpkgs.follows = "nixpkgs";
 
     spplice.url = "github:PolarizedIons/spplice-flake/cpp-beta";
     spplice.inputs.nixpkgs.follows = "nixpkgs";
@@ -37,14 +37,20 @@
     steamos-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
-      machines = [ "aegis" "rick" "vm" "potatOS" ];
+      machines = [
+        "aegis"
+        "rick"
+        "vm"
+        "potatOS"
+      ];
       system = "x86_64-linux";
 
       # Patch nixpkgs input: https://github.com/NixOS/nixpkgs/pull/142273#issuecomment-948225922
       remoteNixpkgsPatches = [
-        # example: 
+        # example:
         # {
         #   meta.description = "#295107: basalt-monado: init at release-673cc5c6";
         #   url =
@@ -55,7 +61,7 @@
 
       localNixpkgsPatches = [
 
-        #  ./patches/envision.diff 
+        #  ./patches/envision.diff
 
       ];
 
@@ -63,23 +69,25 @@
       nixpkgs = originPkgs.applyPatches {
         name = "nixpkgs-patched";
         src = inputs.nixpkgs;
-        patches = (map originPkgs.fetchpatch remoteNixpkgsPatches)
-          ++ localNixpkgsPatches;
+        patches = (map originPkgs.fetchpatch remoteNixpkgsPatches) ++ localNixpkgsPatches;
       };
 
       # nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
       nixosSystem = inputs.nixpkgs.lib.nixosSystem;
-    in {
-      nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
-        name = machine;
-        value = nixosSystem {
-          system = system;
-          modules = [
-            inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
-            ./machines/${machine}/configuration.nix
-          ];
-          specialArgs = { inherit inputs system; };
-        };
-      }) machines);
+    in
+    {
+      nixosConfigurations = builtins.listToAttrs (
+        builtins.map (machine: {
+          name = machine;
+          value = nixosSystem {
+            system = system;
+            modules = [
+              # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+              ./machines/${machine}/configuration.nix
+            ];
+            specialArgs = { inherit inputs system; };
+          };
+        }) machines
+      );
     };
 }
