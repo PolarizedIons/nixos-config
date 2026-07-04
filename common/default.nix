@@ -1,4 +1,11 @@
-{ lib, pkgs, config, inputs, ... }: {
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
   imports = [
     inputs.agenix.nixosModules.default
     inputs.stylix.nixosModules.stylix
@@ -8,12 +15,15 @@
     ./home-manager.nix
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.settings = {
-    substituters = [ "https://nix-cache.polarizedions.net" ];
+    substituters = [ "https://nix-cache.dievds.net" ];
     trusted-public-keys = [
-      "nix-cache.polarizedions.net:xRhsMw1D1DoOh7j1hyyAJsgc36CkcVhXUlFRxPQoEWc="
+      "nix-cache.polarizedions.net:lUf2rDhqyF+Dbt8uPUvp78xG0Zi58Tm748l85Log9uE="
     ];
   };
 
