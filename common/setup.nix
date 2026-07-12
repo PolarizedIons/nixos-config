@@ -1,13 +1,18 @@
 { lib, config, ... }:
 let
-  listDirFiles = toRead:
-    map (n: builtins.replaceStrings [ ".nix" ] [ "" ] n) (builtins.attrNames
-      (lib.filterAttrs (n: _: n != "default.nix" && !lib.hasPrefix "." n)
-        (builtins.readDir toRead)));
+  listDirFiles =
+    toRead:
+    map (n: builtins.replaceStrings [ ".nix" ] [ "" ] n) (
+      builtins.attrNames (
+        lib.filterAttrs (n: _: n != "default.nix" && !lib.hasPrefix "." n) (builtins.readDir toRead)
+      )
+    );
   browsers = listDirFiles ./system/browser;
   shells = listDirFiles ./home/shell;
   DEs = listDirFiles ./system/desktop-env;
-in with lib; {
+in
+with lib;
+{
   options.setup = {
     machine-name = mkOption { type = types.str; };
 
@@ -17,22 +22,26 @@ in with lib; {
     };
 
     users = mkOption {
-      type = types.listOf (types.submodule {
-        options = {
-          login = mkOption { type = types.str; };
-          name = mkOption { type = types.str; };
-          email = mkOption { type = types.str; };
-          shell = mkOption {
-            type = types.enum shells;
-            default = "zsh";
+      type = types.listOf (
+        types.submodule {
+          options = {
+            login = mkOption { type = types.str; };
+            name = mkOption { type = types.str; };
+            email = mkOption { type = types.str; };
+            shell = mkOption {
+              type = types.enum shells;
+              default = "zsh";
+            };
           };
-        };
-      });
-      default = [{
-        login = "polarizedions";
-        name = "Stephan";
-        email = "me@polarizedions.net";
-      }];
+        }
+      );
+      default = [
+        {
+          login = "polarizedions";
+          name = "Stephan";
+          email = "me@polarizedions.net";
+        }
+      ];
     };
 
     desktop-environment = mkOption {
@@ -42,21 +51,23 @@ in with lib; {
 
     # only used for things like hyprland
     monitors = mkOption {
-      type = types.listOf (types.submodule {
-        options = {
-          name = mkOption { type = types.str; };
-          resolution = {
-            width = mkOption {
-              type = types.int;
-              default = 1920;
-            };
-            height = mkOption {
-              type = types.int;
-              default = 1080;
+      type = types.listOf (
+        types.submodule {
+          options = {
+            name = mkOption { type = types.str; };
+            resolution = {
+              width = mkOption {
+                type = types.int;
+                default = 1920;
+              };
+              height = mkOption {
+                type = types.int;
+                default = 1080;
+              };
             };
           };
-        };
-      });
+        }
+      );
       default = [ ];
     };
 
@@ -66,7 +77,7 @@ in with lib; {
     networking = {
       nameservers = mkOption {
         type = types.listOf types.str;
-        default = [ "192.168.0.15" "1.1.1.1" "8.8.8.8" ];
+        default = [ "192.168.0.15" ];
       };
     };
 
