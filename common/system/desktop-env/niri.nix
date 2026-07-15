@@ -1,12 +1,23 @@
-{ pkgs, config, lib, system, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  system,
+  inputs,
+  ...
+}:
 
 {
   imports = [ inputs.noctalia.nixosModules.default ];
   config = lib.mkIf (config.setup.desktop-environment == "niri") {
 
-    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    nixpkgs.overlays = [
+      inputs.niri.overlays.niri
+    ];
 
-    programs.niri = { enable = true; };
+    programs.niri = {
+      enable = true;
+    };
 
     environment.systemPackages = with pkgs; [
       alacritty
@@ -14,7 +25,7 @@
       xwayland-satellite
     ];
 
-    services.noctalia-shell.enable = true;
+    programs.noctalia.enable = true;
 
     # programs.regreet.enable = true;
     services.xserver.displayManager.lightdm.enable = true;
