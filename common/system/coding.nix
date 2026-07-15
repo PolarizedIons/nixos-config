@@ -40,6 +40,7 @@ with lib;
   config = mkIf config.setup.coding.enable {
     environment.systemPackages = with pkgs; [
       # IDEs
+      zed-editor-fhs
       vscode
       jetbrains.rider
       jetbrains.datagrip
