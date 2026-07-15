@@ -69,6 +69,7 @@ with lib;
       ldns
       xdg-utils
       jq
+      nil
       # terraform
 
       gamescope
