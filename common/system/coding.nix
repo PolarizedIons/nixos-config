@@ -70,6 +70,7 @@ with lib;
       xdg-utils
       jq
       nil
+      nixd
       # terraform
 
       gamescope
