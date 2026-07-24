@@ -23,7 +23,7 @@
   nix.settings = {
     substituters = [ "https://nix-cache.dievds.net" ];
     trusted-public-keys = [
-      "nix-cache.polarizedions.net:lUf2rDhqyF+Dbt8uPUvp78xG0Zi58Tm748l85Log9uE="
+      "nix-cache.dievds.net:lUf2rDhqyF+Dbt8uPUvp78xG0Zi58Tm748l85Log9uE="
     ];
   };
 
