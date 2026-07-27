@@ -582,7 +582,7 @@
         };
         wallpaper = {
           automationEnabled = true;
-          directory = "/nix/store/2plkp5r6c9yw03dp8sgmhnacw34x89s6-wallpapers";
+          directory = ./wallpapers;
           enableMultiMonitorDirectories = false;
           enabled = true;
           favorites = [ ];
