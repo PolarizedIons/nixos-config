@@ -1,14 +1,9 @@
-## Polarized NixOS Configuration
+## PolarizedIon's NixOS Configuration
 
-rebuild for `rick`
+```bash
+# Rebuild & switch
+sudo nixos-rebuild --flake .# switch
 
-```
-sudo nixos-rebuild --flake .#rick switch
-```
-
-test it out in `vm`
-
-```
-nix build .#nixosConfigurations.vm.config.system.build.vm --impure
-./result/bin/run-*-vm
+# Test in a vm
+nix build .#nixosConfigurations.vm.config.system.build.vm --impure && ./result/bin/run-*-vm
 ```

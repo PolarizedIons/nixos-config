@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # home-manager.url = "github:nix-community/home-manager";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
@@ -15,11 +15,8 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    # nixpkgs-xr.inputs.nixpkgs.follows = "nixpkgs";
-
-    spplice.url = "github:PolarizedIons/spplice-flake/cpp-beta";
-    spplice.inputs.nixpkgs.follows = "nixpkgs";
+    # spplice.url = "github:PolarizedIons/spplice-flake/cpp-beta";
+    # spplice.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,10 +32,27 @@
 
     steamos-nix.url = "github:Jovian-Experiments/Jovian-NixOS";
     steamos-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
+    import-tree.url = "github:vic/import-tree";
+
+    wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
+    wrappers.inputs.nixpkgs.follows = "nixpkgs";
+
+    otter-launcher.url = "github:kuokuo123/otter-launcher";
+    otter-launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      flake-parts,
+      import-tree,
+      ...
+    }@inputs:
     let
       machines = [
         "aegis"
@@ -46,48 +60,23 @@
         "vm"
         "potatOS"
       ];
-      system = "x86_64-linux";
-
-      # Patch nixpkgs input: https://github.com/NixOS/nixpkgs/pull/142273#issuecomment-948225922
-      remoteNixpkgsPatches = [
-        # example:
-        # {
-        #   meta.description = "#295107: basalt-monado: init at release-673cc5c6";
-        #   url =
-        #     "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/295107.patch";
-        #   hash = "sha256-qKwJKenK6QYYyz27l/xuoUrAzTKobhJRhbxD0z7kWlo=";
-        # }
-      ];
-
-      localNixpkgsPatches = [
-
-        #  ./patches/envision.diff
-
-      ];
-
-      originPkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
-      nixpkgs = originPkgs.applyPatches {
-        name = "nixpkgs-patched";
-        src = inputs.nixpkgs;
-        patches = (map originPkgs.fetchpatch remoteNixpkgsPatches) ++ localNixpkgsPatches;
-      };
-
-      # nixosSystem = import (nixpkgs + "/nixos/lib/eval-config.nix");
-      nixosSystem = inputs.nixpkgs.lib.nixosSystem;
     in
-    {
-      nixosConfigurations = builtins.listToAttrs (
-        builtins.map (machine: {
-          name = machine;
-          value = nixosSystem {
-            system = system;
-            modules = [
-              # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
-              ./machines/${machine}/configuration.nix
-            ];
-            specialArgs = { inherit inputs system; };
-          };
-        }) machines
-      );
-    };
+    flake-parts.lib.mkFlake {
+      inherit inputs;
+    } (import-tree ./modules);
+  # {
+  #   # nixosConfigurations = builtins.listToAttrs (
+  #   #   map (machine: {
+  #   #     name = machine;
+  #   #     value = nixosSystem {
+  #   #       system = system;
+  #   #       modules = [
+  #   #         # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+  #   #         ./machines/${machine}/configuration.nix
+  #   #       ];
+  #   #       specialArgs = { inherit inputs system; };
+  #   #     };
+  #   #   }) machines
+  #   # );
+  # };
 }
