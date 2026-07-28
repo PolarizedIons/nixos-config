@@ -1,7 +1,7 @@
 { self, inputs, ... }:
 
 {
-  flake.nixosConfigurations.aegis = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.potatOS = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       potatOS
       steamdeck
