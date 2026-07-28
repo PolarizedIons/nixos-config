@@ -6,7 +6,7 @@
       aegis
       desktop
       amd-drivers
-      # wooting
+      wooting
       teraflops
     ];
   };

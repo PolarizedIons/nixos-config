@@ -1,7 +1,7 @@
 { self, ... }:
 
 {
-  flake.nixosModules.potatOS = { ... }: {
+  flake.nixosModules.rick = { ... }: {
     imports = with self.nixosModules; [ rickHardware ];
 
     boot.loader.systemd-boot.enable = true;
