@@ -22,13 +22,14 @@
     {
       pkgs,
       self',
+      inputs',
       ...
     }:
     {
       packages.niri = inputs.wrappers.wrappers.niri.wrap {
         inherit pkgs;
 
-        package = pkgs.niri; # [ inputs'.niri.packages.niri-stable ];
+        package = inputs'.niri.packages.niri-stable;
 
         settings = {
           extraConfig = ''
