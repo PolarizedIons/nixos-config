@@ -5,7 +5,6 @@
     modules = with self.nixosModules; [
       vm
       desktop
-      niri
     ];
   };
 }
