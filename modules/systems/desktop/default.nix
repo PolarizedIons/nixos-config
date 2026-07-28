@@ -18,6 +18,10 @@
         obs
         screen-recording
         virtualisation
+        sddm
+        niri
+        noctalia
+        fuzzel
       ];
     in
     {

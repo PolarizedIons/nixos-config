@@ -5,7 +5,7 @@
     modules = with self.nixosModules; [
       vm
       desktop
-      kde-plasma
+      niri
     ];
   };
 }

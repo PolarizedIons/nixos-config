@@ -35,10 +35,6 @@
         tailscale
         user
         yubikey
-        niri
-        noctalia
-        sddm
-        otter-launcher
         zsh
       ];
     in

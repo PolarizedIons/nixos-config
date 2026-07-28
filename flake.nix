@@ -53,30 +53,8 @@
       import-tree,
       ...
     }@inputs:
-    let
-      machines = [
-        "aegis"
-        "rick"
-        "vm"
-        "potatOS"
-      ];
-    in
+
     flake-parts.lib.mkFlake {
       inherit inputs;
     } (import-tree ./modules);
-  # {
-  #   # nixosConfigurations = builtins.listToAttrs (
-  #   #   map (machine: {
-  #   #     name = machine;
-  #   #     value = nixosSystem {
-  #   #       system = system;
-  #   #       modules = [
-  #   #         # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
-  #   #         ./machines/${machine}/configuration.nix
-  #   #       ];
-  #   #       specialArgs = { inherit inputs system; };
-  #   #     };
-  #   #   }) machines
-  #   # );
-  # };
 }
