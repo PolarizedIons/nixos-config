@@ -40,9 +40,6 @@
 
     wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
     wrappers.inputs.nixpkgs.follows = "nixpkgs";
-
-    otter-launcher.url = "github:kuokuo123/otter-launcher";
-    otter-launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
