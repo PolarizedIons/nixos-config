@@ -4,9 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # home-manager.url = "github:nix-community/home-manager";
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     teraflops.url = "github:aanderse/teraflops";
@@ -44,8 +41,6 @@
 
   outputs =
     {
-      self,
-      nixpkgs,
       flake-parts,
       import-tree,
       ...
