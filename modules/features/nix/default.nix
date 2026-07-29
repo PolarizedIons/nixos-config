@@ -17,7 +17,7 @@
 
         substituters = lib.mkForce [ "https://nix-cache.dievds.net" ];
         trusted-public-keys = lib.mkForce [
-          "nix-cache.dievds.net:lUf2rDhqyF+Dbt8uPUvp78xG0Zi58Tm748l85Log9uE="
+          "nix-cache.dievds.net:0G69EXgoJNKzH+BuPdGIeYhJ6iEC9vnhZ2D2PjJ/toY="
         ];
       };
     };
