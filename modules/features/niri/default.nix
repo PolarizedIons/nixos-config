@@ -110,7 +110,7 @@
             "Mod+Return".spawn-sh = lib.getExe self'.packages.alacritty;
             "Mod+Space".spawn-sh = lib.getExe self'.packages.fuzzel;
 
-            "Ctrl+Alt+Delete".spawn-sh = "${lib.getExe self.packages.noctalia-shell} ipc call lockScreen lock";
+            "Ctrl+Alt+Delete".spawn-sh = "${lib.getExe self'.packages.noctalia-shell} ipc call lockScreen lock";
 
             "Mod+H".focus-column-left = _: { };
             "Mod+Left".focus-column-left = _: { };
