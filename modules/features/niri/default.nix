@@ -63,7 +63,7 @@
               { proportion = 1.0; }
             ];
             default-column-width = {
-              proportion = 1.0;
+              proportion = 0.5;
             };
             focus-ring.off = _: { };
             border = {
