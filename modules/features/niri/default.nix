@@ -16,6 +16,8 @@
     environment.systemPackages = with pkgs; [
       xwayland-satellite
     ];
+
+    security.pam.services.sddm.enableGnomeKeyring = true;
   };
 
   perSystem =
