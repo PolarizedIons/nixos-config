@@ -1,47 +1,102 @@
-{ self, config, ... }:
+{
+  inputs,
+  config,
+  self,
+  ...
+}:
 
 {
-
   flake.nixosModules.zsh =
     { pkgs, ... }:
     {
       imports = [ self.nixosModules.shell-core ];
 
-      # services.gpg-agent.enableZshIntegration = true;
       programs.direnv.enableZshIntegration = true;
 
-      users.users."${config.username}".shell = pkgs.zsh;
+      users.users."${config.username}".shell = self.packages."${pkgs.stdenv.hostPlatform.system}".zsh;
+    };
 
-      programs = {
-        zsh = {
-          enable = true;
-          autosuggestions.enable = true;
-          enableCompletion = true;
-          syntaxHighlighting.enable = true;
-          enableLsColors = true;
+  perSystem =
+    {
+      pkgs,
+      ...
+    }:
+    {
+      packages.zsh = inputs.wrappers.wrappers.zsh.wrap {
+        inherit pkgs;
 
-          interactiveShellInit = ''
-            source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-          '';
+        install.enable = true;
+        install.asSystemDefault = true;
 
-          shellAliases = {
-            ls = "${pkgs.eza}/bin/eza --icons --grid --classify --colour=auto --sort=type --group-directories-first --header --modified --created --git --binary --group";
-            cat = "${pkgs.bat}/bin/bat";
-          };
-
-          # plugins = [
-          #   {
-          #     name = "powerlevel10k-config";
-          #     src = ./config;
-          #     file = "p10k.zsh";
-          #   }
-          #   {
-          #     name = "zsh-powerlevel10k";
-          #     src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-          #     file = "powerlevel10k.zsh-theme";
-          #   }
-          # ];
+        zshAliases = {
+          ls = "${pkgs.eza}/bin/eza --icons --grid --classify --colour=auto --sort=type --group-directories-first --header --modified --created --git --binary --group";
+          cat = "${pkgs.bat}/bin/bat";
         };
+
+        zshrc.path = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/moarram/headline/main/headline.zsh-theme";
+          hash = "sha256-lxnLei7zi1sErvPXtTAObvcJUsXtpVxVZWQdZYMnFcU=";
+        };
+
+        zshrc.content = ''
+          source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+          source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          # ^ syntax-highlighting must be sourced LAST, after any other widget-wrapping plugins
+
+          # Autocomplete
+          autoload -Uz compinit
+          compinit
+
+          # ls-colors
+          zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+
+          # Command not found script for flakes
+          source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+
+          # Settings for prompt
+          HL_SEP_MODE='on'
+          HL_INFO_MODE='auto'
+          HL_OVERWRITE='on'
+          HL_SEP=(
+            _PRE  '┍' # consider '┌' or '╭'
+            _LINE '━' # consider '─'
+            _POST '┑' # consider '┐' or '╮'
+          )
+          HL_LAYOUT_STYLE="%{$light_black%}"
+          HL_LAYOUT_TEMPLATE=(
+            _PRE    "│''${IS_SSH+ %{$reset$faint%\}ssh}" # shows " ssh" if this is an SSH session
+            USER    ' ...'
+            HOST    " %{$reset$faint%}at%{$reset$HL_LAYOUT_STYLE%} ..."
+            VENV    " %{$reset$faint%}with%{$reset$HL_LAYOUT_STYLE%} ..."
+            PATH    " %{$reset$faint%}in%{$reset$HL_LAYOUT_STYLE%} ..."
+            _SPACER '''
+            BRANCH  " %{$reset$faint%}on%{$reset$HL_LAYOUT_STYLE%} ..."
+            STATUS  ' ...'
+            _POST   ' │'
+          )
+          HL_LAYOUT_FIRST=(
+            HOST    ' ...'
+            VENV    ' ...'
+            PATH    ' ...'
+            _SPACER ' '
+            BRANCH  ' ...'
+          )
+          HL_CONTENT_TEMPLATE=(
+            USER   "%{$bold$red%} ..."
+            HOST   "%{$bold$yellow%} ..."
+            VENV   "%{$bold$green%} ..."
+            PATH   "%{$bold$blue%} ..."
+            BRANCH "%{$bold$cyan%} ..."
+            STATUS "%{$bold$magenta%}..."
+          )
+          HL_GIT_SEP_SYMBOL='''
+          HL_GIT_STATUS_SYMBOLS[CONFLICTS]="%{$red%}✘"
+          HL_GIT_STATUS_SYMBOLS[CLEAN]="%{$green%}✔"
+          HL_PROMPT="%{$HL_LAYOUT_STYLE%}╯ %{$reset%}$ "
+          HL_CLOCK_MODE='on'
+          HL_CLOCK_TEMPLATE="%{$faint%} ... %{$reset$HL_LAYOUT_STYLE%}╰"
+          HL_ERR_MODE='on'
+        '';
       };
     };
 }

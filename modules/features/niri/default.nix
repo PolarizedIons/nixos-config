@@ -48,10 +48,19 @@
                 }
               }
 
+              hotkey-overlay {
+                  skip-at-startup
+              }
+
               switch-events {
                 lid-close { spawn "${lib.getExe self'.packages.noctalia-shell}" "ipc" "call" "lockScreen" "lock"; }
               }
           '';
+
+          # Yes I have a fancy monitor :3
+          outputs."Datenerfassungs- und Informationssysteme WV34QCVX3 0000000000001" = {
+            mode = "3440x1440@180.000";
+          };
 
           layout = {
             gaps = 16;
