@@ -119,6 +119,8 @@
             "Mod+Return".spawn-sh = lib.getExe self'.packages.alacritty;
             "Mod+Space".spawn-sh = lib.getExe self'.packages.fuzzel;
 
+            "Mod+Shift+Escape".spawn-sh =
+              "${lib.getExe self'.packages.noctalia-shell} ipc call sessionMenu toggle";
             "Ctrl+Alt+Delete".spawn-sh = "${lib.getExe self'.packages.noctalia-shell} ipc call lockScreen lock";
 
             "Mod+H".focus-column-left = _: { };
@@ -131,13 +133,13 @@
             "Mod+Right".focus-column-right = _: { };
 
             "Mod+Shift+H".move-column-left = _: { };
-            "Mod+Shift+Left".move-column-left = _: { };
+            "Mod+Shift+Left".consume-or-expel-window-left = _: { };
             "Mod+Shift+J".move-window-down-or-to-workspace-down = _: { };
             "Mod+Shift+Down".move-window-down-or-to-workspace-down = _: { };
             "Mod+Shift+K".move-window-up-or-to-workspace-up = _: { };
             "Mod+Shift+Up".move-window-up-or-to-workspace-up = _: { };
             "Mod+Shift+L".move-column-right = _: { };
-            "Mod+Shift+Right".move-column-right = _: { };
+            "Mod+Shift+Right".consume-or-expel-window-right = _: { };
 
             "Mod+Page_Down".focus-workspace-down = _: { };
             "Mod+U".focus-workspace-down = _: { };
