@@ -8,6 +8,6 @@
   };
 
   perSystem = { pkgs, ... }: {
-    packages.discord = pkgs.discord;
+    packages.discord = pkgs.discord-ptb;
   };
 }
