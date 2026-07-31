@@ -117,7 +117,8 @@
           binds = {
             "Mod+Shift+Slash".show-hotkey-overlay = _: { };
             "Mod+Return".spawn-sh = lib.getExe self'.packages.alacritty;
-            "Mod+Space".spawn-sh = lib.getExe self'.packages.fuzzel;
+            "Mod+Space".spawn = lib.getExe self'.packages.fuzzel;
+            "Mod+D".spawn = lib.getExe self'.packages.browser;
 
             "Mod+Shift+Escape".spawn-sh =
               "${lib.getExe self'.packages.noctalia-shell} ipc call sessionMenu toggle";
@@ -125,12 +126,14 @@
 
             "Mod+H".focus-column-left = _: { };
             "Mod+Left".focus-column-left = _: { };
+            "Mod+WheelScrollUp".focus-column-left = _: { };
             "Mod+J".focus-window-or-workspace-down = _: { };
             "Mod+Down".focus-window-or-workspace-down = _: { };
             "Mod+K".focus-window-or-workspace-up = _: { };
             "Mod+Up".focus-window-or-workspace-up = _: { };
             "Mod+L".focus-column-right = _: { };
             "Mod+Right".focus-column-right = _: { };
+            "Mod+WheelScrollDown".focus-column-right = _: { };
 
             "Mod+Shift+H".move-column-left = _: { };
             "Mod+Shift+Left".consume-or-expel-window-left = _: { };
@@ -221,6 +224,9 @@
               props.allow-when-locked = true;
               content.spawn-sh = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
             };
+
+            "Scroll_Lock".spawn-sh =
+              "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
             "XF86MonBrightnessUp" = _: {
               props.allow-when-locked = true;

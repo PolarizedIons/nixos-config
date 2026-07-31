@@ -53,6 +53,21 @@
           # Command not found script for flakes
           source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
 
+          # Ctrl + Left
+          bindkey "^[[1;5D" backward-word
+          # Ctrl + right
+          bindkey "^[[1;5C" forward-word
+          # Up
+          bindkey '^[[A' history-beginning-search-backward
+          # Down
+          bindkey '^[[B' history-beginning-search-forward
+          # Home
+          bindkey  "^[[H"   beginning-of-line
+          # End
+          bindkey  "^[[F"   end-of-line
+          # Delete
+          bindkey  "^[[3~"  delete-char
+
           # History
           HISTFILE="$HOME/.zsh_history"
           HISTSIZE=50000

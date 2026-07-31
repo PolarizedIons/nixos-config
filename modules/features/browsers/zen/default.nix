@@ -1,4 +1,9 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  lib,
+  ...
+}:
 
 {
 
@@ -11,6 +16,9 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.zen = inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default;
+      packages = rec {
+        zen = inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default;
+        browser = lib.mkOverride 70 zen;
+      };
     };
 }

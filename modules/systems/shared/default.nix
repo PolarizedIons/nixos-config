@@ -30,7 +30,6 @@
         shell-core
         sound
         spotify
-        stylix
         sudo
         tailscale
         user

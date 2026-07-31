@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, lib, ... }:
 
 {
 
@@ -11,6 +11,9 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.chromium = pkgs.chromium;
+      packages = rec {
+        chromium = pkgs.chromium;
+        browser = lib.mkOverride 100 chromium;
+      };
     };
 }
