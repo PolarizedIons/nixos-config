@@ -58,9 +58,9 @@
           # Ctrl + right
           bindkey "^[[1;5C" forward-word
           # Up
-          bindkey '^[[A' history-beginning-search-backward
+          bindkey '^[[A' history-search-backward
           # Down
-          bindkey '^[[B' history-beginning-search-forward
+          bindkey '^[[B' history-search-forward
           # Home
           bindkey  "^[[H"   beginning-of-line
           # End

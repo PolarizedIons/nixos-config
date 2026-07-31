@@ -1,4 +1,9 @@
-{ self, ... }:
+{
+  self,
+  inputs,
+  lib,
+  ...
+}:
 
 {
 
@@ -9,6 +14,10 @@
   };
 
   perSystem = { pkgs, ... }: {
-    packages.alacritty = pkgs.alacritty;
+    packages.alacritty = inputs.wrappers.wrappers.alacritty.wrap {
+      inherit pkgs;
+
+      flags."--config-file" = lib.mkForce ./config.toml;
+    };
   };
 }

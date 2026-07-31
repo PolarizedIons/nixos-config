@@ -1,0 +1,12 @@
+[window]
+opacity = 0.85
+blur = true
+
+[font]
+normal = { family = "FiraMono Nerd Font Mono", style = "Regular" }
+
+[cursor]
+style = {
+    shape = "Beam",
+    blinking = "On"
+}
