@@ -15,7 +15,6 @@
   perSystem =
     {
       pkgs,
-      self',
       ...
     }:
     {

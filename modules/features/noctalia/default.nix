@@ -123,24 +123,13 @@
                 tooltipFormat = "HH:mm ddd, MMM dd";
                 useCustomFont = false;
               }
-              {
-                colorizeIcons = false;
-                hideMode = "hidden";
-                id = "ActiveWindow";
-                maxWidth = 145;
-                scrollingMode = "hover";
-                showIcon = true;
-                showText = true;
-                textColor = "none";
-                useFixedWidth = false;
-              }
             ];
             right = [
               {
                 blacklist = [ ];
                 chevronColor = "none";
                 colorizeIcons = false;
-                drawerEnabled = true;
+                drawerEnabled = false;
                 hidePassive = false;
                 id = "Tray";
                 pinned = [ ];
@@ -603,9 +592,7 @@
           sortOrder = "name";
           transitionDuration = 1500;
           transitionEdgeSmoothness = 0.05;
-          transitionType = [
-            "disc"
-          ];
+          transitionType = [ "disc" ];
           useOriginalImages = false;
           useSolidColor = false;
           useWallhaven = false;
