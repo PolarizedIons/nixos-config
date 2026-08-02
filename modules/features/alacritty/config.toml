@@ -3,6 +3,7 @@ opacity = 0.85
 blur = true
 
 [font]
+size = 13
 normal = { family = "FiraMono Nerd Font Mono", style = "Regular" }
 
 [cursor]

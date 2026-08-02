@@ -12,7 +12,6 @@
       package = self.packages."${pkgs.stdenv.hostPlatform.system}".niri;
     };
 
-    # TODO: make part of config and not part of system path
     environment.systemPackages = with pkgs; [
       xwayland-satellite
     ];
@@ -193,8 +192,8 @@
             "Mod+Shift+R".switch-preset-window-height = _: { };
             "Mod+Minus".set-column-width = "-10%";
             "Mod+Equal".set-column-width = "+10%";
-            "Mod+Shift+Minus".set-column-width = "-10%";
-            "Mod+Shift+Equal".set-column-width = "+10%";
+            "Mod+Shift+Minus".set-window-width = "-10%";
+            "Mod+Shift+Equal".set-window-width = "+10%";
 
             "Mod+F".maximize-column = _: { };
             "Mod+Shift+F".fullscreen-window = _: { };
