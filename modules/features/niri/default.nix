@@ -15,8 +15,6 @@
     environment.systemPackages = with pkgs; [
       xwayland-satellite
     ];
-
-    security.pam.services.sddm.enableGnomeKeyring = true;
   };
 
   perSystem =
@@ -122,6 +120,8 @@
             "Mod+Shift+Escape".spawn-sh =
               "${lib.getExe self'.packages.noctalia-shell} ipc call sessionMenu toggle";
             "Ctrl+Alt+Delete".spawn-sh = "${lib.getExe self'.packages.noctalia-shell} ipc call lockScreen lock";
+
+            "Mod+C".center-column = _: { };
 
             "Mod+H".focus-column-left = _: { };
             "Mod+Left".focus-column-left = _: { };
