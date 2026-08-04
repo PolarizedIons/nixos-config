@@ -11,6 +11,7 @@
       modules = with self.nixosModules; [
         core
         wifi
+        bluetooth
         touchpad
         alacritty
         shared
