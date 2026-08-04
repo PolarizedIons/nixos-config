@@ -6,6 +6,9 @@
       rick
       laptop
       amd-drivers
+      coding-utils
+      zed
+      gaming
     ];
   };
 }
