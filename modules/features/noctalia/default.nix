@@ -371,7 +371,7 @@
           screenOffCommand = "";
           screenOffTimeout = 600;
           suspendCommand = "";
-          suspendTimeout = 1800;
+          suspendTimeout = 0;
         };
         location = {
           analogClockInCalendar = false;
