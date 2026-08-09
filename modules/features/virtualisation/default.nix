@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  flake.nixosModules.virtualisation = { pkgs, lib, ... }: {
+  flake.nixosModules.virtualisation = { pkgs, ... }: {
     virtualisation = {
       libvirtd = {
         enable = true;

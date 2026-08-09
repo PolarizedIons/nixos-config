@@ -8,6 +8,7 @@
       amd-drivers
       wooting
       teraflops
+      vm-gpu
     ];
   };
 }
