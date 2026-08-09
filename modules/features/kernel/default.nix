@@ -1,7 +1,7 @@
-{ ... }:
+{ lib, ... }:
 
 {
   flake.nixosModules.kernel = { pkgs, ... }: {
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   };
 }
