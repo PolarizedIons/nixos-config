@@ -1,4 +1,8 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  ...
+}:
 
 {
   flake.nixosConfigurations.iso = inputs.nixpkgs.lib.nixosSystem {
