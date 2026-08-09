@@ -16,6 +16,8 @@
       xwayland-satellite
       nautilus
     ];
+
+    services.gvfs.enable = true;
   };
 
   perSystem =
