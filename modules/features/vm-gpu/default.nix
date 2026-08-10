@@ -24,7 +24,10 @@
 
           if [ "$OPERATION" = "prepare" ] && [ "$SUBOPERATION" = "begin" ]; then
             systemctl stop display-manager.service
-            sleep 2
+            sleep 1
+            pkill niri
+            pkill xwayland-satellite
+            sleep 1
 
             echo "${gpuPci}" > "/sys/bus/pci/devices/${gpuPci}/driver/unbind" 2>/dev/null
             echo "${gpuAudioPci}" > "/sys/bus/pci/devices/${gpuAudioPci}/driver/unbind" 2>/dev/null
