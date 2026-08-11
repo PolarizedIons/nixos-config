@@ -77,11 +77,11 @@
         "/etc/nixos"
         "/etc/secureboot"
         "/var/lib/nixos"
+        "/var/lib/libvirt"
       ];
 
       files = [
         "/etc/machine-id"
-        "/etc/shadow"
 
         # Required for SSH.
         "/etc/ssh/ssh_host_ed25519_key"
