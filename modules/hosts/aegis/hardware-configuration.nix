@@ -41,7 +41,6 @@
         ];
       };
 
-      boot.initrd.luks.fido2Support = true;
       boot.initrd.luks.devices."enc" = {
         device = "/dev/disk/by-uuid/4a075449-ca66-43e9-8c4a-936f1ca8b5ef";
         crypttabExtraOpts = [ "fido2-device=auto" ];
