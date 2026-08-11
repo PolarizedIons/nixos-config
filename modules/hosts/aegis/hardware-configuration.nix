@@ -24,27 +24,91 @@
         "xhci_pci"
         "ahci"
         "usbhid"
+        "usb_storage"
+        "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
       boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/9e9a7bf1-6dce-4dae-bb57-8be1c31bfa62";
-        fsType = "ext4";
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=root"
+          "compress=zstd"
+          "noatime"
+        ];
+      };
+
+      boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/4a075449-ca66-43e9-8c4a-936f1ca8b5ef";
+
+      fileSystems."/nix" = {
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=nix"
+          "compress=zstd"
+          "noatime"
+        ];
+      };
+
+      fileSystems."/var/log" = {
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=log"
+          "compress=zstd"
+          "noatime"
+        ];
+        neededForBoot = true;
+      };
+
+      fileSystems."/persist" = {
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=persist"
+          "compress=zstd"
+          "noatime"
+        ];
+        neededForBoot = true;
+      };
+
+      fileSystems."/home" = {
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=home"
+          "compress=zstd"
+          "noatime"
+        ];
+      };
+
+      fileSystems."/swap" = {
+        device = "/dev/mapper/enc";
+        fsType = "btrfs";
+        options = [
+          "subvol=swap"
+          "compress=zstd"
+          "noatime"
+        ];
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/D3FA-7448";
+        device = "/dev/disk/by-uuid/45D7-A378";
         fsType = "vfat";
         options = [
-          "fmask=0022"
-          "dmask=0022"
+          "fmask=0177"
+          "dmask=0077"
         ];
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-uuid/11bca29d-a96e-4a8f-8031-4e91305db416"; }
+        {
+          device = "/swap/swapfile";
+          size = 8 * 1024; # 8GiB
+        }
       ];
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

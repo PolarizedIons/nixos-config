@@ -8,7 +8,8 @@
       amd-drivers
       wooting
       teraflops
-      vm-gpu
+      impermanence
+      # vm-gpu
     ];
   };
 }
