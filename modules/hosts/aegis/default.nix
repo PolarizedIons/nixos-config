@@ -9,6 +9,7 @@
       wooting
       teraflops
       impermanence
+      logitec-devices
       # vm-gpu
     ];
   };
