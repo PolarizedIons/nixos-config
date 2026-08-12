@@ -78,6 +78,7 @@
         "/etc/secureboot"
         "/var/lib/nixos"
         "/var/lib/libvirt"
+        "/var/lib/systemd"
       ];
 
       files = [
