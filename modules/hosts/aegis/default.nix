@@ -10,7 +10,7 @@
       teraflops
       impermanence
       logitec-devices
-      # vm-gpu
+      vm-gpu
     ];
   };
 }
