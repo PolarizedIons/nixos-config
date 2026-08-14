@@ -31,7 +31,7 @@
       packages.niri = inputs.wrappers.wrappers.niri.wrap {
         inherit pkgs;
 
-        package = inputs'.niri.packages.niri-stable;
+        package = pkgs.niri; # inputs'.niri.packages.niri-stable;
 
         settings = {
           extraConfig = ''
