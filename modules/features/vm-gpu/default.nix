@@ -27,9 +27,11 @@
         # VM START
         if [ "$OPERATION" = "prepare" ] && [ "$SUBOPERATION" = "begin" ]; then
 
+          # Allocate 16GB (8192 * 2MB) of hugepages
+          echo 8192 > tee /proc/sys/vm/nr_hugepages
+
           systemctl stop display-manager.service || true
           sleep 2
-
 
           ${pkgs.procps}/bin/pkill -f niri || true
           ${pkgs.procps}/bin/pkill -f xwayland-satellite || true
@@ -104,6 +106,9 @@
 
           sleep 5
           systemctl restart display-manager.service
+
+          echo 0 > tee /proc/sys/vm/nr_hugepages
+
           exit 0
         fi
 
