@@ -27,9 +27,6 @@
         # VM START
         if [ "$OPERATION" = "prepare" ] && [ "$SUBOPERATION" = "begin" ]; then
 
-          # Allocate 16GB (8192 * 2MB) of hugepages
-          echo 8192 > tee /proc/sys/vm/nr_hugepages
-
           systemctl stop display-manager.service || true
           sleep 2
 
@@ -63,6 +60,11 @@
           echo "${gpuAudioId}" > /sys/bus/pci/drivers/vfio-pci/new_id
           sleep 2
 
+          # Allocate 16GB (8192 * 2MB) of hugepages
+          echo 1 > /proc/sys/vm/compact_memory # doesn't hurt
+          sync && echo 3 > /proc/sys/vm/drop_caches
+          echo 8192 > /proc/sys/vm/nr_hugepages
+
           exit 0
         fi
 
@@ -73,7 +75,7 @@
         if [ "$OPERATION" = "stopped" ] &&
            [ "$SUBOPERATION" = "end" ]; then
 
-          log "Restoring GPU to host"
+          echo 0 > tee /proc/sys/vm/nr_hugepages
 
           # Remove GPU from vfio-pci.
           if [ -e "/sys/bus/pci/drivers/vfio-pci/unbind" ]; then
@@ -106,8 +108,6 @@
 
           sleep 5
           systemctl restart display-manager.service
-
-          echo 0 > tee /proc/sys/vm/nr_hugepages
 
           exit 0
         fi
