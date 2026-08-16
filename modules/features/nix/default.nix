@@ -15,11 +15,10 @@
           "flakes"
         ];
 
-        substituters = lib.mkForce [
+        substituters = [
           "https://nix-cache.dievds.net"
-          "https://cache.nixos.org"
         ];
-        trusted-public-keys = lib.mkForce [
+        trusted-public-keys = [
           "nix-cache.dievds.net:0G69EXgoJNKzH+BuPdGIeYhJ6iEC9vnhZ2D2PjJ/toY="
         ];
       };
