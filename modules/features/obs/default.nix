@@ -1,27 +1,31 @@
 { self, ... }:
 
 {
-  flake.nixosModules.obs = { pkgs, config, ... }: {
+  flake.nixosModules.obs = { pkgs, ... }: {
 
     programs.obs-studio = {
       enable = true;
+      enableVirtualCamera = true;
       package = self.packages."${pkgs.stdenv.hostPlatform.system}".obs;
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-      ];
     };
 
-    # obs virtual camera
-    boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-    boot.extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-    '';
     security.polkit.enable = true;
   };
 
   perSystem = { pkgs, ... }: {
-    packages.obs = pkgs.obs-studio;
+    packages.obs = (
+      pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs
+          obs-backgroundremoval
+          obs-pipewire-audio-capture
+          obs-vaapi # AMD hardware acceleration
+          obs-gstreamer
+          obs-vkcapture
+          obs-move-transition
+          obs-3d-effect
+        ];
+      }
+    );
   };
 }
