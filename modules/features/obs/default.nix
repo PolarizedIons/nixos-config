@@ -25,7 +25,9 @@
           obs-move-transition
           obs-3d-effect
         ];
-      }).overrideAttrs
+      })
+      # https://github.com/NixOS/nixpkgs/issues/555398
+      .overrideAttrs
         (oldAttrs: {
           buildCommand =
             builtins.replaceStrings [ "rm -r $out/share/obs/obs-plugins" "echo" ] [ "" "# echo" ]
