@@ -13,8 +13,8 @@
   };
 
   perSystem = { pkgs, ... }: {
-    packages.obs = (
-      pkgs.wrapOBS {
+    packages.obs =
+      (pkgs.wrapOBS {
         plugins = with pkgs.obs-studio-plugins; [
           wlrobs
           obs-backgroundremoval
@@ -25,7 +25,11 @@
           obs-move-transition
           obs-3d-effect
         ];
-      }
-    );
+      }).overrideAttrs
+        (oldAttrs: {
+          buildCommand =
+            builtins.replaceStrings [ "rm -r $out/share/obs/obs-plugins" "echo" ] [ "" "# echo" ]
+              oldAttrs.buildCommand;
+        });
   };
 }
