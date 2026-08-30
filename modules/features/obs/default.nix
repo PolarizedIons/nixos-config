@@ -13,7 +13,7 @@
         obs-vaapi # AMD hardware acceleration
         obs-gstreamer
         obs-vkcapture
-        obs-move-transition
+        # obs-move-transition
         obs-3d-effect
       ];
     };
