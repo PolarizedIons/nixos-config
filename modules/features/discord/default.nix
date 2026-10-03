@@ -9,7 +9,7 @@
   };
 
   perSystem = { pkgs, ... }: {
-    packages.discord = pkgs.discord-ptb;
+    packages.discord = pkgs.discord;
     packages.overlayed = pkgs.overlayed;
   };
 }
