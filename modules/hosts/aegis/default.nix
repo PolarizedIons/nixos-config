@@ -11,6 +11,7 @@
       impermanence
       logitec-devices
       vm-gpu
+      vm-gaming-user
     ];
   };
 }
