@@ -15,6 +15,8 @@
     packages.noctalia-shell = inputs.wrappers.wrappers.noctalia-shell.wrap {
       inherit pkgs;
 
+      package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
       settings = {
         appLauncher = {
           autoPasteClipboard = false;
