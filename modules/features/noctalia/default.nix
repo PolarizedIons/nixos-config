@@ -15,7 +15,7 @@
     packages.noctalia-shell = inputs.wrappers.wrappers.noctalia-shell.wrap {
       inherit pkgs;
 
-      package = pkgs.noctalia;
+      package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       settings = {
         appLauncher = {
