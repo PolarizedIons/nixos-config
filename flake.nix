@@ -2,7 +2,7 @@
   description = "PolarizedIons's Machine Configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/f9a75f41be3a74eab55d3a7679d34ad6cc0da977";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
