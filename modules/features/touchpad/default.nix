@@ -1,11 +1,11 @@
 { ... }:
 
 {
-  flake.nixosModules.touchpad = { ... }: {
+  flake.nixosModules.touchpad = { config, ... }: {
     services.libinput = {
       enable = true;
       touchpad.naturalScrolling = true;
-      touchpad.disableWhileTyping = false;
+      touchpad.disableWhileTyping = config.hardware.asahi.enable;
     };
   };
 }

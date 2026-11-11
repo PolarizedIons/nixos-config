@@ -2,7 +2,7 @@
   description = "PolarizedIons's Machine Configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/f9a75f41be3a74eab55d3a7679d34ad6cc0da977";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
@@ -38,6 +38,9 @@
     impermanence.url = "github:nix-community/impermanence";
     impermanence.inputs.nixpkgs.follows = "";
     impermanence.inputs.home-manager.follows = "";
+
+    apple-silicon.url = "github:nix-community/nixos-apple-silicon";
+    apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

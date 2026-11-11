@@ -14,7 +14,7 @@
         internet
         core
         core-drivers
-        discord
+#        discord
         fonts
         fwupd
         gimp
@@ -26,10 +26,10 @@
         nix-alien
         plymouth
         power
-        printing
+#        printing
         shell-core
         sound
-        spotify
+#        spotify
         sudo
         tailscale
         user
